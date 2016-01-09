@@ -1,0 +1,1 @@
+INDEX VERSION 1.127+C:\Users\Mason\Documents\GitHub\2016-Stronghold\.metadata\.plugins\org.eclipse.jdt.core
