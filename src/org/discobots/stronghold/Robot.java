@@ -5,6 +5,9 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+
+import java.util.concurrent.TimeUnit;
+
 import org.discobots.stronghold.commands.ExampleCommand;
 import org.discobots.stronghold.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -21,6 +24,10 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
+	public static double totalTime;
+	public static long TeleopStartTime;
+	public static long loopExecutionTime = 0;
+
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -35,6 +42,11 @@ public class Robot extends IterativeRobot {
         chooser.addDefault("Default Auto", new ExampleCommand());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
+        
+		// dashboard init
+		Dashboard.init();
+		SmartDashboard.putData("Autonomous Slection", chooser);
+		Dashboard.update();
     }
 	
 	/**
@@ -43,11 +55,17 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
      */
     public void disabledInit(){
-
-    }
+    	for (long stop=System.nanoTime()+TimeUnit.SECONDS.toNanos(1);stop>System.nanoTime();) { //rumbles upon disable for 1 second
+			oi.setRumble(1);
+          }
+    	}
 	
 	public void disabledPeriodic() {
+		long start = System.currentTimeMillis();
 		Scheduler.getInstance().run();
+		Dashboard.update();
+		long end = System.currentTimeMillis();
+		loopExecutionTime = end - start;
 	}
 
 	/**
@@ -81,7 +99,11 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
-        Scheduler.getInstance().run();
+    	long start = System.currentTimeMillis();
+		Scheduler.getInstance().run();
+		Dashboard.update();
+		long end = System.currentTimeMillis();
+		loopExecutionTime = end - start;       
     }
 
     public void teleopInit() {
@@ -90,19 +112,33 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+		for (long stop=System.nanoTime()+TimeUnit.SECONDS.toNanos(1);stop>System.nanoTime();) { //rumbles upon disable for 1 second
+			oi.setRumble(1);
+			TeleopStartTime = System.currentTimeMillis();
+		}
     }
 
     /**
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        Scheduler.getInstance().run();
+    	long start = System.currentTimeMillis(); //measures loop execution times
+		Scheduler.getInstance().run();
+		Dashboard.update();
+		long end = System.currentTimeMillis();
+		loopExecutionTime = end - start;
     }
     
     /**
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
-        LiveWindow.run();
-    }
+		long start = System.currentTimeMillis();
+    	LiveWindow.run();
+		Scheduler.getInstance().run();
+		Dashboard.update();
+		long end = System.currentTimeMillis();
+		loopExecutionTime = end - start;
+		totalTime = (double) ((System.currentTimeMillis() - TeleopStartTime)/1000);
+    	}
 }
