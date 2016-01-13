@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import java.util.concurrent.TimeUnit;
 
 import org.discobots.stronghold.commands.ExampleCommand;
+import org.discobots.stronghold.subsystems.DriveTrainSubsystem;
 import org.discobots.stronghold.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -28,6 +29,7 @@ public class Robot extends IterativeRobot {
 	public static long TeleopStartTime;
 	public static long loopExecutionTime = 0;
 
+	public static DriveTrainSubsystem driveTrainSub;
 
     Command autonomousCommand;
     SendableChooser chooser;

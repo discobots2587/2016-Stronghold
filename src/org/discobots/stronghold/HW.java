@@ -15,4 +15,16 @@ public class HW {
     // number and the module. For example you with a rangefinder:
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
+	
+	/* CAN */// Check roboRio web interface for these values
+	
+	/* PWM */
+	public final static int motorFrontRight = 0; // All set to zero as a default value
+	public final static int motorMiddleRight = 0;
+	public final static int motorBackRight = 0;
+	public final static int motorFrontLeft = 0;
+	public final static int motorMiddleLeft = 0;
+	public final static int motorBackLeft = 0;
+	
+	/* Pneumatics */
 }
