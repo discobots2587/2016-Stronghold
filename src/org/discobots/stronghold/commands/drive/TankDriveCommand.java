@@ -1,4 +1,4 @@
-package org.discobots.stronghold.commands;
+package org.discobots.stronghold.commands.drive;
 
 import org.discobots.stronghold.Robot;
 
