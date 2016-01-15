@@ -17,10 +17,9 @@ public class DriveTrainSubsystem extends Subsystem {
     // here. Call these from Commands.
 	
 	/* Motors */
-	TalonSRX frontRight, frontMiddleRight, backMiddleRight, backRight, frontLeft,frontMiddleLeft, backMiddleLeft,
-	backLeft;
+	TalonSRX frontRight, backRight, frontLeft, backLeft;
 
-	RobotDrive robotDrive,robotDrive1;
+	RobotDrive robotDrive;
 
 	static final double CONSTANT_RAMP_LIMIT = 0.1; // ramping
 	// 0.05 = 4/10 seconds to full, 0.1 = 2/10 seconds to full
