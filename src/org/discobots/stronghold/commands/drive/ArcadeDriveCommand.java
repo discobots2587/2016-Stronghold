@@ -1,18 +1,18 @@
-
-package org.discobots.stronghold.commands;
-
-import edu.wpi.first.wpilibj.command.Command;
+package org.discobots.stronghold.commands.drive;
 
 import org.discobots.stronghold.Robot;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ExampleCommand extends Command {
+public class ArcadeDriveCommand extends Command {
 
-    public ExampleCommand() {
+    public ArcadeDriveCommand() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.exampleSubsystem);
+        // eg. requires(chassis);
+    	requires(Robot.driveTrainSub);
     }
 
     // Called just before this Command runs the first time
@@ -21,6 +21,7 @@ public class ExampleCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.driveTrainSub.arcadeDriveRamp(Robot.oi.getRawAnalogStickALY(), Robot.oi.getRawAnalogStickALX());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -30,10 +31,12 @@ public class ExampleCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.driveTrainSub.arcadeDriveUnramped(0, 0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }
