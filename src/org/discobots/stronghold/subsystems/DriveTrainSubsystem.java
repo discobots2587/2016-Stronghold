@@ -1,5 +1,6 @@
 package org.discobots.stronghold.subsystems;
 
+import org.discobots.stronghold.HW;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
 
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -30,11 +31,16 @@ public class DriveTrainSubsystem extends Subsystem {
 	static double kSpeedScaling = 1.0;
 
 	public DriveTrainSubsystem() {
-		/* Motors */
-		
-		/* Sensors */
+	/* Motors */
+		frontRight = new TalonSRX(HW.motorFrontRight) ;
+		backRight = new TalonSRX(HW.motorBackRight) ;
+		frontLeft = new TalonSRX(HW.motorFrontLeft) ;
+		backLeft = new TalonSRX(HW.motorBackLeft) ;
+	
+	/* Sensors */
 
 		/* RobotDrive */
+		robotDrive = new RobotDrive(this.frontLeft, this.frontRight, this.backLeft, this.backRight) ;
 		
 	}
 

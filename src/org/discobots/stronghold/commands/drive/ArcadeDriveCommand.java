@@ -21,7 +21,9 @@ public class ArcadeDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrainSub.arcadeDriveRamp(Robot.oi.getRawAnalogStickALY(), Robot.oi.getRawAnalogStickALX());
+    	Robot.driveTrainSub.arcadeDriveRamp(Robot.oi.getRawAnalogStickBLY(), Robot.oi.getRawAnalogStickBLX());
+    	
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -31,7 +33,7 @@ public class ArcadeDriveCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveTrainSub.arcadeDriveUnramped(0, 0);
+    	Robot.driveTrainSub.arcadeDriveRamp(0, 0);
     }
 
     // Called when another command which requires one or more of the same
