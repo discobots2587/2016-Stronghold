@@ -34,7 +34,7 @@ public class Robot extends IterativeRobot {
 
 	public static DriveTrainSubsystem driveTrainSub;
 
-    Command autonomousCommand;
+    Command autonomousCommand,driveCommand;
     SendableChooser chooser, driveChooser;
 
     /**
@@ -126,10 +126,13 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        driveCommand = (Command) driveChooser.getSelected();
 		for (long stop=System.nanoTime()+TimeUnit.SECONDS.toNanos(1);stop>System.nanoTime();) { //rumbles upon disable for 1 second
 			oi.setRumble(1);
 			TeleopStartTime = System.currentTimeMillis();
 		}
+		if(driveCommand != null)
+			driveCommand.start();
     }
 
     /**
