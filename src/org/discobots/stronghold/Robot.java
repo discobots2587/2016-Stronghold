@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import java.util.concurrent.TimeUnit;
 
 import org.discobots.stronghold.commands.AutonomousCommand;
+import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
+import org.discobots.stronghold.commands.drive.TankDriveCommand;
 //import org.discobots.stronghold.commands.ExampleCommand;
 import org.discobots.stronghold.subsystems.DriveTrainSubsystem;
 //import org.discobots.stronghold.subsystems.ExampleSubsystem;
@@ -33,7 +35,7 @@ public class Robot extends IterativeRobot {
 	public static DriveTrainSubsystem driveTrainSub;
 
     Command autonomousCommand;
-    SendableChooser chooser;
+    SendableChooser chooser, driveChooser;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -44,6 +46,11 @@ public class Robot extends IterativeRobot {
 		
 		/* Subsystems */
 		driveTrainSub = new DriveTrainSubsystem();
+		
+		driveChooser = new SendableChooser();
+		driveChooser.addDefault("TankDrive", new TankDriveCommand());
+		driveChooser.addObject("ArcadeDrive", new ArcadeDriveCommand());
+		SmartDashboard.putData("Drive Controls", driveChooser);
 		
         chooser = new SendableChooser();
         chooser.addDefault("Default Auto", new AutonomousCommand());
