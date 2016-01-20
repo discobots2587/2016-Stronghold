@@ -1,5 +1,6 @@
 package org.discobots.stronghold.subsystems;
 
+import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
 
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -27,10 +28,23 @@ public class DriveTrainSubsystem extends Subsystem {
 	boolean allowRamped = false;
 	private double prevLeft = 0, prevRight = 0;
 	private double prevY = 0, prevX = 0, prevR;
+	int choice=0;
 
 	static double kSpeedScaling = 1.0;
 
+	
 	public DriveTrainSubsystem() {
+	choice =-1; //default tank drive if no choice chosen (prevents null pointer exception)
+	}
+	
+	public DriveTrainSubsystem(int choose) {
+		choice = choose;
+		switch(choose)
+		{
+		case 1: new TankDriveCommand();
+		case 2: new ArcadeDriveCommand();
+		default: new TankDriveCommand();
+		}
 		/* Motors */
 		
 		/* Sensors */
@@ -121,6 +135,7 @@ public class DriveTrainSubsystem extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
+		if (!(choice>=0))
 		setDefaultCommand(new TankDriveCommand());
 	}
 

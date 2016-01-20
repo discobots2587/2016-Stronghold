@@ -35,7 +35,7 @@ public class Robot extends IterativeRobot {
 	public static DriveTrainSubsystem driveTrainSub;
 
     Command autonomousCommand,driveCommand;
-    SendableChooser chooser, driveChooser;
+    SendableChooser chooser, autonChooser;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -47,20 +47,16 @@ public class Robot extends IterativeRobot {
 		/* Subsystems */
 		driveTrainSub = new DriveTrainSubsystem();
 		
-		driveChooser = new SendableChooser();
-		driveChooser.addDefault("TankDrive", new TankDriveCommand());
-		driveChooser.addObject("ArcadeDrive", new ArcadeDriveCommand());
-		SmartDashboard.putData("Drive Controls", driveChooser);
-		
-        chooser = new SendableChooser();
-        chooser.addDefault("Default Auto", new AutonomousCommand());
-//        chooser.addObject("My Auto", new MyAutoCommand());
-        SmartDashboard.putData("Auto mode", chooser);
+		autonChooser = new SendableChooser();
+		autonChooser.addDefault("Auton1", new AutonomousCommand());
+		autonChooser.addObject("Auton2", new AutonomousCommand());
+		SmartDashboard.putData("Choose Auton", autonChooser);
         
 		// dashboard init
 		Dashboard.init();
-		SmartDashboard.putData("Autonomous Slection", chooser);
 		Dashboard.update();
+		
+		
     }
 	
 	/**
@@ -92,7 +88,7 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-        autonomousCommand = (Command) chooser.getSelected();
+        autonomousCommand = (Command) autonChooser.getSelected();
         
 		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
 		switch(autoSelected) {
@@ -126,7 +122,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
-        driveCommand = (Command) driveChooser.getSelected();
+        driveCommand = (Command) autonChooser.getSelected();
 		for (long stop=System.nanoTime()+TimeUnit.SECONDS.toNanos(1);stop>System.nanoTime();) { //rumbles upon disable for 1 second
 			oi.setRumble(1);
 			TeleopStartTime = System.currentTimeMillis();
