@@ -20,9 +20,9 @@ public class HW {
 	
 	/* PWM */
 	public final static int motorFrontRight = 0; // All set to zero as a default value
-	public final static int motorBackRight = 0;
-	public final static int motorFrontLeft = 0;
-	public final static int motorBackLeft = 0;
+	public final static int motorBackRight = 1;
+	public final static int motorFrontLeft = 2;
+	public final static int motorBackLeft = 3;
 	
 	
 	/* Pneumatics */
