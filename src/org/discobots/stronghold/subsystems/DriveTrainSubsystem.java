@@ -1,8 +1,10 @@
 package org.discobots.stronghold.subsystems;
 
 import org.discobots.stronghold.HW;
+import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
 
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -18,7 +20,7 @@ public class DriveTrainSubsystem extends Subsystem {
     // here. Call these from Commands.
 	
 	/* Motors */
-	TalonSRX frontRight, backRight, frontLeft, backLeft;
+	CANTalon frontRight, backRight, frontLeft, backLeft;
 
 	RobotDrive robotDrive;
 
@@ -32,10 +34,10 @@ public class DriveTrainSubsystem extends Subsystem {
 
 	public DriveTrainSubsystem() {
 	/* Motors */
-		frontRight = new TalonSRX(HW.motorFrontRight) ;
-		backRight = new TalonSRX(HW.motorBackRight) ;
-		frontLeft = new TalonSRX(HW.motorFrontLeft) ;
-		backLeft = new TalonSRX(HW.motorBackLeft) ;
+		frontRight = new CANTalon(HW.motorFrontRight) ;
+		backRight = new CANTalon(HW.motorBackRight) ;
+		frontLeft = new CANTalon(HW.motorFrontLeft) ;
+		backLeft = new CANTalon(HW.motorBackLeft) ;
 	
 	/* Sensors */
 
