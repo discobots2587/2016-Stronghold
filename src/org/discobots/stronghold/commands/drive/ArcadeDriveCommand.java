@@ -21,7 +21,7 @@ public class ArcadeDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrainSub.arcadeDriveRamp(Robot.oi.getRawAnalogStickBLX(), Robot.oi.getRawAnalogStickBLY());
+    	Robot.driveTrainSub.arcadeDriveRamp(-Robot.oi.getRawAnalogStickBLX(), -Robot.oi.getRawAnalogStickBLY());
     	
 
     }
