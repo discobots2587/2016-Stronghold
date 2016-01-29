@@ -1,6 +1,7 @@
 
 package org.discobots.stronghold;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -27,7 +28,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static OI oi;
-	
+	private CameraServer Eye1;
 	public static double totalTime;
 	public static long TeleopStartTime;
 	public static long loopExecutionTime = 0;
@@ -42,7 +43,15 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();
+    	//init camera and start simple stream process...
+        Eye1 = CameraServer.getInstance();//initialize server
+        Eye1.setQuality(50); //quality setting for camera
+        //camera name taken from roborio
+        Eye1.startAutomaticCapture("cam0");//automatically start streaming footage 
+        
+
+        //gamepad mapping
+    	oi = new OI();
 		
 		/* Subsystems */
 		driveTrainSub = new DriveTrainSubsystem();
