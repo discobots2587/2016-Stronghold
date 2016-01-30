@@ -28,29 +28,34 @@ public class DriveTrainSubsystem extends Subsystem {
 	boolean allowRamped = false;
 	private double prevLeft = 0, prevRight = 0;
 	private double prevY = 0, prevX = 0, prevR;
-	int choice=0;
+	public enum DriveCommandChoice { TANK, ARCADE }
+	DriveCommandChoice choice;
 
 	static double kSpeedScaling = 1.0;
 
 	
 	public DriveTrainSubsystem() {
-	choice =-1; //default tank drive if no choice chosen (prevents null pointer exception)
+		choice = DriveCommandChoice.TANK; //default tank drive if no choice chosen (prevents null pointer exception)
+		setDriveCommand();
 	}
 	
-	public DriveTrainSubsystem(int choose) {
-		choice = choose;
-		switch(choose)
-		{
-		case 1: new TankDriveCommand();
-		case 2: new ArcadeDriveCommand();
-		default: new TankDriveCommand();
-		}
+	public DriveTrainSubsystem(DriveCommandChoice c) {
+		choice = c;
+		setDriveCommand();
 		/* Motors */
 		
 		/* Sensors */
 
 		/* RobotDrive */
 		
+	}
+	
+	public void setDriveCommand()
+	{
+		switch (choice) {
+		case TANK: new TankDriveCommand(); // .start()?
+		case ARCADE: new ArcadeDriveCommand(); // .start()?
+		}
 	}
 
 	public void setRamped(boolean a) {
@@ -135,8 +140,10 @@ public class DriveTrainSubsystem extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		if (!(choice>=0))
-		setDefaultCommand(new TankDriveCommand());
+		if (choice == null)
+		{
+			setDefaultCommand(new TankDriveCommand());
+		}
 	}
 
 	public double getSpeedScaling() {
