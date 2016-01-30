@@ -9,4 +9,4 @@ Students, please add your name to the contributors list when you commit code.
   
 Contributors:  
 	Lead Programmers: Mason Cole, Thomas McDonald
-	Programmers:
+	Programmers: Sashank Gogula
