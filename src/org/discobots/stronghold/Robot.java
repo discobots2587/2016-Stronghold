@@ -17,6 +17,7 @@ import org.discobots.stronghold.subsystems.DriveTrainSubsystem;
 //import org.discobots.stronghold.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.vision.USBCamera;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -42,12 +43,16 @@ public class Robot extends IterativeRobot {
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
+    
     public void robotInit() {
     	//init camera and start simple stream process...
-        Eye1 = CameraServer.getInstance();//initialize server
-        Eye1.setQuality(50); //quality setting for camera
+       // Eye1 = CameraServer.getInstance();//initialize server
+       // Eye1.setQuality(50); //quality setting for camera
         //camera name taken from roborio
-        Eye1.startAutomaticCapture("cam0");//automatically start streaming footage 
+       // USBCamera Sony = new USBCamera(Sony0);
+       // Sony.openCamera();
+       // Sony.startCapture();
+     //   Eye1.startAutomaticCapture(Sony);//automatically start streaming footage 
         
 
         //gamepad mapping
