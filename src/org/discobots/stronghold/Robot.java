@@ -66,6 +66,7 @@ public class Robot extends IterativeRobot {
 		driveChooser.addDefault("Tank Drive", new TankDriveCommand());
 		driveChooser.addObject("Arcade Drive", new ArcadeDriveCommand());
 		driveChooser.addObject("Split Arcade Drive", new SplitArcadeCommand());
+		SmartDashboard.putData("Choose Driving Controls", driveChooser);
 
         //gamepad mapping
     	oi = new OI();
@@ -145,7 +146,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
-        driveCommand = (Command) autonChooser.getSelected();
+        driveCommand = (Command) driveChooser.getSelected();
 		for (long stop=System.nanoTime()+TimeUnit.SECONDS.toNanos(1);stop>System.nanoTime();) { //rumbles upon disable for 1 second
 			oi.setRumble(1);
 			TeleopStartTime = System.currentTimeMillis();
