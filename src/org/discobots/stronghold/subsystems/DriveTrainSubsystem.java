@@ -1,6 +1,8 @@
 package org.discobots.stronghold.subsystems;
 
+import org.discobots.stronghold.HW;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
+import org.discobots.stronghold.commands.drive.SplitArcadeCommand;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
 
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -18,17 +20,16 @@ public class DriveTrainSubsystem extends Subsystem {
     // here. Call these from Commands.
 	
 	/* Motors */
-	TalonSRX frontRight, frontMiddleRight, backMiddleRight, backRight, frontLeft,frontMiddleLeft, backMiddleLeft,
-	backLeft;
 
-	RobotDrive robotDrive,robotDrive1;
+
+	RobotDrive robotDrive;
 
 	static final double CONSTANT_RAMP_LIMIT = 0.1; // ramping
 	// 0.05 = 4/10 seconds to full, 0.1 = 2/10 seconds to full
 	boolean allowRamped = false;
 	private double prevLeft = 0, prevRight = 0;
 	private double prevY = 0, prevX = 0, prevR;
-	public enum DriveCommandChoice { TANK, ARCADE }
+	public enum DriveCommandChoice { TANK, ARCADE, SPLITARCADE }
 	DriveCommandChoice choice;
 
 	static double kSpeedScaling = 1.0;
@@ -37,6 +38,9 @@ public class DriveTrainSubsystem extends Subsystem {
 	public DriveTrainSubsystem() {
 		choice = DriveCommandChoice.TANK; //default tank drive if no choice chosen (prevents null pointer exception)
 		setDriveCommand();
+		
+		/* RobotDrive*/
+		robotDrive = new RobotDrive(HW.motorLeft,HW.motorRight);
 	}
 	
 	public DriveTrainSubsystem(DriveCommandChoice c) {
@@ -53,8 +57,9 @@ public class DriveTrainSubsystem extends Subsystem {
 	public void setDriveCommand()
 	{
 		switch (choice) {
-		case TANK: new TankDriveCommand(); // .start()?
-		case ARCADE: new ArcadeDriveCommand(); // .start()?
+			case TANK: new TankDriveCommand(); // .start()?
+			case ARCADE: new ArcadeDriveCommand(); // .start()?
+			case SPLITARCADE: new SplitArcadeCommand(); //start()?
 		}
 	}
 

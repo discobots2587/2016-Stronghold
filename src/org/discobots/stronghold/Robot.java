@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.discobots.stronghold.commands.AutonomousCommand;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
+import org.discobots.stronghold.commands.drive.SplitArcadeCommand;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
 //import org.discobots.stronghold.commands.ExampleCommand;
 import org.discobots.stronghold.subsystems.DriveTrainSubsystem;
@@ -37,7 +38,7 @@ public class Robot extends IterativeRobot {
 	public static DriveTrainSubsystem driveTrainSub;
 
     Command autonomousCommand,driveCommand;
-    SendableChooser chooser, autonChooser;
+    SendableChooser driveChooser, autonChooser;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -54,6 +55,17 @@ public class Robot extends IterativeRobot {
        // Sony.startCapture();
      //   Eye1.startAutomaticCapture(Sony);//automatically start streaming footage 
         
+    	/* Dashboard Choosers */
+    	
+    	autonChooser = new SendableChooser();
+		autonChooser.addDefault("Auton1", new AutonomousCommand());
+		autonChooser.addObject("Auton2", new AutonomousCommand());
+		SmartDashboard.putData("Choose Auton", autonChooser);
+		
+		driveChooser = new SendableChooser();
+		driveChooser.addDefault("Tank Drive", new TankDriveCommand());
+		driveChooser.addObject("Arcade Drive", new ArcadeDriveCommand());
+		driveChooser.addObject("Split Arcade Drive", new SplitArcadeCommand());
 
         //gamepad mapping
     	oi = new OI();
@@ -61,10 +73,7 @@ public class Robot extends IterativeRobot {
 		/* Subsystems */
 		driveTrainSub = new DriveTrainSubsystem();
 		
-		autonChooser = new SendableChooser();
-		autonChooser.addDefault("Auton1", new AutonomousCommand());
-		autonChooser.addObject("Auton2", new AutonomousCommand());
-		SmartDashboard.putData("Choose Auton", autonChooser);
+		
         
 		// dashboard init
 		Dashboard.init();
