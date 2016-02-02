@@ -1,5 +1,7 @@
 package org.discobots.stronghold.commands;
 
+import org.discobots.stronghold.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -18,7 +20,9 @@ public class AutonomousCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	 try {
+    	Robot.driveTrainSub.tankDriveRamp(100,100);
+    	   
+    	try {
              Thread.sleep(1000);                 //1000 milliseconds is one second.
          } catch(InterruptedException ex) {
              Thread.currentThread().interrupt();
