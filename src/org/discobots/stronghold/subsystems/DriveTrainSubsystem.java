@@ -37,7 +37,6 @@ public class DriveTrainSubsystem extends Subsystem {
 	
 	public DriveTrainSubsystem() {
 		choice = DriveCommandChoice.TANK; //default tank drive if no choice chosen (prevents null pointer exception)
-		setDriveCommand();
 		
 		/* RobotDrive*/
 		robotDrive = new RobotDrive(HW.motorLeft,HW.motorRight);
@@ -45,23 +44,15 @@ public class DriveTrainSubsystem extends Subsystem {
 	
 	public DriveTrainSubsystem(DriveCommandChoice c) {
 		choice = c;
-		setDriveCommand();
 		/* Motors */
 		
 		/* Sensors */
 
 		/* RobotDrive */
-		
+		robotDrive = new RobotDrive(HW.motorLeft,HW.motorRight);
+
 	}
 	
-	public void setDriveCommand()
-	{
-		switch (choice) {
-			case TANK: new TankDriveCommand(); // .start()?
-			case ARCADE: new ArcadeDriveCommand(); // .start()?
-			case SPLITARCADE: new SplitArcadeCommand(); //start()?
-		}
-	}
 
 	public void setRamped(boolean a) {
 		this.allowRamped = a;
@@ -145,9 +136,10 @@ public class DriveTrainSubsystem extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		if (choice == null)
-		{
-			setDefaultCommand(new TankDriveCommand());
+		switch (choice) {
+		case TANK: setDefaultCommand(new TankDriveCommand());
+		case ARCADE: setDefaultCommand(new ArcadeDriveCommand());
+		case SPLITARCADE: setDefaultCommand(new SplitArcadeCommand());
 		}
 	}
 
