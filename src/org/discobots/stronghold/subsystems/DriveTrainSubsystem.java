@@ -29,8 +29,8 @@ public class DriveTrainSubsystem extends Subsystem {
 	boolean allowRamped = false;
 	private double prevLeft = 0, prevRight = 0;
 	private double prevY = 0, prevX = 0, prevR;
-	//public enum DriveCommandChoice { TANK, ARCADE, SPLITARCADE }
-	//DriveCommandChoice choice;
+	public enum DriveCommandChoice { TANK, ARCADE, SPLITARCADE }
+	DriveCommandChoice choice;
 
 	static double kSpeedScaling = 1.0;
 
@@ -41,17 +41,17 @@ public class DriveTrainSubsystem extends Subsystem {
 		/* RobotDrive*/
 		robotDrive = new RobotDrive(HW.motorLeft,HW.motorRight);
 	}
-	/*
+	
 	public DriveTrainSubsystem(DriveCommandChoice c) {
 		choice = c;
 		/* Motors */
 		
 		/* Sensors */
 
-		/* RobotDrive 
+		/* RobotDrive */
 		robotDrive = new RobotDrive(HW.motorLeft,HW.motorRight);
 
-	} */
+	} 
 	
 
 	public void setRamped(boolean a) {
@@ -136,11 +136,7 @@ public class DriveTrainSubsystem extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		/*switch (choice) {
-		case TANK: setDefaultCommand(new TankDriveCommand());
-		case ARCADE: setDefaultCommand(new ArcadeDriveCommand());
-		case SPLITARCADE: setDefaultCommand(new SplitArcadeCommand());
-		}*/
+		setDefaultCommand(new TankDriveCommand());
 	}
 
 	public double getSpeedScaling() {

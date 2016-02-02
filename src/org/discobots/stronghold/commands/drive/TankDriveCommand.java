@@ -12,6 +12,7 @@ public class TankDriveCommand extends Command {
     public TankDriveCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.driveTrainSub);
     }
 
     // Called just before this Command runs the first time
@@ -20,7 +21,7 @@ public class TankDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrainSub.tankDriveUnramped(Robot.oi.getRawAnalogStickALY(),Robot.oi.getRawAnalogStickARY());
+    	Robot.driveTrainSub.tankDriveUnramped(Robot.oi.getRawAnalogStickALY(),-Robot.oi.getRawAnalogStickARY());
     }
 
     // Make this return true when this Command no longer needs to run execute()

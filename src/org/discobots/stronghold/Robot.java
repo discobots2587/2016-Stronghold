@@ -56,6 +56,9 @@ public class Robot extends IterativeRobot {
        // Sony.startCapture();
      //   Eye1.startAutomaticCapture(Sony);//automatically start streaming footage 
         
+    	/* Subsystems */
+		driveTrainSub = new DriveTrainSubsystem();
+    	
     	/* Dashboard Choosers */
     	
     	autonChooser = new SendableChooser();
@@ -72,11 +75,6 @@ public class Robot extends IterativeRobot {
         //gamepad mapping
     	oi = new OI();
 		
-		/* Subsystems */
-		driveTrainSub = new DriveTrainSubsystem();
-		
-		
-        
 		// dashboard init
 		Dashboard.init();
 		Dashboard.update();
