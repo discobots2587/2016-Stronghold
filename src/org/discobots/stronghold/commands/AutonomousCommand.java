@@ -18,6 +18,11 @@ public class AutonomousCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	 try {
+             Thread.sleep(1000);                 //1000 milliseconds is one second.
+         } catch(InterruptedException ex) {
+             Thread.currentThread().interrupt();
+         }
     }
 
     // Make this return true when this Command no longer needs to run execute()
