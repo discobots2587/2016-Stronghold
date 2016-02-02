@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import java.util.concurrent.TimeUnit;
 
 import org.discobots.stronghold.commands.AutonomousCommand;
+import org.discobots.stronghold.commands.SimpleDriveAutonomousCommand;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.SplitArcadeCommand;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
@@ -59,7 +60,7 @@ public class Robot extends IterativeRobot {
     	
     	autonChooser = new SendableChooser();
 		autonChooser.addDefault("Auton1", new AutonomousCommand());
-		autonChooser.addObject("Auton2", new AutonomousCommand());
+		autonChooser.addObject("Auton2", new SimpleDriveAutonomousCommand());
 		SmartDashboard.putData("Choose Auton", autonChooser);
 		
 		driveChooser = new SendableChooser();
