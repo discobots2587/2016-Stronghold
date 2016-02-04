@@ -111,7 +111,7 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-        autonomousCommand = (Command) autonChooser.getSelected();    	
+        autonomousCommand = (Command) autonChooser.getSelected();    	//Starts chosen Auton Command
     	// schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
     }
@@ -138,7 +138,7 @@ public class Robot extends IterativeRobot {
 			oi.setRumble(1);
 			TeleopStartTime = System.currentTimeMillis();
 		}
-		if(driveCommand != null)
+		if(driveCommand != null) //Starts chosen driving Command
 			driveCommand.start();
     }
 
