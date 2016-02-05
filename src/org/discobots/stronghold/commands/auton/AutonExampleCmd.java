@@ -1,13 +1,13 @@
-package org.discobots.stronghold.commands;
+package org.discobots.stronghold.commands.auton;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class SimpleDriveAutonomousCommand extends CommandGroup {
+public class AutonExampleCmd extends CommandGroup {
     
-    public  SimpleDriveAutonomousCommand() {
+    public  AutonExampleCmd() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

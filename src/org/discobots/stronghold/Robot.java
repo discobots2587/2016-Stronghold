@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import java.util.concurrent.TimeUnit;
 
-import org.discobots.stronghold.commands.AutonomousCommand;
-import org.discobots.stronghold.commands.SimpleDriveAutonomousCommand;
+import org.discobots.stronghold.commands.auton.AutonomousCommand;
+import org.discobots.stronghold.commands.auton.SimpleDriveAutonomousCommand;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.SplitArcadeCommand;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
