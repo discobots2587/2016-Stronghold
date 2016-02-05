@@ -1,7 +1,6 @@
 package org.discobots.stronghold.commands.drive;
 
 import org.discobots.stronghold.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 public class CycleDriveCommand extends Command {
@@ -25,7 +24,7 @@ public class CycleDriveCommand extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-	}
+	}//do nothing
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {

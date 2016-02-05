@@ -1,6 +1,7 @@
 package org.discobots.stronghold;
 
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
+import org.discobots.stronghold.commands.drive.CycleDriveCommand;
 import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
 import org.discobots.stronghold.utils.GamePad;
@@ -125,15 +126,9 @@ public class OI {
 		b_dpadD.whenPressed(new SetActiveIntakeCommand(-1.0));
 		b_dpadD.whenReleased(new SetActiveIntakeCommand(0.0));
 		b_sStar.whenPressed(new ShutdownSensors());
-		b_sBack.whenPressed(new CycleDriveCommand());
 	*/	
-		b_dpadU.whenPressed(new TankDriveCommand());
-		b_dpadR.whenPressed(new ArcadeDriveCommand());
-		b_dpadD.whenPressed(new SplitArcadeDriveCommand());
-		
-		b2_dpadU.whenPressed(new TankDriveCommand());
-		b2_dpadR.whenPressed(new ArcadeDriveCommand());
-		b2_dpadD.whenPressed(new SplitArcadeDriveCommand());		
+		b_sBack.whenPressed(new CycleDriveCommand());
+		b2_sBack.whenPressed(new CycleDriveCommand());	
 	}
 	public double getRawAnalogStickALX() {
 		if(gp1.getLX()>0.1||gp1.getLX()<=-0.1)
