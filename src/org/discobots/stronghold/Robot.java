@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 import org.discobots.stronghold.commands.auton.AutonomousCommand;
 import org.discobots.stronghold.commands.auton.SimpleDriveAutonomousCommand;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
-import org.discobots.stronghold.commands.drive.SplitArcadeCommand;
+import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
 //import org.discobots.stronghold.commands.ExampleCommand;
 import org.discobots.stronghold.subsystems.DriveTrainSubsystem;
@@ -69,7 +69,7 @@ public class Robot extends IterativeRobot {
 		driveChooser = new SendableChooser();
 		driveChooser.addDefault("Tank Drive", new TankDriveCommand());
 		driveChooser.addObject("Arcade Drive", new ArcadeDriveCommand());
-		driveChooser.addObject("Split Arcade Drive", new SplitArcadeCommand());
+		driveChooser.addObject("Split Arcade Drive", new SplitArcadeDriveCommand());
 		SmartDashboard.putData("Choose Driving Controls", driveChooser);
 
         //gamepad mapping

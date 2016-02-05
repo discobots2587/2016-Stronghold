@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class SplitArcadeCommand extends Command {
+public class SplitArcadeDriveCommand extends Command {
 
-    public SplitArcadeCommand() {
+    public SplitArcadeDriveCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.driveTrainSub);
