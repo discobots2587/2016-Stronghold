@@ -23,4 +23,7 @@ public class HW {
 	public final static int motorLeft = 1;
 	
 	/* Pneumatics */
+	
+	/* Analog */
+	public final static int potentiometer = 0;
 }
