@@ -22,7 +22,7 @@ public class OI {
 	
 //set buttons for each joystick
 	// JOYSTICK 2
-	private Button b_dpadU = new DPadButton(gp1, GamePad.DPAD_Y, true);
+	private Button b_dpadU = new DPadButton(xbox, GamePad.DPAD_Y, true);
 	private Button b_dpadD = new DPadButton(xbox, GamePad.DPAD_Y, false);
 	private Button b_dpadR = new DPadButton(xbox, GamePad.DPAD_X, true);
 	private Button b_dpadL = new DPadButton(xbox, GamePad.DPAD_X, false);
