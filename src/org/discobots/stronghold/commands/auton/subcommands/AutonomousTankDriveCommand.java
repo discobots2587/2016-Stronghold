@@ -1,31 +1,31 @@
-package org.discobots.stronghold.commands.drive;
+package org.discobots.stronghold.commands.auton.subcommands;
 
 import org.discobots.stronghold.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
-public class AutonomousArcadeDriveCommand extends Command {
-	
-	private int time;
+
+public class AutonomousTankDriveCommand extends Command {
+
+	private int time; //ms
 	private long endTime;
-	private double speedY, speedX;
+	private double speedLeft, speedRight;
 	
-    public AutonomousArcadeDriveCommand(double y, double x, int t) {
+	
+    public AutonomousTankDriveCommand(double y, double x, int t) //Speed Left; Speed Right; time in ms
+    {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.driveTrainSub);
-    	speedY = y;
-    	speedX = x;
-    	time = t;
+    	speedLeft = y;
+    	speedRight = x;
+    	time = t; //in ms
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveTrainSub.arcadeDriveRamp(speedY, speedX);
-    	endTime = System.currentTimeMillis() + time;
+    	Robot.driveTrainSub.tankDriveRamp(speedLeft, speedRight);
+    	endTime = System.currentTimeMillis()+time;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -39,7 +39,7 @@ public class AutonomousArcadeDriveCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveTrainSub.arcadeDriveUnramped(0, 0);
+    	Robot.driveTrainSub.tankDriveUnramped(0, 0);
     }
 
     // Called when another command which requires one or more of the same
