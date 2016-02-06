@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class LTRTXBOX extends Command {
+public class LTRTXBOX extends Command {//*********************must be set to default command in subsystem************************************************
     public LTRTXBOX() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
