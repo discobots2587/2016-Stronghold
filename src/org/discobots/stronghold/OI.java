@@ -55,7 +55,7 @@ public class OI {
 	private Button b2_btnY = new JoystickButton(gp1, GamePad.BTN_Y);
 	private Button b2_clicR = new JoystickButton(gp1, GamePad.AXISBTN_R);
 	private Button b2_clicL = new JoystickButton(gp1, GamePad.AXISBTN_L);
-
+	
 	public OI() {
 		// first gamepad
 		// drive commands control analog sticks on joy 1
