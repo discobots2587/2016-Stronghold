@@ -18,6 +18,8 @@ import org.discobots.stronghold.subsystems.ArmSubsystem;
 //import org.discobots.stronghold.commands.ExampleCommand;
 import org.discobots.stronghold.subsystems.DriveTrainSubsystem;
 
+import org.discobots.stronghold.subsystems.ElectricalSubsystem;
+
 //import org.discobots.stronghold.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -40,6 +42,7 @@ public class Robot extends IterativeRobot {
 
 	public static DriveTrainSubsystem driveTrainSub;
 	public static ArmSubsystem armSub;
+	public static ElectricalSubsystem electricalSub;
     Command autonomousCommand,driveCommand;
     SendableChooser driveChooser, autonChooser;
 

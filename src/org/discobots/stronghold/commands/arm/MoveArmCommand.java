@@ -2,6 +2,7 @@ package org.discobots.stronghold.commands.arm;
 
 import org.discobots.stronghold.Robot;
 
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -15,6 +16,7 @@ public class MoveArmCommand extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.armSub);
+    	requires(Robot.electricalSub);
     	
     	speed = s;
     }
@@ -30,7 +32,11 @@ public class MoveArmCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	if(Robot.electricalSub.getCurrentFromPDPChannel(Robot.armSub.armMotor.getChannel()) == 0)
+    	{
+    		return false;
+    	}
+    	return true;
     }
 
     // Called once after isFinished returns true
