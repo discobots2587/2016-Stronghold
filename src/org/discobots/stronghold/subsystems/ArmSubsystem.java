@@ -15,6 +15,7 @@ public class ArmSubsystem extends Subsystem {
     // here. Call these from Commands.
 	public AnalogInput potentiometer;
 	public Talon armMotor;
+	public final double kP = .25; //P constant
 	
 	
 	public ArmSubsystem()
