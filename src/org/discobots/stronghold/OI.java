@@ -1,5 +1,7 @@
 package org.discobots.stronghold;
 
+import org.discobots.stronghold.commands.arm.MaintainArmPosCommand;
+import org.discobots.stronghold.commands.arm.MoveArmCommand;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.CycleDriveCommand;
 import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
@@ -57,78 +59,19 @@ public class OI {
 	private Button b2_clicL = new JoystickButton(gp1, GamePad.AXISBTN_L);
 	
 	public OI() {
-		// first gamepad
-		// drive commands control analog sticks on joy 1
-/*		b2_trigR.whileHeld(new SetLiftCommand(1));
-		b2_trigR.whenReleased(new SetLiftCommand(0));
-
-		b2_trigL.whileHeld(new SetLiftCommand(-1));
-		b2_trigL.whenReleased(new SetLiftCommand(0));
-
-		b2_bumpR.whileHeld(new SetLiftCommand(0.5));
-		b2_bumpR.whenReleased(new SetLiftCommand(0));
-
-		b2_bumpL.whileHeld(new SetLiftCommand(-0.5));
-		b2_bumpL.whenReleased(new SetLiftCommand(0));
-
-		b2_btnA.whenPressed(new ToggleIntakeCommand());
-		b2_btnX.whenPressed(new ToggleWingCommand());
-		b2_btnY.whileHeld(new ToggleIntakeSolenoids(1));
-		b2_btnY.whenReleased(new ToggleIntakeSolenoids(-1));
-		b2_btnB.whenPressed(new ToggleClawCommand());
-		
-		b2_sStar.whenPressed(new ShutdownSensors());
+		//JOYSTICK 2
 		b2_sBack.whenPressed(new CycleDriveCommand());
-
-		b2_dpadU.whenPressed(new SetActiveIntakeCommand(1.0));
-		b2_dpadU.whenReleased(new SetActiveIntakeCommand(0.0));
-
-		b2_dpadL.whenPressed(new SpeedUpCommand());
+		b2_bumpR.whenPressed(new MoveArmCommand(1));
+		b2_bumpR.whenReleased(new MaintainArmPosCommand());
+		b2_bumpL.whenPressed(new MoveArmCommand(-1));
+		b2_bumpL.whenReleased(new MaintainArmPosCommand());
 		
-		b2_dpadD.whenPressed(new SetActiveIntakeCommand(-1.0));
-		b2_dpadD.whenReleased(new SetActiveIntakeCommand(0.0));
-	*/	
-		
-
-		
-
-
-		// second gamepad
-/*		
-		while (b_triggerR>0.2)
-			new SetLiftCommand(b_triggerR);
-		while(b_triggerL>0.2)
-			new SetLiftCommand(-b_triggerL);			
-			
-		b_bumpR.whileHeld(new SetLiftCommand(0.5));
-		b_bumpR.whenReleased(new SetLiftCommand(0));
-
-		b_bumpL.whileHeld(new SetLiftCommand(-0.5));
-		b_bumpL.whenReleased(new SetLiftCommand(0));
-
-	//	b_btnA.whenPressed(new ToggleIntakeCommand());
-	//	b_btnB.whenPressed(new AutomatedStackingCommand()); // one cycle, stoppable by any button
-	//	b_btnY.whenPressed(new ShutdownSensors());
-
-	//	b_sBack.whenPressed(new ToggleDriveRampingCommand());
-		
-		b_btnA.whenPressed(new ToggleIntakeCommand());
-		b_btnX.whenPressed(new ToggleWingCommand());
-		b_btnY.whileHeld(new ToggleIntakeSolenoids(1));
-		b_btnY.whenReleased(new ToggleIntakeSolenoids(-1));
-		b_btnB.whenPressed(new ToggleClawCommand());
-		
-		b_dpadU.whenPressed(new SetActiveIntakeCommand(1.0));
-		b_dpadU.whenReleased(new SetActiveIntakeCommand(0.0));
-
-		b_dpadL.whenPressed(new SpeedUpCommand());
-		
-		b_dpadD.whenPressed(new SetActiveIntakeCommand(-1.0));
-		b_dpadD.whenReleased(new SetActiveIntakeCommand(0.0));
-		b_sStar.whenPressed(new ShutdownSensors());
-	*/	
+		//JOYSTICK 1
 		b_sBack.whenPressed(new CycleDriveCommand());
-		b2_sBack.whenPressed(new CycleDriveCommand());	
+		b_bumpR.whenPressed(new MoveArmCommand(1));
+		b_bumpR.whenReleased(new MaintainArmPosCommand());
+		b_bumpL.whenPressed(new MoveArmCommand(-1));
+		b_bumpL.whenReleased(new MaintainArmPosCommand());
 	}
 	public double getRawAnalogStickALX() {
 		if(gp1.getLX()>0.1||gp1.getLX()<=-0.1)
