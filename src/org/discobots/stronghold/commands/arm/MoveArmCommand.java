@@ -1,5 +1,7 @@
 package org.discobots.stronghold.commands.arm;
 
+import org.discobots.stronghold.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -10,6 +12,7 @@ public class MoveArmCommand extends Command {
     public MoveArmCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.armSub);
     }
 
     // Called just before this Command runs the first time
