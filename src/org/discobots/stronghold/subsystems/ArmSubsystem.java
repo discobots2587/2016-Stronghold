@@ -13,8 +13,8 @@ public class ArmSubsystem extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	public static AnalogInput potentiometer;
-	private static Talon armMotor;
+	public AnalogInput potentiometer;
+	public Talon armMotor;
 	
 	
 	public ArmSubsystem()
@@ -22,6 +22,7 @@ public class ArmSubsystem extends Subsystem {
 		potentiometer = new AnalogInput(HW.potentiometer);
 		armMotor = new Talon(HW.armMotor);
 	}
+
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
