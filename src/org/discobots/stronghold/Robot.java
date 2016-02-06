@@ -60,7 +60,7 @@ public class Robot extends IterativeRobot {
         
     	/* Subsystems */
 		driveTrainSub = new DriveTrainSubsystem();
-    	
+    	linearPunchSub = new LinearPunchSubsystem();
     	/* Dashboard Choosers */
     	
     	autonChooser = new SendableChooser();
