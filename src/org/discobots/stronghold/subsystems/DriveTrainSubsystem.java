@@ -24,9 +24,9 @@ public class DriveTrainSubsystem extends Subsystem {
 
 	RobotDrive robotDrive;
 
-	static final double CONSTANT_RAMP_LIMIT = 0.1; // ramping
+	static final double CONSTANT_RAMP_LIMIT = 0.05; // ramping
 	// 0.05 = 4/10 seconds to full, 0.1 = 2/10 seconds to full
-	boolean allowRamped = false;
+	boolean allowRamped = true;
 	private double prevLeft = 0, prevRight = 0;
 	private double prevY = 0, prevX = 0, prevR;
 	public enum DriveCommandChoice { TANK, ARCADE, SPLITARCADE }
