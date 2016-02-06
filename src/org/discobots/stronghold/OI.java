@@ -1,5 +1,6 @@
 package org.discobots.stronghold;
 
+import org.discobots.stronghold.commands.LinearPunch;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.CycleDriveCommand;
 import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
@@ -129,6 +130,8 @@ public class OI {
 	*/	
 		b_sBack.whenPressed(new CycleDriveCommand());
 		b2_sBack.whenPressed(new CycleDriveCommand());	
+		b2_trigR.whileHeld(new LinearPunch());
+		
 	}
 	public double getRawAnalogStickALX() {
 		if(gp1.getLX()>0.1||gp1.getLX()<=-0.1)
