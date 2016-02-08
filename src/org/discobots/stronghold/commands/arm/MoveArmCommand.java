@@ -1,8 +1,6 @@
 package org.discobots.stronghold.commands.arm;
 
 import org.discobots.stronghold.Robot;
-
-import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**

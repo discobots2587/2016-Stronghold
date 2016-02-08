@@ -1,12 +1,9 @@
 package org.discobots.stronghold.subsystems;
 
 import org.discobots.stronghold.HW;
-import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
-import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
 
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**

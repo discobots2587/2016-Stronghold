@@ -2,10 +2,7 @@ package org.discobots.stronghold;
 
 import org.discobots.stronghold.commands.arm.MaintainArmPosCommand;
 import org.discobots.stronghold.commands.arm.MoveArmCommand;
-import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.CycleDriveCommand;
-import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
-import org.discobots.stronghold.commands.drive.TankDriveCommand;
 import org.discobots.stronghold.subsystems.ArmSubsystem;
 import org.discobots.stronghold.utils.GamePad;
 import org.discobots.stronghold.utils.GamePad.DPadButton;
