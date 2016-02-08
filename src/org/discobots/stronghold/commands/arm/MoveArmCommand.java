@@ -32,11 +32,8 @@ public class MoveArmCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(Robot.electricalSub.getCurrentFromPDPChannel(Robot.armSub.armMotor.getChannel()) <= 0.1)
-    	{
-    		return false;
-    	}
-    	return true;
+    	int channel = Robot.armSub.armMotor.getChannel();
+    	return Robot.electricalSub.getCurrentFromPDPChannel(channel) <= 0.1;
     }
 
     // Called once after isFinished returns true
