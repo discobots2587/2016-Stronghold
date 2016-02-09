@@ -5,8 +5,8 @@ import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
 
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -31,27 +31,27 @@ public class DriveTrainSubsystem extends Subsystem {
 	private double prevY = 0, prevX = 0, prevR;
 	public enum DriveCommandChoice { TANK, ARCADE, SPLITARCADE }
 	DriveCommandChoice choice;
+	CANTalon frontLeft,frontRight,backLeft,backRight;
 
 	static double kSpeedScaling = 1.0;
 
 	
 	public DriveTrainSubsystem() {
 		//choice = DriveCommandChoice.TANK; //default tank drive if no choice chosen (prevents null pointer exception)
-		
+		frontLeft = new CANTalon(HW.motorFrontLeft);
+		frontRight = new CANTalon(HW.motorFrontRight);
+		backLeft = new CANTalon(HW.motorBackLeft);
+		backRight = new CANTalon(HW.motorBackRight);
 		/* RobotDrive*/
-		robotDrive = new RobotDrive(HW.motorLeft,HW.motorRight);
+		robotDrive = new RobotDrive(frontLeft,frontRight,backLeft,backRight);
 	}
 	
-	public DriveTrainSubsystem(DriveCommandChoice c) {
+/*	public DriveTrainSubsystem(DriveCommandChoice c) {
 		choice = c;
-		/* Motors */
 		
-		/* Sensors */
-
-		/* RobotDrive */
 		robotDrive = new RobotDrive(HW.motorLeft,HW.motorRight);
 
-	} 
+	} */
 	
 
 	public void setRamped(boolean a) {

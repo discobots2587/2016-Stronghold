@@ -17,10 +17,12 @@ public class HW {
     // public static int rangefinderModule = 1;
 	
 	/* CAN */// Check roboRio web interface for these values
-	
+	public final static int motorFrontLeft = 32;
+	public final static int motorFrontRight = 35;
+	public final static int motorBackLeft = 33;
+	public final static int motorBackRight = 30;
 	/* PWM */
-	public final static int motorRight = 0; 
-	public final static int motorLeft = 1;
+
 	public final static int armMotor = 2;
 
 	
