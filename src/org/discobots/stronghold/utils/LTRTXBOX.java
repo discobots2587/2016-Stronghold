@@ -1,18 +1,14 @@
-package org.discobots.stronghold.commands.drive;
-
-import org.discobots.stronghold.Robot;
+package org.discobots.stronghold.utils;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class TankDriveCommand extends Command {
-
-    public TankDriveCommand() {
+public class LTRTXBOX extends Command {//*********************must be set to default command in subsystem************************************************
+    public LTRTXBOX() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.driveTrainSub);
     }
 
     // Called just before this Command runs the first time
@@ -20,8 +16,9 @@ public class TankDriveCommand extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	Robot.driveTrainSub.tankDriveUnramped(Robot.oi.getRawAnalogStickALY(),-Robot.oi.getRawAnalogStickARY());
+    protected void execute() {//uses values from right/left xbox controllers to do stuff...
+//    	   Liftspeed = Robot.oi.getRT()-Robot.oi.getLT();//constantly updates every 20 miliseconds
+//    	   Robot.liftSub.setSpeed(Liftspeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -31,12 +28,12 @@ public class TankDriveCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveTrainSub.tankDriveUnramped(0, 0);
+    	//always set speeds to zero in end
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
+    	
     }
 }

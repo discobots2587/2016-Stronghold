@@ -1,4 +1,4 @@
-package org.discobots.stronghold.commands;
+package org.discobots.stronghold.commands.auton.subcommands;
 
 import org.discobots.stronghold.Robot;
 
@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutonomousCommand extends Command {
+public class AutoDrive extends Command {
 
-    public AutonomousCommand() {
+    public AutoDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

@@ -1,6 +1,7 @@
 
 package org.discobots.stronghold;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -8,14 +9,21 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import java.util.concurrent.TimeUnit;
 
-import org.discobots.stronghold.commands.AutonomousCommand;
+import org.discobots.stronghold.commands.auton.AutonomousCommand;
+import org.discobots.stronghold.commands.auton.SimpleDriveAutonomousCommand;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
+import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
+import org.discobots.stronghold.subsystems.ArmSubsystem;
 //import org.discobots.stronghold.commands.ExampleCommand;
 import org.discobots.stronghold.subsystems.DriveTrainSubsystem;
+
+import org.discobots.stronghold.subsystems.ElectricalSubsystem;
+
 //import org.discobots.stronghold.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.vision.USBCamera;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,31 +35,52 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static OI oi;
-	
+	private CameraServer Eye1;
 	public static double totalTime;
 	public static long TeleopStartTime;
 	public static long loopExecutionTime = 0;
 
 	public static DriveTrainSubsystem driveTrainSub;
-
+	public static ArmSubsystem armSub;
+	public static ElectricalSubsystem electricalSub;
     Command autonomousCommand,driveCommand;
-    SendableChooser chooser, autonChooser;
+    SendableChooser driveChooser, autonChooser;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
+    
     public void robotInit() {
-		oi = new OI();
-		
-		/* Subsystems */
-		driveTrainSub = new DriveTrainSubsystem();
-		
-		autonChooser = new SendableChooser();
-		autonChooser.addDefault("Auton1", new AutonomousCommand());
-		autonChooser.addObject("Auton2", new AutonomousCommand());
-		SmartDashboard.putData("Choose Auton", autonChooser);
+    	//init camera and start simple stream process...
+       // Eye1 = CameraServer.getInstance();//initialize server
+       // Eye1.setQuality(50); //quality setting for camera
+        //camera name taken from roborio
+       // USBCamera Sony = new USBCamera(Sony0);
+       // Sony.openCamera();
+       // Sony.startCapture();
+     //   Eye1.startAutomaticCapture(Sony);//automatically start streaming footage 
         
+    	/* Subsystems */
+		driveTrainSub = new DriveTrainSubsystem();
+    	armSub = new ArmSubsystem();
+    	electricalSub = new ElectricalSubsystem();
+    	/* Dashboard Choosers */
+    	
+    	autonChooser = new SendableChooser();
+		autonChooser.addDefault("Auton1", new AutonomousCommand());
+		autonChooser.addObject("Auton2", new SimpleDriveAutonomousCommand());
+		SmartDashboard.putData("Choose Auton", autonChooser);
+		
+		driveChooser = new SendableChooser();
+		driveChooser.addDefault("Tank Drive", new TankDriveCommand());
+		driveChooser.addObject("Arcade Drive", new ArcadeDriveCommand());
+		driveChooser.addObject("Split Arcade Drive", new SplitArcadeDriveCommand());
+		SmartDashboard.putData("Choose Driving Controls", driveChooser);
+
+        //gamepad mapping
+    	oi = new OI();
+		
 		// dashboard init
 		Dashboard.init();
 		Dashboard.update();
@@ -88,19 +117,7 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-        autonomousCommand = (Command) autonChooser.getSelected();
-        
-		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
-		switch(autoSelected) {
-		case "My Auto":
-			autonomousCommand = new MyAutoCommand();
-			break;
-		case "Default Auto":
-		default:
-			autonomousCommand = new ExampleCommand();
-			break;
-		} */
-    	
+        autonomousCommand = (Command) autonChooser.getSelected();    	//Starts chosen Auton Command
     	// schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
     }
@@ -122,12 +139,12 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
-        driveCommand = (Command) autonChooser.getSelected();
+        driveCommand = (Command) driveChooser.getSelected();
 		for (long stop=System.nanoTime()+TimeUnit.SECONDS.toNanos(1);stop>System.nanoTime();) { //rumbles upon disable for 1 second
 			oi.setRumble(1);
 			TeleopStartTime = System.currentTimeMillis();
 		}
-		if(driveCommand != null)
+		if(driveCommand != null) //Starts chosen driving Command
 			driveCommand.start();
     }
 

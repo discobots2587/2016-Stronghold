@@ -1,10 +1,9 @@
 package org.discobots.stronghold.subsystems;
 
-import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
+import org.discobots.stronghold.HW;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
 
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -18,40 +17,39 @@ public class DriveTrainSubsystem extends Subsystem {
     // here. Call these from Commands.
 	
 	/* Motors */
-	TalonSRX frontRight, frontMiddleRight, backMiddleRight, backRight, frontLeft,frontMiddleLeft, backMiddleLeft,
-	backLeft;
 
-	RobotDrive robotDrive,robotDrive1;
 
-	static final double CONSTANT_RAMP_LIMIT = 0.1; // ramping
+	RobotDrive robotDrive;
+
+	static final double CONSTANT_RAMP_LIMIT = 0.05; // ramping
 	// 0.05 = 4/10 seconds to full, 0.1 = 2/10 seconds to full
-	boolean allowRamped = false;
+	boolean allowRamped = true;
 	private double prevLeft = 0, prevRight = 0;
 	private double prevY = 0, prevX = 0, prevR;
-	int choice=0;
+	public enum DriveCommandChoice { TANK, ARCADE, SPLITARCADE }
+	DriveCommandChoice choice;
 
 	static double kSpeedScaling = 1.0;
 
 	
 	public DriveTrainSubsystem() {
-	choice =-1; //default tank drive if no choice chosen (prevents null pointer exception)
+		//choice = DriveCommandChoice.TANK; //default tank drive if no choice chosen (prevents null pointer exception)
+		
+		/* RobotDrive*/
+		robotDrive = new RobotDrive(HW.motorLeft,HW.motorRight);
 	}
 	
-	public DriveTrainSubsystem(int choose) {
-		choice = choose;
-		switch(choose)
-		{
-		case 1: new TankDriveCommand();
-		case 2: new ArcadeDriveCommand();
-		default: new TankDriveCommand();
-		}
+	public DriveTrainSubsystem(DriveCommandChoice c) {
+		choice = c;
 		/* Motors */
 		
 		/* Sensors */
 
 		/* RobotDrive */
-		
-	}
+		robotDrive = new RobotDrive(HW.motorLeft,HW.motorRight);
+
+	} 
+	
 
 	public void setRamped(boolean a) {
 		this.allowRamped = a;
@@ -135,7 +133,6 @@ public class DriveTrainSubsystem extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		if (!(choice>=0))
 		setDefaultCommand(new TankDriveCommand());
 	}
 

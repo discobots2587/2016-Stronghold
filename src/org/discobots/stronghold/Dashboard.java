@@ -1,14 +1,11 @@
 package org.discobots.stronghold;
 
-
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Dashboard {
 	
 	private static int driveCounter = 0;
-
+ 
 	public static void init() {
 	}
 
@@ -24,12 +21,7 @@ public class Dashboard {
 
 
 		} else if (driveCounter % 5 == 1) {
-			
-			
-
+			SmartDashboard.putData("DriveTrainCommand", Robot.driveTrainSub.getCurrentCommand());
 		}
-
 	}
-
-
 }

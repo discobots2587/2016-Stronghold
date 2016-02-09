@@ -19,14 +19,13 @@ public class HW {
 	/* CAN */// Check roboRio web interface for these values
 	
 	/* PWM */
-	public final static int motorFrontRight = 0; // All set to zero as a default value
-	public final static int motorFrontMiddleRight = 0;
-	public final static int motorBackMiddleRight = 0;//the motor closest to the back one
-	public final static int motorBackRight = 0;
-	public final static int motorFrontLeft = 0;
-	public final static int motorFrontMiddleLeft = 0;
-	public final static int motorBackMiddleLeft = 0;//the motor closest to the back one
-	public final static int motorBackLeft = 0;
+	public final static int motorRight = 0; 
+	public final static int motorLeft = 1;
+	public final static int armMotor = 2;
+
 	
 	/* Pneumatics */
+	
+	/* Analog */
+	public final static int potentiometer = 0;
 }
