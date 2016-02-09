@@ -17,7 +17,7 @@ public class Dashboard {
 
 		if (driveCounter % 5 == 0) { // 100ms
 			SmartDashboard.putNumber("Robot Loop Execution Time",Robot.loopExecutionTime);
-			SmartDashboard.putNumber("Gyro Reading: ",1.1);
+			SmartDashboard.putNumber("Gyro Reading: ",gyro.getAngle());
 
 		} else if (driveCounter % 5 == 1) {
 			SmartDashboard.putData("DriveTrainCommand", Robot.driveTrainSub.getCurrentCommand());
