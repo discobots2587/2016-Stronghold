@@ -1,14 +1,14 @@
 package org.discobots.stronghold;
+import java.util.*;
+import java.io.*;
 
-
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Dashboard {
 	
 	private static int driveCounter = 0;
-
+	private static ArrayList<Double> pdpPTs = new ArrayList<Double>();
+ 
 	public static void init() {
 	}
 
@@ -24,7 +24,11 @@ public class Dashboard {
 
 
 		} else if (driveCounter % 5 == 1) {
-		//	SmartDashboard.putData("DriveTrainCommand", Robot.driveTrainSub.getCurrentCommand());
+			SmartDashboard.putData("DriveTrainCommand", Robot.driveTrainSub.getCurrentCommand());
 		}
+		
+		pdpPTs.add(Robot.electricalSub.getPDPTotalCurrent());
+		
+		SmartDashboard.putNumber("Test PDT", pdpPTs.get(driveCounter));
 	}
 }
