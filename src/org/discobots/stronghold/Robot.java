@@ -17,6 +17,7 @@ import org.discobots.stronghold.commands.drive.TankDriveCommand;
 import org.discobots.stronghold.subsystems.ArmSubsystem;
 //import org.discobots.stronghold.commands.ExampleCommand;
 import org.discobots.stronghold.subsystems.DriveTrainSubsystem;
+import org.discobots.stronghold.subsystems.ElectricalSubsystem;
 
 //import org.discobots.stronghold.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -40,6 +41,7 @@ public class Robot extends IterativeRobot {
 
 	public static DriveTrainSubsystem driveTrainSub;
 	public static ArmSubsystem armSub;
+	public static ElectricalSubsystem electricalSub;
     Command autonomousCommand,driveCommand;
     SendableChooser driveChooser, autonChooser;
 
@@ -59,6 +61,7 @@ public class Robot extends IterativeRobot {
      //   Eye1.startAutomaticCapture(Sony);//automatically start streaming footage 
         
     	/* Subsystems */
+    	electricalSub = new ElectricalSubsystem();
 		driveTrainSub = new DriveTrainSubsystem();
     	armSub = new ArmSubsystem();
     	/* Dashboard Choosers */
