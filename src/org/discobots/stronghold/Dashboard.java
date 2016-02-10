@@ -27,7 +27,7 @@ public class Dashboard {
 			SmartDashboard.putData("DriveTrainCommand", Robot.driveTrainSub.getCurrentCommand());
 		}
 		
-		pdpPTs.add(Robot.electricalSub.getPDPTotalCurrent());
+		//pdpPTs.add(Robot.electricalSub.getPDPTotalCurrent());
 		
 		SmartDashboard.putNumber("Test PDT", pdpPTs.get(driveCounter));
 	}
