@@ -23,7 +23,6 @@ public class ArcadeDriveCommand extends Command {
     protected void execute() {
     	Robot.driveTrainSub.arcadeDriveRamp(Robot.oi.getRawAnalogStickALY(), (Robot.oi.getRawAnalogStickALX()/2));
     }
-
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;
