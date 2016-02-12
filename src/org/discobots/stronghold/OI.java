@@ -62,6 +62,7 @@ public class OI {
 	public OI() {
 		//JOYSTICK 2
 		b2_sBack.whenPressed(new CycleDriveCommand());
+		b2_bumpR.whenPressed(new MoveArmCommand(ArmSubsystem.armSpeed));
 		b2_bumpR.whileHeld(new MoveArmCommand(ArmSubsystem.armSpeed));
 		b2_bumpR.whenReleased(new MaintainArmPosCommand());
 		b2_bumpL.whileHeld(new MoveArmCommand(-ArmSubsystem.armSpeed));
@@ -69,6 +70,7 @@ public class OI {
 		
 		//JOYSTICK 1
 		b_sBack.whenPressed(new CycleDriveCommand());
+		b_bumpR.whenPressed(new MoveArmCommand(ArmSubsystem.armSpeed));
 		b_bumpR.whileHeld(new MoveArmCommand(ArmSubsystem.armSpeed));
 		b_bumpR.whenReleased(new MaintainArmPosCommand());
 		b_bumpL.whileHeld(new MoveArmCommand(-ArmSubsystem.armSpeed));

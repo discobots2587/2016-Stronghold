@@ -3,6 +3,7 @@ package org.discobots.stronghold.commands.arm;
 import org.discobots.stronghold.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -15,7 +16,6 @@ public class MoveArmCommand extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.armSub);
-    	
     	speed = s;
     }
 
@@ -35,7 +35,7 @@ public class MoveArmCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.armSub.armMotor.set(0);
+    	//Robot.armSub.armMotor.set(0);
     }
 
     // Called when another command which requires one or more of the same
