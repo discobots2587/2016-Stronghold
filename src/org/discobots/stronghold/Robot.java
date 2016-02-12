@@ -24,6 +24,7 @@ import org.discobots.stronghold.subsystems.ElectricalSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.USBCamera;
+import edu.wpi.first.wpilibj.AnalogGyro;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -152,6 +153,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+    	final int gyroscope
     	long start = System.currentTimeMillis(); //measures loop execution times
 		Scheduler.getInstance().run();
 		Dashboard.update();
