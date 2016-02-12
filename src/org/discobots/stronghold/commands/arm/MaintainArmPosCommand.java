@@ -1,8 +1,10 @@
 package org.discobots.stronghold.commands.arm;
 
+import org.discobots.stronghold.Dashboard;
 import org.discobots.stronghold.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -12,7 +14,7 @@ public class MaintainArmPosCommand extends Command {
 	double currentSetpoint;
 	double currentPosition;
 	double motorSpeed;
-	
+	int i =0;
     public MaintainArmPosCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -25,10 +27,14 @@ public class MaintainArmPosCommand extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    @SuppressWarnings("deprecation")
+	protected void execute() {
     	currentPosition = Robot.armSub.potentiometer.getAverageVoltage();
     	motorSpeed = (currentPosition-currentSetpoint)*Robot.armSub.kP;
     	Robot.armSub.armMotor.set(motorSpeed);
+    	if (i%4==0)
+    	SmartDashboard.putDouble("Arm Motor Direction:", motorSpeed);
+    	i++;
     }
 
     // Make this return true when this Command no longer needs to run execute()
