@@ -62,16 +62,16 @@ public class OI {
 	public OI() {
 		//JOYSTICK 2
 		b2_sBack.whenPressed(new CycleDriveCommand());
-		b2_bumpR.whenPressed(new MoveArmCommand(ArmSubsystem.armSpeed));
+		b2_bumpR.whileHeld(new MoveArmCommand(ArmSubsystem.armSpeed));
 		b2_bumpR.whenReleased(new MaintainArmPosCommand());
-		b2_bumpL.whenPressed(new MoveArmCommand(-ArmSubsystem.armSpeed));
+		b2_bumpL.whileHeld(new MoveArmCommand(-ArmSubsystem.armSpeed));
 		b2_bumpL.whenReleased(new MaintainArmPosCommand());
 		
 		//JOYSTICK 1
 		b_sBack.whenPressed(new CycleDriveCommand());
-		b_bumpR.whenPressed(new MoveArmCommand(ArmSubsystem.armSpeed));
+		b_bumpR.whileHeld(new MoveArmCommand(ArmSubsystem.armSpeed));
 		b_bumpR.whenReleased(new MaintainArmPosCommand());
-		b_bumpL.whenPressed(new MoveArmCommand(-ArmSubsystem.armSpeed));
+		b_bumpL.whileHeld(new MoveArmCommand(-ArmSubsystem.armSpeed));
 		b_bumpL.whenReleased(new MaintainArmPosCommand());
 	}
 	public double getRawAnalogStickALX() {
