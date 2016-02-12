@@ -5,14 +5,14 @@ import org.discobots.stronghold.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 
-public class AutonomousTankDriveCommand extends Command {
+public class AutonomousTankDrive extends Command {
 
 	private int time; //ms
 	private long endTime;
 	private double speedLeft, speedRight;
 	
 	
-    public AutonomousTankDriveCommand(double y, double x, int t) //Speed Left; Speed Right; time in ms
+    public AutonomousTankDrive(double y, double x, int t) //Speed Left; Speed Right; time in ms
     {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
