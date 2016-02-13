@@ -17,7 +17,7 @@ public class DriveTrainSubsystem extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	AnalogGyro gyroscope;
+	public AnalogGyro gyroscope;
 	
 	/* Motors */
 

@@ -23,6 +23,6 @@ public class Dashboard {
 		} else if (driveCounter % 5 == 1) {
 			//SmartDashboard.putData("DriveTrainCommand", Robot.driveTrainSub.getCurrentCommand());
 		}
-		SmartDashboard.putNumber("Gyroscope Angle", Robot.driveTrainSub.getGyrcopeAngle());
+		SmartDashboard.putNumber("Gyroscope Angle", Robot.driveTrainSub.gyroscope.getRate());
 	}
 }
