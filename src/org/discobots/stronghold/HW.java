@@ -28,5 +28,5 @@ public class HW {
 	
 	/* Analog */
 	public final static int potentiometer = 0;
-	public final static int gyroscope = 0;
+	public final static int gyroscope = 1;
 }
