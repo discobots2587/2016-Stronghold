@@ -14,7 +14,7 @@ public class MaintainArmPosCommand extends Command {
 	double currentSetpoint;
 	double currentPosition;
 	double motorSpeed;
-	int i =0;
+	//int i =0;
     public MaintainArmPosCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -32,9 +32,9 @@ public class MaintainArmPosCommand extends Command {
     	currentPosition = Robot.armSub.potentiometer.getAverageVoltage();
     	motorSpeed = (currentPosition-currentSetpoint)*Robot.armSub.kP;
     	Robot.armSub.armMotor.set(motorSpeed);
-    	if (i%100==0)
+    	/*if (i%100==0)
     	SmartDashboard.putDouble("Arm Motor Direction:", motorSpeed);
-    	i++;
+    	i++;*/
     }
 
     // Make this return true when this Command no longer needs to run execute()
