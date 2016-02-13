@@ -12,21 +12,68 @@ public class AutoAimSubsystem2 extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	
+	private boolean autonAIM;
 	private Lidar AimLidar;
 	private int direction;
-	private final int distMax=100;//max distance threshold
-	private final int distMin=20;//min distance threshold
+	private final int TopGoalWidth=50;//goal width unknown.....
+	private final int BottomGoalWidth=40;//goal width unknown.....
+	private final int distMax=5000;//max distance threshold
+	private final int distMin=200;//min distance threshold
 	private final int offsetInch=3; //distance from lidar to end of robot
-	private final boolean useLidar = false;
-	
+	private boolean useLidar = false;
+	private boolean interrupt=false;
+	private Thread aiming;
 	public AutoAimSubsystem2()
 	{
 	AimLidar = new Lidar(HW.i2cLidarAddress);
+	aiming = new Thread()
+	{
+		public void run()
+		{
+			while (interrupt != true){
+				if (useLidar==true)
+				{	
+					if (autonAIM)
+					{
+						
+					}
+					
+					else if (direction==-1)
+					{
+						
+					}
+					else if(direction==0)
+					{
+						
+					}
+					else if(direction ==1)
+					{
+						
+					}
+				}
+			}
+		}
+	};aiming.run();
 	}
     
-
-	
+	public void SetAutonAIM()
+	{
+		autonAIM =true;
+	}
+	public boolean aimingAllowed()
+	{
+		return !interrupt;
+	}
+	public void interruptAim()
+	{
+		interrupt = true;
+	}
+	public void resetAim()
+	{
+		interrupt=false;
+		useLidar=false;
+		aiming.run();
+	}
 	public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -54,7 +101,13 @@ public class AutoAimSubsystem2 extends Subsystem {
 		this.direction = direction;
 	}
 
-
+	public void disableLidar() {
+		useLidar = false;
+	}
+	public void enableLidar()
+	{
+		useLidar = true;
+	}
 	public boolean UseLidar() {
 		return useLidar;
 	}
