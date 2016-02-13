@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class AutoAimSubsystem2 extends Subsystem {
+public class AutoAimSubsystem extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -38,7 +38,7 @@ public class AutoAimSubsystem2 extends Subsystem {
 	private boolean interrupt=false;
 	private Thread aiming;
 	
-	public AutoAimSubsystem2()
+	public AutoAimSubsystem()
 	{
 	AimLidar = new Lidar(HW.i2cLidarAddress);
 	aiming = new Thread()
@@ -51,10 +51,11 @@ public class AutoAimSubsystem2 extends Subsystem {
 						if(!userEnabledAutonAiming)//does check for proper distance from wall after auton goes under low goal
 						{
 							
+							
 						}//then drives to set distance from wall and auto aims
 					
 					
-					
+					userEnabledAutonAiming=autonAIM=useLidar=false;//ends setting the values to false so it does not loop
 					}
 					else if (direction==-1 && useLidar)
 					{
@@ -83,7 +84,7 @@ public class AutoAimSubsystem2 extends Subsystem {
 	}
 	public boolean aimingAllowed()
 	{
-		return !interrupt;
+		return aiming.isAlive();
 	}
 	public void interruptAim()
 	{
@@ -93,7 +94,7 @@ public class AutoAimSubsystem2 extends Subsystem {
 	{
 		interrupt=false;
 		useLidar=false;
-		aiming.run();
+		aiming.start();
 	}
 	public void initDefaultCommand() {
         // Set the default command for a subsystem here.

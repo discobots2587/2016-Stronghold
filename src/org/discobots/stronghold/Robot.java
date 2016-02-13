@@ -15,10 +15,11 @@ import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
 import org.discobots.stronghold.subsystems.ArmSubsystem;
+import org.discobots.stronghold.subsystems.AutoAimSubsystem;
 //import org.discobots.stronghold.commands.ExampleCommand;
 import org.discobots.stronghold.subsystems.DriveTrainSubsystem;
-
 import org.discobots.stronghold.subsystems.ElectricalSubsystem;
+
 
 //import org.discobots.stronghold.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -33,7 +34,6 @@ import edu.wpi.first.wpilibj.vision.USBCamera;
  * directory.
  */
 public class Robot extends IterativeRobot {
-
 	public static OI oi;
 	private CameraServer Eye1;
 	public static double totalTime;
@@ -43,6 +43,7 @@ public class Robot extends IterativeRobot {
 	public static DriveTrainSubsystem driveTrainSub;
 	public static ArmSubsystem armSub;
 	public static ElectricalSubsystem electricalSub;
+	public static AutoAimSubsystem autoAimSys;
     Command autonomousCommand,driveCommand;
     SendableChooser driveChooser, autonChooser;
 
@@ -65,6 +66,7 @@ public class Robot extends IterativeRobot {
 		driveTrainSub = new DriveTrainSubsystem();
     	armSub = new ArmSubsystem();
     	electricalSub = new ElectricalSubsystem();
+    	autoAimSys = new AutoAimSubsystem();
     	/* Dashboard Choosers */
     	
     	autonChooser = new SendableChooser();
