@@ -78,6 +78,7 @@ public class Robot extends IterativeRobot {
 		driveChooser.addObject("Split Arcade Drive", new SplitArcadeDriveCommand());
 		SmartDashboard.putData("Choose Driving Controls", driveChooser);
 
+		SmartDashboard.putNumber("Gyroscope Angle", driveTrainSub.getGyrcopeAngle());
         //gamepad mapping
     	oi = new OI();
 		

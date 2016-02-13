@@ -3,6 +3,7 @@ package org.discobots.stronghold.subsystems;
 import org.discobots.stronghold.HW;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -15,6 +16,8 @@ public class DriveTrainSubsystem extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+	
+	AnalogGyro gyroscope;
 	
 	/* Motors */
 
@@ -35,6 +38,7 @@ public class DriveTrainSubsystem extends Subsystem {
 	public DriveTrainSubsystem() {
 		//choice = DriveCommandChoice.TANK; //default tank drive if no choice chosen (prevents null pointer exception)
 		
+		gyroscope = new AnalogGyro(HW.gyroscope);
 		/* RobotDrive*/
 		robotDrive = new RobotDrive(HW.motorLeft,HW.motorRight);
 	}
@@ -44,6 +48,7 @@ public class DriveTrainSubsystem extends Subsystem {
 		/* Motors */
 		
 		/* Sensors */
+		gyroscope = new AnalogGyro(HW.gyroscope);
 
 		/* RobotDrive */
 		robotDrive = new RobotDrive(HW.motorLeft,HW.motorRight);
@@ -130,6 +135,14 @@ public class DriveTrainSubsystem extends Subsystem {
 		prevR = 0;
 		robotDrive.arcadeDrive(x * kSpeedScaling, -y * kSpeedScaling);
 		// robotdrive is dumb arcadeDrive so params are switched
+	}
+	
+	public void resetGyroscope() {
+		gyroscope.reset();
+	}
+	
+	public double getGyrcopeAngle() {
+		return gyroscope.getAngle();
 	}
 
 	public void initDefaultCommand() {
