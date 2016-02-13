@@ -7,13 +7,13 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutonomousArcadeDriveCommand extends Command {
+public class AutonomousArcadeDrive extends Command {
 	
 	private int time;
 	private long endTime;
 	private double speedY, speedX;
 	
-    public AutonomousArcadeDriveCommand(double y, double x, int t) {
+    public AutonomousArcadeDrive(double y, double x, int t) {//t is in milliseconds
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.driveTrainSub);
