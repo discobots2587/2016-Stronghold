@@ -1,4 +1,4 @@
 /bin/
 .classpath
-.classpath
 *.classpath
+/build/
