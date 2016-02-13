@@ -24,6 +24,7 @@ public class HW {
 	/* PWM */
 
 	public final static int armMotor = 2;
+	public final static int intakeMotor = 1;
 
 	
 	/* Pneumatics */

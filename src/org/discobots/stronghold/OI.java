@@ -6,6 +6,7 @@ import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.CycleDriveCommand;
 import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
+import org.discobots.stronghold.commands.intake.SetIntakeCommand;
 import org.discobots.stronghold.subsystems.ArmSubsystem;
 import org.discobots.stronghold.utils.GamePad;
 import org.discobots.stronghold.utils.GamePad.DPadButton;
@@ -62,19 +63,27 @@ public class OI {
 	public OI() {
 		//JOYSTICK 2
 		b2_sBack.whenPressed(new CycleDriveCommand());
+		
 		b2_bumpR.whenPressed(new MoveArmCommand(ArmSubsystem.armSpeed));
 		b2_bumpR.whileHeld(new MoveArmCommand(ArmSubsystem.armSpeed));
 		b2_bumpR.whenReleased(new MaintainArmPosCommand());
 		b2_bumpL.whileHeld(new MoveArmCommand(-ArmSubsystem.armSpeed));
 		b2_bumpL.whenReleased(new MaintainArmPosCommand());
 		
+		b2_trigR.whileHeld(new SetIntakeCommand(.5));
+		b2_trigL.whileHeld(new SetIntakeCommand(-.5));
+		
 		//JOYSTICK 1
 		b_sBack.whenPressed(new CycleDriveCommand());
+		
 		b_bumpR.whenPressed(new MoveArmCommand(ArmSubsystem.armSpeed));
 		b_bumpR.whileHeld(new MoveArmCommand(ArmSubsystem.armSpeed));
 		b_bumpR.whenReleased(new MaintainArmPosCommand());
 		b_bumpL.whileHeld(new MoveArmCommand(-ArmSubsystem.armSpeed));
 		b_bumpL.whenReleased(new MaintainArmPosCommand());
+		
+	//	b_triggerR.whileHeld(new SetIntakeCommand(.5));
+	//	b_triggerL.whileHeld(new SetIntakeCommand(-.5));
 	}
 	public double getRawAnalogStickALX() {
 		if(gp1.getLX()>0.1||gp1.getLX()<=-0.1)
