@@ -45,7 +45,7 @@ public class Lidar {
 				public void run() {
 					while (true) {
 						if (lidarVect.size() != 0) {
-							Lidar lidar = (Lidar) lidarVect.get(counter);//lidarList.get(counter);
+							Lidar lidar = (Lidar) lidarVect.get(counter);
 							if (lidar == null) {
 								wait(50);
 							} else {
@@ -58,10 +58,10 @@ public class Lidar {
 								int output = (int) Integer.toUnsignedLong(by[0] << 8)
 										+ Byte.toUnsignedInt(by[1]);
 								
-								lidar.setDistanceCm(output);
+								lidar.setDistanceCm(output);//output in cm
 								lidar.setDigOutState(true);
 								counter++;
-								if (counter == lidarVect.size()/*lidarList.size()*/) {
+								if (counter == lidarVect.size()) {
 									counter = 0;
 								}
 							}

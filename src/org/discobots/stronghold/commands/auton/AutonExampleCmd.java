@@ -1,6 +1,7 @@
 package org.discobots.stronghold.commands.auton;
 
 import org.discobots.stronghold.commands.auton.subcommands.AutonomousArcadeDrive;
+import org.discobots.stronghold.commands.auton.subcommands.WaitCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -10,8 +11,17 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutonExampleCmd extends CommandGroup {
     
     public  AutonExampleCmd() {
-        addSequential(new AutonomousArcadeDrive(.75,0,2000));
-        addSequential(new AutonomousArcadeDrive(0,.2,1000));
+        addSequential(new AutonomousArcadeDrive(.75,0,2000));//go under lowbar
+        
+        addSequential(new WaitCommand(500));// wait .5 seconds
+        
+        addSequential(new AutonomousArcadeDrive(0,.2,1000));// turn right
+        
+        addSequential(new WaitCommand(500));//wait .5 seconds
+        
+        addSequential(new AutonomousArcadeDrive(0.25, 0, 1000));//drive towards goal
+        
+        if 
     	//AutonomousArcadeDrive();
     	// Add Commands here:
         // e.g. addSequential(new Command1());
