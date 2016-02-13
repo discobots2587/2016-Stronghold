@@ -12,17 +12,30 @@ public class AutoAimSubsystem2 extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	private boolean autonAIM;
-	private Lidar AimLidar;
-	private int direction;
-	private final int TopGoalWidth=50;//goal width unknown.....
-	private final int BottomGoalWidth=40;//goal width unknown.....
+	
+	//auton values
+	private final int preferredWallDistance = 50;//preferred distance to reach after coming from lowgoal
+	private final int distAfterLowGoal=75; //distance the robot should be from the wall after completing low goal
+	private final int afterLowGoalThresh = 5; //distance threshold for low goal
+	private boolean throughLowGoalStraight; //has the robot traveled through the low goal without changing direction?
+	
+	//Field distances
+	private final int topGoalWidth=50;//goal width unknown.....
+	private final int bottomGoalWidth=40;//goal width unknown.....
+	
+	//thresholds
 	private final int distMax=5000;//max distance threshold
 	private final int distMin=200;//min distance threshold
 	private final int offsetInch=3; //distance from lidar to end of robot
+
+	
+	private boolean autonAIM;
+	private Lidar AimLidar;
+	private int direction;
 	private boolean useLidar = false;
 	private boolean interrupt=false;
 	private Thread aiming;
+	
 	public AutoAimSubsystem2()
 	{
 	AimLidar = new Lidar(HW.i2cLidarAddress);
@@ -35,9 +48,8 @@ public class AutoAimSubsystem2 extends Subsystem {
 				{	
 					if (autonAIM)
 					{
-						
+						int walldist
 					}
-					
 					else if (direction==-1)
 					{
 						
@@ -56,9 +68,9 @@ public class AutoAimSubsystem2 extends Subsystem {
 	};aiming.run();
 	}
     
-	public void SetAutonAIM()
+	public void SetAutonAIM(boolean autoAiming)
 	{
-		autonAIM =true;
+		autonAIM = autoAiming;
 	}
 	public boolean aimingAllowed()
 	{
