@@ -10,8 +10,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutonExampleCmd extends CommandGroup {
     
     public  AutonExampleCmd() {
-        addSequential(new AutonomousArcadeDrive(.75,0,));
-    	AutonomousArcadeDrive()
+        addSequential(new AutonomousArcadeDrive(.75,0,0));
+    	//AutonomousArcadeDrive();
     	// Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
