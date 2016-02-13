@@ -10,7 +10,9 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import java.util.concurrent.TimeUnit;
 
 import org.discobots.stronghold.commands.auton.AutonomousCommand;
+import org.discobots.stronghold.commands.auton.DumbAutonCommand;
 import org.discobots.stronghold.commands.auton.SimpleDriveAutonomousCommand;
+import org.discobots.stronghold.commands.auton.SmartAuton;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
@@ -19,6 +21,8 @@ import org.discobots.stronghold.subsystems.AutoAimSubsystem;
 //import org.discobots.stronghold.commands.ExampleCommand;
 import org.discobots.stronghold.subsystems.DriveTrainSubsystem;
 import org.discobots.stronghold.subsystems.ElectricalSubsystem;
+
+
 
 
 //import org.discobots.stronghold.subsystems.ExampleSubsystem;
@@ -70,7 +74,8 @@ public class Robot extends IterativeRobot {
     	/* Dashboard Choosers */
     	
     	autonChooser = new SendableChooser();
-		autonChooser.addDefault("Auton1", new AutonomousCommand());
+		autonChooser.addDefault("DumbAuton", new DumbAutonCommand());
+		autonChooser.addObject("SmartAuton", new SmartAuton());
 		autonChooser.addObject("Auton2", new SimpleDriveAutonomousCommand());
 		SmartDashboard.putData("Choose Auton", autonChooser);
 		

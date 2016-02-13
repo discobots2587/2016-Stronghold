@@ -32,6 +32,10 @@ public class AutoAim extends Command {
     	{
     		Robot.autoAimSys.setAutonAIM(true);
     	} 
+    	else if(auton==2)//if toggled by USER
+    	{
+    		Robot.autoAimSys.setAutonAIM(true);
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run

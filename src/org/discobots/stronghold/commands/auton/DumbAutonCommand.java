@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class DumbAuton extends CommandGroup {
+public class DumbAutonCommand extends CommandGroup {
     
-    public  DumbAuton() {
+    public  DumbAutonCommand() {
         addSequential(new AutonomousArcadeDrive(.75,0,2000));//go under lowbar
         
         addSequential(new WaitCommand(500));// wait .5 seconds
