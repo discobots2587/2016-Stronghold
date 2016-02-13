@@ -18,14 +18,27 @@ public class HW {
 	
 	/* CAN */// Check roboRio web interface for these values
 	
+	
+	
 	/* PWM */
 	public final static int motorRight = 0; 
 	public final static int motorLeft = 1;
 	public final static int armMotor = 2;
 
 	
+	
+	/* I2C */
+	public final static int i2cLidarAddress = 0x62;//lidar
+	
+	
+	
+	
 	/* Pneumatics */
+	
+	
 	
 	/* Analog */
 	public final static int potentiometer = 0;
+
+
 }

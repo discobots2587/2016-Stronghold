@@ -8,22 +8,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class DumbAuton extends CommandGroup {
+public class SmartAuton extends CommandGroup {
     
-    public  DumbAuton() {
-        addSequential(new AutonomousArcadeDrive(.75,0,2000));//go under lowbar
-        
-        addSequential(new WaitCommand(500));// wait .5 seconds
-        
-        addSequential(new AutonomousArcadeDrive(0,.2,1000));// turn right
-        
-        addSequential(new WaitCommand(500));//wait .5 seconds
-        
-        addSequential(new AutonomousArcadeDrive(0.25, 0, 1000));//drive towards goal
-        
-        
-    	//AutonomousArcadeDrive();
-    	// Add Commands here:
+    public  SmartAuton() {
+        // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
@@ -39,5 +27,18 @@ public class DumbAuton extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	
+    	        addSequential(new AutonomousArcadeDrive(.75,0,2000));//go under lowbar
+    	        
+    	        addSequential(new WaitCommand(500));// wait .5 seconds
+    	        
+    	        addSequential(new AutonomousArcadeDrive(0,.2,1000));// turn right
+    	        
+    	        addSequential(new WaitCommand(500));//wait .5 seconds
+    	        
+    	        addSequential(new AutonomousArcadeDrive(0.25, 0, 1000));//drive towards goal
+    	       
+    	         
+    	       	
     }
 }
