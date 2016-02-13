@@ -32,7 +32,7 @@ public class MaintainArmPosCommand extends Command {
     	currentPosition = Robot.armSub.potentiometer.getAverageVoltage();
     	motorSpeed = (currentPosition-currentSetpoint)*Robot.armSub.kP;
     	Robot.armSub.armMotor.set(motorSpeed);
-    	if (i%4==0)
+    	if (i%100==0)
     	SmartDashboard.putDouble("Arm Motor Direction:", motorSpeed);
     	i++;
     }
