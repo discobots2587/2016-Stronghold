@@ -21,7 +21,7 @@ public class AutonExampleCmd extends CommandGroup {
         
         addSequential(new AutonomousArcadeDrive(0.25, 0, 1000));//drive towards goal
         
-        if 
+        
     	//AutonomousArcadeDrive();
     	// Add Commands here:
         // e.g. addSequential(new Command1());
