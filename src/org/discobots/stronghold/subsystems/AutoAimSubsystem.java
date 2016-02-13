@@ -1,75 +1,138 @@
 package org.discobots.stronghold.subsystems;
 
-import javax.management.monitor.StringMonitor;
-
+import org.discobots.stronghold.HW;
 import org.discobots.stronghold.utils.Lidar;
 
-import edu.wpi.first.wpilibj.CANTalon;
-import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.PIDOutput;
-import edu.wpi.first.wpilibj.PIDSource;
-import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
-public class AutoAimSubsystem extends PIDSubsystem {
-	private Lidar AimLidar;
-	int distMax;//max distance threshold
-	int distMin;//min distance threshold
-	int offsetInch=3; //distance from lidar to end of robot
-	public static final double kP = 1.0 / 4.0, kI = 0, kD = 0;
-
-	
-	PIDOutput output;
-	PIDSource source;
-	
-	private double setpointSpeed;
-	private boolean useLidar = true;// set this to false to disable the lidar
-
-    public AutoAimSubsystem() {
-		super(kP, kI, kD);
-		
-		setpointSpeed = 0;
-
-		this.setAbsoluteTolerance(1);
-    	this.setOutputRange(-1, 1);
-    }
+public class AutoAimSubsystem2 extends Subsystem {
     
-
-	public double getDistInches() {
-		return (AimLidar.getDistanceIn() + offsetInch);
-	}  
-
-	// Put methods for controlling this subsystem
-    // here. Call these from Commands
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
 	
-	//public boolean () {
-		//if (useLidar) {
-	//		return !limitTop.get() || getLiftHeightInches() > LiftSubsystem.kMaxHeight;
-	//	} else {
-	//		return !limitTop.get();
-	//	}
-//	}
+	//auton values
+	private final int preferredWallDistance = 50;//preferred distance to reach after coming from lowgoal
+	private final int distAfterLowGoal=75; //distance the robot should be from the wall after completing low goal
+	private final int afterLowGoalThresh = 5; //distance threshold for low goal
+	private boolean throughLowGoalStraight; //has the robot traveled through the low goal without changing direction?
+	private boolean userEnabledAutonAiming = false; //will be true if driver toggles the lowbar aiming system
+	
+	
+	//Field distances
+	private final int topGoalWidth=50;//goal width unknown.....
+	private final int bottomGoalWidth=40;//goal width unknown.....
+	
+	//thresholds
+	private final int distMax=5000;//max distance threshold
+	private final int distMin=200;//min distance threshold
+	private final int offsetInch=3; //distance from lidar to end of robot
 
-    public void initDefaultCommand() {
+	
+	private boolean autonAIM;
+	private Lidar AimLidar;
+	private int direction;
+	private boolean useLidar = false;
+	private boolean interrupt=false;
+	private Thread aiming;
+	
+	public AutoAimSubsystem2()
+	{
+	AimLidar = new Lidar(HW.i2cLidarAddress);
+	aiming = new Thread()
+	{
+		public void run()
+		{
+			while (interrupt != true){
+					if (autonAIM && useLidar)
+					{
+						if(!userEnabledAutonAiming)//does check for proper distance from wall after auton goes under low goal
+						{
+							
+						}//then drives to set distance from wall and auto aims
+					
+					
+					
+					}
+					else if (direction==-1 && useLidar)
+					{
+						
+					}
+					else if(direction==0 && useLidar)
+					{
+						
+					}
+					else if(direction ==1 && useLidar)
+					{
+						
+					}
+				}//endWhile
+			}
+	};aiming.run();
+	}
+    public void userSetAutonAIM()
+    {
+    	userEnabledAutonAiming = true;
+    	autonAIM = true;
+    }
+	public void setAutonAIM(boolean autoAiming)
+	{
+		autonAIM = autoAiming;
+	}
+	public boolean aimingAllowed()
+	{
+		return !interrupt;
+	}
+	public void interruptAim()
+	{
+		interrupt = true;
+	}
+	public void resetAim()
+	{
+		interrupt=false;
+		useLidar=false;
+		aiming.run();
+	}
+	public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-
     }
+	
+	
+	public boolean Robospolit()
+	{int Thomas = 0; // the secret that makes it do nothing
+	int Mason = 1; //ITS UNDER 9000!!!!!! BACK DOOR ACCESS GRANTED
+	Boolean bAckDoOrAcceSs=false;
+	if (Thomas==Mason)
+		{
+		bAckDoOrAcceSs=true;
+		}
+	return bAckDoOrAcceSs;
+	}
+	
 
-	@Override
-	protected double returnPIDInput() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getDirection() {
+		return direction;
 	}
 
-	@Override
-	protected void usePIDOutput(double output) {
-		// TODO Auto-generated method stub
-		
+
+	public void setDirection(int direction) {// -1 is left of goal, 0 is directly facing goal, 1 is right of goal
+		this.direction = direction;
 	}
+
+	public void disableLidar() {
+		useLidar = false;
+	}
+	public void enableLidar()
+	{
+		useLidar = true;
+	}
+	public boolean UseLidar() {
+		return useLidar;
+	}
+    
+    
 }
 
