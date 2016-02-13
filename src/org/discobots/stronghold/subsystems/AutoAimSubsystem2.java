@@ -18,6 +18,8 @@ public class AutoAimSubsystem2 extends Subsystem {
 	private final int distAfterLowGoal=75; //distance the robot should be from the wall after completing low goal
 	private final int afterLowGoalThresh = 5; //distance threshold for low goal
 	private boolean throughLowGoalStraight; //has the robot traveled through the low goal without changing direction?
+	private boolean userEnabledAutonAiming = false; //will be true if driver toggles the lowbar aiming system
+	
 	
 	//Field distances
 	private final int topGoalWidth=50;//goal width unknown.....
@@ -44,31 +46,38 @@ public class AutoAimSubsystem2 extends Subsystem {
 		public void run()
 		{
 			while (interrupt != true){
-				if (useLidar==true)
-				{	
-					if (autonAIM)
+					if (autonAIM && useLidar)
 					{
-						int walldist
+						if(!userEnabledAutonAiming)//does check for proper distance from wall after auton goes under low goal
+						{
+							
+						}//then drives to set distance from wall and auto aims
+					
+					
+					
 					}
-					else if (direction==-1)
-					{
-						
-					}
-					else if(direction==0)
-					{
-						
-					}
-					else if(direction ==1)
+					else if (direction==-1 && useLidar)
 					{
 						
 					}
-				}
+					else if(direction==0 && useLidar)
+					{
+						
+					}
+					else if(direction ==1 && useLidar)
+					{
+						
+					}
+				}//endWhile
 			}
-		}
 	};aiming.run();
 	}
-    
-	public void SetAutonAIM(boolean autoAiming)
+    public void userSetAutonAIM()
+    {
+    	userEnabledAutonAiming = true;
+    	autonAIM = true;
+    }
+	public void setAutonAIM(boolean autoAiming)
 	{
 		autonAIM = autoAiming;
 	}
