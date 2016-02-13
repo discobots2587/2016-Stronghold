@@ -21,6 +21,13 @@ public class DumbAuton extends CommandGroup {
         
         addSequential(new AutonomousArcadeDrive(0.25, 0, 1000));//drive towards goal
         
+        addSequential(new WaitCommand(500));//wait .5 seconds
+        
+        //addSequential(new ShootCommand());// shoots at goal
+        
+        addSequential(new AutonomousArcadeDrive(-0.25, 0, 1000));
+        addSequential(new AutonomousArcadeDrive(0,-.2,1000));
+        addSequential(new AutonomousArcadeDrive(-.75,0,2000));
         
     	//AutonomousArcadeDrive();
     	// Add Commands here:
