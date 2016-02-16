@@ -1,6 +1,5 @@
 package org.discobots.stronghold.commands;
 
-
 import org.discobots.stronghold.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -8,23 +7,21 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class LinearPunch extends Command {
+public class LinearPunchEndCommand extends Command {
 
-    public LinearPunch() {
+    public LinearPunchEndCommand() {
         // Use requires() here to declare subsystem dependencies
-    	requires(Robot.linearPunchSub);
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	//check position (once optical is ready)
     	
+    	Robot.linearPunchSub.pull(0.0);
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() { 
-    	Robot.linearPunchSub.pull();
+    protected void execute() {
     }
 
     // Make this return true when this Command no longer needs to run execute()

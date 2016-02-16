@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="var" path="WPILib-sources" sourcepath="wpilib.sources"/>
 	<classpathentry kind="var" path="WPILib" sourcepath="networktables.sources"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_60"/>
 	<classpathentry kind="var" path="NetworkTables-Sources"/>
 	<classpathentry kind="var" path="NetworkTables"/>
 	<classpathentry kind="output" path="bin"/>
