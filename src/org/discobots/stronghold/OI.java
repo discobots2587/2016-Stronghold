@@ -132,12 +132,14 @@ public class OI {
 	*/	
 		b_sBack.whenPressed(new CycleDriveCommand());
 		b2_sBack.whenPressed(new CycleDriveCommand());	
-		b2_bumpR.whenPressed(new LinearPunchStartCommand());
+	//	b2_bumpR.whenPressed(new LinearPunchStartCommand());
+	//	b2_bumpR.whenReleased(new LinearPunchEndCommand());
+		b2_bumpR.whileHeld(new LinearPunchStartCommand());
+		b_bumpR.whileHeld(new LinearPunchStartCommand());
 		b2_bumpR.whenReleased(new LinearPunchEndCommand());
-		
-		
-		b_bumpR.whenPressed(new LinearPunchStartCommand());
 		b_bumpR.whenReleased(new LinearPunchEndCommand());
+	//	b_bumpR.whenPressed(new LinearPunchStartCommand());
+	//	b_bumpR.whenReleased(new LinearPunchEndCommand());
 	}
 	public double getRawAnalogStickALX() {
 		if(gp1.getLX()>0.1||gp1.getLX()<=-0.1)
