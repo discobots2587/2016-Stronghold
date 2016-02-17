@@ -4,6 +4,7 @@ package org.discobots.stronghold.commands;
 import org.discobots.stronghold.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -13,12 +14,15 @@ public class LinearPunchStartCommand extends Command {
     public LinearPunchStartCommand() {
         // Use requires() here to declare subsystem dependencies
     	requires(Robot.linearPunchSub);
+    	//SmartDashboard.putNumber("Test", 9);
+
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	//check position (once optical is ready)
+    //	SmartDashboard.putNumber("Test", 7);
     	Robot.linearPunchSub.pull(0.5);
     	
     }

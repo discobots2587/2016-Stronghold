@@ -24,7 +24,7 @@ public class Dashboard {
 
 
 		} else if (driveCounter % 5 == 1) {
-			SmartDashboard.putData("DriveTrainCommand", Robot.driveTrainSub.getCurrentCommand());
+	//		SmartDashboard.putData("DriveTrainCommand", Robot.driveTrainSub.getCurrentCommand());
 		}
 	}
 }
