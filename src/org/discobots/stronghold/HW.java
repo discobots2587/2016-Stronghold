@@ -28,7 +28,7 @@ public class HW {
 	
 	
 	/* I2C */
-	public final static int i2cLidarAddress = 0x62;//lidar
+	//public final static int i2cLidarAddress = 0x62;//lidar
 	
 	
 	

@@ -4,29 +4,32 @@ import org.discobots.stronghold.commands.auton.subcommands.AutonomousArcadeDrive
 import org.discobots.stronghold.commands.auton.subcommands.WaitCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
 public class DumbAutonCommand extends CommandGroup {
-    
+    int i =1;
     public  DumbAutonCommand() {
+        SmartDashboard.putNumber("DumbAuton", i);
+
         addSequential(new AutonomousArcadeDrive(.75,0,2000));//go under lowbar
         
         addSequential(new WaitCommand(500));// wait .5 seconds
         
-        addSequential(new AutonomousArcadeDrive(0,.2,1000));// turn right
+        addSequential(new AutonomousArcadeDrive(0,.7,500));// turn right
         
         addSequential(new WaitCommand(500));//wait .5 seconds
         
-        addSequential(new AutonomousArcadeDrive(0.25, 0, 1000));//drive towards goal
+        addSequential(new AutonomousArcadeDrive(0.5, 0, 1000));//drive towards goal
         
         addSequential(new WaitCommand(500));//wait .5 seconds
-        
+        SmartDashboard.putNumber("DumbAuton", i-1);
         //addSequential(new ShootCommand());// shoots at goal
         
-        addSequential(new AutonomousArcadeDrive(-0.25, 0, 1000));
-        addSequential(new AutonomousArcadeDrive(0,-.2,1000));
+        addSequential(new AutonomousArcadeDrive(-0.5, 0, 1000));
+        addSequential(new AutonomousArcadeDrive(0,-.9,500));
         addSequential(new AutonomousArcadeDrive(-.75,0,2000));
         
     	//AutonomousArcadeDrive();
