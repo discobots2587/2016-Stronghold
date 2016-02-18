@@ -72,7 +72,7 @@ public class Robot extends IterativeRobot {
     	electricalSub = new ElectricalSubsystem();
     	autoAimSys = new AutoAimSubsystem();
     	/* Dashboard Choosers */
-    	
+        //michael is a gypsy 	
     	autonChooser = new SendableChooser();
 		autonChooser.addDefault("DumbAuton", new DumbAutonCommand());
 		autonChooser.addObject("SmartAuton", new SmartAuton());
