@@ -23,6 +23,7 @@ public class HW {
 	public final static int motorLeft = 1;
 	
 	public final static int motorPunch = 32; //guess!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	public final static int motorWench = 8;//guess !!/!?2/@!?/3?!!!/?!/324345/weTRFT/?/43ERMTKWSER JKTHFTYGBTVFE 
 	/* Pneumatics */
 	
 	/* Analog */
