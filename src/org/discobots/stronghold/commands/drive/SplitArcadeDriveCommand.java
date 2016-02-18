@@ -21,7 +21,7 @@ public class SplitArcadeDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrainSub.arcadeDriveRamp(Robot.oi.getRawAnalogStickALY(), Robot.oi.getRawAnalogStickARX() * 0.7);
+    	Robot.driveTrainSub.arcadeDriveRamp(Robot.oi.getRawAnalogStickALY(), Robot.oi.getRawAnalogStickARX() * .8);
     }
 
     // Make this return true when this Command no longer needs to run execute()
