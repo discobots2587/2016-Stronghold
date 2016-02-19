@@ -1,5 +1,7 @@
 package org.discobots.stronghold.commands.auton;
 
+import org.discobots.stronghold.commands.auton.subcommands.AutonomousArcadeDrive;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -13,7 +15,7 @@ public class SimpleDriveAutonomousCommand extends CommandGroup {
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	addSequential(AutonomousArcadeDrive(0,0,3000))//test to just go straight
+    	addSequential(new AutonomousArcadeDrive(.75,.75,2000));//test to just go straight
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());
