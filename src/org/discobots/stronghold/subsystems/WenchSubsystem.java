@@ -10,10 +10,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class WenchSubsystem extends Subsystem {
-    CANTalon punch; // = new CANTalon(HW.motorPunch);
+    CANTalon wench; // = new CANTalon(HW.motorPunch);
     
     public WenchSubsystem(){
-    punch = new CANTalon(HW.motorPunch);
+    wench = new CANTalon(HW.motorWench);
     	
     }
    
@@ -27,7 +27,7 @@ public class WenchSubsystem extends Subsystem {
     }
     
     public void pull(double speed) {
-    	punch.set(speed);
+    	wench.set(speed);
     	
     	
     }

@@ -13,7 +13,7 @@ public class WenchExtendCommand extends Command {
 
     public WenchExtendCommand() {
         // Use requires() here to declare subsystem dependencies
-    	requires(Robot.linearPunchSub);
+    	requires(Robot.wenchSub);
     	//SmartDashboard.putNumber("Test", 9);
 
         // eg. requires(chassis);
@@ -22,7 +22,7 @@ public class WenchExtendCommand extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	Robot.linearPunchSub.pull(0.5);
+    	Robot.wenchSub.pull(0.5);
     	//check position (once optical is ready)
     //	SmartDashboard.putNumber("Test", 7);
     	

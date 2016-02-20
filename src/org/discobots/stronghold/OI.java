@@ -138,6 +138,13 @@ public class OI {
 		
 		b_bumpR.whenPressed(new LinearPunchStartCommand());
 		b_bumpR.whenReleased(new LinearPunchEndCommand());
+		
+		b2_dpadD.whenPressed(new WenchRetractCommand());
+		b_dpadD.whenPressed(new WenchRetractCommand());
+		
+		b2_dpadD.whenPressed(new WenchExtendCommand());
+		b_dpadD.whenPressed(new WenchExtendCommand());
+		
 	}
 	public double getRawAnalogStickALX() {
 		if(gp1.getLX()>0.1||gp1.getLX()<=-0.1)
