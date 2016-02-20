@@ -4,3 +4,6 @@
 /build/
 *.classpath
 *.classpath
+.classpath
+.project
+.classpath
