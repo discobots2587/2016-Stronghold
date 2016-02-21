@@ -23,15 +23,15 @@ public class ArmSubsystem extends Subsystem {
 	
 	public ArmSubsystem()
 	{
-		potentiometer = new AnalogInput(HW.potentiometer);
+	//	potentiometer = new AnalogInput(HW.potentiometer);
 		armMotor = new Talon(HW.armMotor);
 	}
 
 
-    public void initDefaultCommand() {
+   public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new MaintainArmPosCommand());
+    //	setDefaultCommand(new MaintainArmPosCommand());
     }
 }
 

@@ -64,12 +64,12 @@ public class OI {
 		//JOYSTICK 2
 		b2_sBack.whenPressed(new CycleDriveCommand());
 		
-		b2_bumpR.whenPressed(new MoveArmCommand(ArmSubsystem.armSpeed));
-		b2_bumpR.whileHeld(new MoveArmCommand(ArmSubsystem.armSpeed));
-		b2_bumpR.whenReleased(new MaintainArmPosCommand());
-		b2_bumpL.whenPressed(new MoveArmCommand(-ArmSubsystem.armSpeed));
-		b2_bumpL.whileHeld(new MoveArmCommand(-ArmSubsystem.armSpeed));
-		b2_bumpL.whenReleased(new MaintainArmPosCommand());
+	//	b2_bumpR.whenPressed(new MoveArmCommand(ArmSubsystem.armSpeed));
+		b2_bumpR.whileHeld(new MoveArmCommand(1));
+		//b2_bumpR.whenReleased(new MaintainArmPosCommand());
+		//b2_bumpL.whenPressed(new MoveArmCommand(-1));
+		b2_bumpL.whileHeld(new MoveArmCommand(-1));
+		//b2_bumpL.whenReleased(new MaintainArmPosCommand());
 		
 		b2_trigR.whileHeld(new SetIntakeCommand(.5));
 		b2_trigL.whileHeld(new SetIntakeCommand(-.5));
@@ -77,12 +77,12 @@ public class OI {
 		//JOYSTICK 1
 		b_sBack.whenPressed(new CycleDriveCommand());
 		
-		b_bumpR.whenPressed(new MoveArmCommand(ArmSubsystem.armSpeed));
-		b_bumpR.whileHeld(new MoveArmCommand(ArmSubsystem.armSpeed));
-		b_bumpR.whenReleased(new MaintainArmPosCommand());
-		b_bumpL.whenPressed(new MoveArmCommand(-ArmSubsystem.armSpeed));
-		b_bumpL.whileHeld(new MoveArmCommand(-ArmSubsystem.armSpeed));
-		b_bumpL.whenReleased(new MaintainArmPosCommand());
+		b_bumpR.whenPressed(new MoveArmCommand(1));
+		//b_bumpR.whileHeld(new MoveArmCommand(ArmSubsystem.armSpeed));
+		b_bumpR.whenReleased(new MoveArmCommand(0));
+		b_bumpL.whenPressed(new MoveArmCommand(-1));
+		//b_bumpL.whileHeld(new MoveArmCommand(-ArmSubsystem.armSpeed));
+		b_bumpL.whenReleased(new MoveArmCommand(0));
 		
 	//	b_triggerR.whileHeld(new SetIntakeCommand(.5));
 	//	b_triggerL.whileHeld(new SetIntakeCommand(-.5));
