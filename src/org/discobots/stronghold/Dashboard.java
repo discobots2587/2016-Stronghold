@@ -14,6 +14,8 @@ public class Dashboard {
 
 	public static void update() {
 		driveCounter++;
+		
+		SmartDashboard.putNumber("LPSensor Readout", Robot.linearPunchSub.getLPSensorData());
 		if (driveCounter == Integer.MAX_VALUE) {
 			driveCounter = 0;
 		}

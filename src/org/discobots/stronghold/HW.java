@@ -21,7 +21,7 @@ public class HW {
 	/* PWM */
 	public final static int motorRight = 0; 
 	public final static int motorLeft = 1;
-	
+	public final static int LPSensor = 7;
 	public final static int motorPunch = 32; //guess!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	/* Pneumatics */
 	
