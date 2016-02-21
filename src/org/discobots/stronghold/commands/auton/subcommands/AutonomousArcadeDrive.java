@@ -13,7 +13,7 @@ public class AutonomousArcadeDrive extends Command {
 	private long endTime;
 	private double speedY, speedX;
 	
-    public AutonomousArcadeDrive(double y, double x, int t) {
+    public AutonomousArcadeDrive(double y, double x, int t) {//t is in milliseconds
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.driveTrainSub);
@@ -24,16 +24,17 @@ public class AutonomousArcadeDrive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveTrainSub.arcadeDriveRamp(speedY, speedX);
     	endTime = System.currentTimeMillis() + time;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    }
+    	Robot.driveTrainSub.arcadeDriveRamp(speedY, speedX);
+    	    }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	
         return endTime <= System.currentTimeMillis();
     }
 
@@ -45,5 +46,6 @@ public class AutonomousArcadeDrive extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }
