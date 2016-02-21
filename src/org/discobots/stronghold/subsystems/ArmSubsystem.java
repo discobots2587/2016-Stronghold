@@ -2,6 +2,7 @@ package org.discobots.stronghold.subsystems;
 
 import org.discobots.stronghold.HW;
 import org.discobots.stronghold.commands.arm.MaintainArmPosCommand;
+import org.discobots.stronghold.utils.LTRTXBOX;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CANTalon;
@@ -19,21 +20,23 @@ public class ArmSubsystem extends Subsystem {
 	public CANTalon armMotor;
 	public final double kP = .5; //P constant
 	public static final double armSpeed = .5;
+
 	
-	
+
 	public ArmSubsystem()
 	{
 	//	potentiometer = new AnalogInput(HW.potentiometer);
-		armMotor = new CANTalon(12);
+		armMotor = new CANTalon(HW.armMotor);
 	}
-		public void SetSpeed(double speed)
+		public void setSpeed(double speed)
 		{
 			armMotor.set(speed);	
 		}
 
    public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new LTRTXBOX());
     //	setDefaultCommand(new MaintainArmPosCommand());
    }
+
 }

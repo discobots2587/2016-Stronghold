@@ -1,7 +1,7 @@
 package org.discobots.stronghold;
 
 import org.discobots.stronghold.commands.arm.MaintainArmPosCommand;
-import org.discobots.stronghold.commands.arm.MoveArmCommand;
+import org.discobots.stronghold.commands.arm.SetShooter;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.CycleDriveCommand;
 import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
@@ -62,7 +62,7 @@ public class OI {
 	private Button b2_clicL = new JoystickButton(gp1, GamePad.AXISBTN_L);
 	
 	public OI() {
-		//JOYSTICK 2
+		//JOYSTICK 2************************************************************************************
 		b2_sBack.whenPressed(new CycleDriveCommand());
 		
 	//	b2_bumpR.whenPressed(new MoveArmCommand(ArmSubsystem.armSpeed));
@@ -78,24 +78,32 @@ public class OI {
 		b_bumpL.whileHeld(new MoveArmCommand(-1));
 		b2_bumpR.whileHeld(new MoveArmCommand(1));
 	} 
-	*/	
-		b2_bumpR.whileHeld(new MoveArmCommand(-0.5));
-		b2_bumpR.whenReleased(new MoveArmCommand(0));
-		SmartDashboard.putBoolean("R_Bumper", b_bumpR.equals(b_bumpL));
-		b2_bumpL.whileHeld(new MoveArmCommand(0.5));
-		b2_bumpL.whenReleased(new MoveArmCommand(0));
+	*/	b2_btnB.whileHeld(new SetShooter(1));
+		b2_btnB.whenReleased(new SetShooter(0));
+
+		b2_bumpR.whileHeld(new SetIntakeCommand(-1));
+		b2_bumpR.whenReleased(new SetIntakeCommand(0));
+		b2_bumpL.whileHeld(new SetIntakeCommand(1));
+		b2_bumpL.whenReleased(new SetIntakeCommand(0));
 
 
-		//JOYSTICK 1
+		//JOYSTICK 1******************************************************************
+
+		b_btnB.whileHeld(new SetShooter(1));
+		b_btnB.whenReleased(new SetShooter(0));
+
 		b_sBack.whenPressed(new CycleDriveCommand());
-		
+		b_bumpR.whileHeld(new SetIntakeCommand(-1));
+		b_bumpR.whenReleased(new SetIntakeCommand(0));
+		b_bumpL.whileHeld(new SetIntakeCommand(1));
+		b_bumpL.whenReleased(new SetIntakeCommand(0));
 		//b_bumpR.whileHeld(new MoveArmCommand(ArmSubsystem.armSpeed));
 //		b_bumpR.whenReleased(new MoveArmCommand(0));
 		//b_bumpL.whileHeld(new MoveArmCommand(-ArmSubsystem.armSpeed));
 	//	b_bumpL.whenReleased(new MoveArmCommand(0));
 		
-	//	b_triggerR.whileHeld(new SetIntakeCommand(.5));
-	//	b_triggerL.whileHeld(new SetIntakeCommand(-.5));
+	//	b_triggerR.whileHeld(new SetIntakeCommandCommand(.5));
+	//	b_triggerL.whileHeld(new SetIntakeCommandCommand(-.5));
 	}
 	public double getRawAnalogStickALX() {
 		if(gp1.getLX()>0.1||gp1.getLX()<=-0.1)

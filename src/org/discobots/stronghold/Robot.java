@@ -24,6 +24,8 @@ import org.discobots.stronghold.subsystems.IntakeSubsystem;
 
 
 
+import org.discobots.stronghold.subsystems.ShooterSubsystem;
+
 //import org.discobots.stronghold.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -43,7 +45,7 @@ public class Robot extends IterativeRobot {
 	public static double totalTime;
 	public static long TeleopStartTime;
 	public static long loopExecutionTime = 0;
-
+	public static ShooterSubsystem shootSub;
 	public static DriveTrainSubsystem driveTrainSub;
 	public static ArmSubsystem armSub;
 	public static ElectricalSubsystem electricalSub;
@@ -71,6 +73,7 @@ public class Robot extends IterativeRobot {
     	electricalSub = new ElectricalSubsystem();
 		driveTrainSub = new DriveTrainSubsystem();
     	armSub = new ArmSubsystem();
+    	shootSub = new ShooterSubsystem();
     	intakeSub = new IntakeSubsystem();
     	
     	/* Dashboard Choosers */

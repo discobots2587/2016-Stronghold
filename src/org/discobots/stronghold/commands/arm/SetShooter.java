@@ -8,20 +8,20 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class MoveArmCommand extends Command {
+public class SetShooter extends Command {
 
 	private double speed;
 	
-    public MoveArmCommand(double speed) {
+    public SetShooter(double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.armSub);
+    	requires(Robot.shootSub);
     	this.speed = speed;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.armSub.SetSpeed(speed);
+    	Robot.shootSub.SetShooter(speed);
     }
 
     // Called repeatedly when this Command is scheduled to run
