@@ -83,7 +83,7 @@ public class Robot extends IterativeRobot {
 		driveChooser.addObject("Arcade Drive", new ArcadeDriveCommand());
 		driveChooser.addObject("Split Arcade Drive", new SplitArcadeDriveCommand());
 		SmartDashboard.putData("Choose Driving Controls", driveChooser);
-
+		
         //gamepad mapping
     	oi = new OI();
 		
