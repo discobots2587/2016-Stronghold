@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Joystick.RumbleType;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -65,24 +66,33 @@ public class OI {
 		b2_sBack.whenPressed(new CycleDriveCommand());
 		
 	//	b2_bumpR.whenPressed(new MoveArmCommand(ArmSubsystem.armSpeed));
-		b2_bumpR.whileHeld(new MoveArmCommand(1));
-		//b2_bumpR.whenReleased(new MaintainArmPosCommand());
-		//b2_bumpL.whenPressed(new MoveArmCommand(-1));
+		//b2_bumpR.whenReleased(new MaintainArmPosCommand());		
+	/*	if(!b2_bumpL.get()&&!b2_bumpR.get()&&!b_bumpL.get()&&!b_bumpR.get())
+		{
+			new MoveArmCommand(0);
+		}
+		else
+		{
 		b2_bumpL.whileHeld(new MoveArmCommand(-1));
-		//b2_bumpL.whenReleased(new MaintainArmPosCommand());
-		
-		b2_trigR.whileHeld(new SetIntakeCommand(.5));
-		b2_trigL.whileHeld(new SetIntakeCommand(-.5));
-		
+		b_bumpR.whileHeld(new MoveArmCommand(1));
+		b_bumpL.whileHeld(new MoveArmCommand(-1));
+		b2_bumpR.whileHeld(new MoveArmCommand(1));
+	} 
+	*/	
+		b2_bumpR.whileHeld(new MoveArmCommand(-0.5));
+		b2_bumpR.whenReleased(new MoveArmCommand(0));
+		SmartDashboard.putBoolean("R_Bumper", b_bumpR.equals(b_bumpL));
+		b2_bumpL.whileHeld(new MoveArmCommand(0.5));
+		b2_bumpL.whenReleased(new MoveArmCommand(0));
+
+
 		//JOYSTICK 1
 		b_sBack.whenPressed(new CycleDriveCommand());
 		
-		b_bumpR.whenPressed(new MoveArmCommand(1));
 		//b_bumpR.whileHeld(new MoveArmCommand(ArmSubsystem.armSpeed));
-		b_bumpR.whenReleased(new MoveArmCommand(0));
-		b_bumpL.whenPressed(new MoveArmCommand(-1));
+//		b_bumpR.whenReleased(new MoveArmCommand(0));
 		//b_bumpL.whileHeld(new MoveArmCommand(-ArmSubsystem.armSpeed));
-		b_bumpL.whenReleased(new MoveArmCommand(0));
+	//	b_bumpL.whenReleased(new MoveArmCommand(0));
 		
 	//	b_triggerR.whileHeld(new SetIntakeCommand(.5));
 	//	b_triggerL.whileHeld(new SetIntakeCommand(-.5));

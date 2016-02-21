@@ -16,7 +16,7 @@ public class ArmSubsystem extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public AnalogInput potentiometer;
-	public Talon armMotor;
+	public CANTalon armMotor;
 	public final double kP = .5; //P constant
 	public static final double armSpeed = .5;
 	
@@ -24,14 +24,16 @@ public class ArmSubsystem extends Subsystem {
 	public ArmSubsystem()
 	{
 	//	potentiometer = new AnalogInput(HW.potentiometer);
-		armMotor = new Talon(HW.armMotor);
+		armMotor = new CANTalon(12);
 	}
-
+		public void SetSpeed(double speed)
+		{
+			armMotor.set(speed);	
+		}
 
    public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     //	setDefaultCommand(new MaintainArmPosCommand());
-    }
+   }
 }
-

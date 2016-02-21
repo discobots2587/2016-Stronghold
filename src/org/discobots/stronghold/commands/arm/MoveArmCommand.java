@@ -12,22 +12,22 @@ public class MoveArmCommand extends Command {
 
 	private double speed;
 	
-    public MoveArmCommand(double s) {
+    public MoveArmCommand(double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.armSub);
-    	speed = s;
+    	this.speed = speed;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.armSub.armMotor.set(speed);
+    	Robot.armSub.SetSpeed(speed);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     }
-
+    
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return true;
@@ -35,7 +35,7 @@ public class MoveArmCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	//Robot.armSub.armMotor.set(0);
+    //	Robot.armSub.armMotor.set(0);
     }
 
     // Called when another command which requires one or more of the same
