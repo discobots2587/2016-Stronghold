@@ -109,8 +109,10 @@ public class OI {
 	public double getRawAnalogStickARX() {
 		if(gp1.getRX()>=0.1||gp1.getRX()<=-0.1)
 		return gp1.getRX();
+		else if(.1<xbox.getRawAxis(4)&&xbox.getRawAxis(4)<0.3)
+			return(xbox.getRawAxis(4)*1.2);//speedScaling increases sensitivity at lower speeds
 		else
-		return (xbox.getRawAxis(4));// left stick x-axis
+			return (xbox.getRawAxis(4));// left stick x-axis
 	}
 
 	public static enum Hand { 
@@ -139,6 +141,8 @@ public class OI {
 	public double getRawAnalogStickARY() {
 		if(gp1.getRY()>=0.1||gp1.getRY()<=-0.1)
 		return gp1.getRY();
+		else if(.1<xbox.getRawAxis(5)&&xbox.getRawAxis(4)<0.3)
+			return(xbox.getRawAxis(5)*1.2);//speedScaling increases sensitivity at lower speeds
 		else
 		return (xbox.getRawAxis(5));
 	}

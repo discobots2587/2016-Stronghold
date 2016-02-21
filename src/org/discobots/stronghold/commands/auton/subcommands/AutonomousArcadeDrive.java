@@ -4,28 +4,28 @@ import org.discobots.stronghold.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-
-public class AutonomousTankDriveCommand extends Command {
-
-	private int time; //ms
+/**
+ *
+ */
+public class AutonomousArcadeDrive extends Command {
+	
+	private int time;
 	private long endTime;
-	private double speedLeft, speedRight;
+	private double speedY, speedX;
 	
-	
-    public AutonomousTankDriveCommand(double y, double x, int t) //Speed Left; Speed Right; time in ms
-    {
+    public AutonomousArcadeDrive(double y, double x, int t) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.driveTrainSub);
-    	speedLeft = y;
-    	speedRight = x;
-    	time = t; //in ms
+    	speedY = y;
+    	speedX = x;
+    	time = t;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveTrainSub.tankDriveRamp(speedLeft, speedRight);
-    	endTime = System.currentTimeMillis()+time;
+    	Robot.driveTrainSub.arcadeDriveRamp(speedY, speedX);
+    	endTime = System.currentTimeMillis() + time;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -39,7 +39,7 @@ public class AutonomousTankDriveCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveTrainSub.tankDriveUnramped(0, 0);
+    	Robot.driveTrainSub.arcadeDriveUnramped(0, 0);
     }
 
     // Called when another command which requires one or more of the same

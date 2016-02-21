@@ -1,49 +1,42 @@
 package org.discobots.stronghold.commands.auton.subcommands;
 
-import org.discobots.stronghold.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class AutonomousArcadeDriveCommand extends Command {
-	
-	private int time;
-	private long endTime;
-	private double speedY, speedX;
-	
-    public AutonomousArcadeDriveCommand(double y, double x, int t) {
+public class WaitCommand extends Command {
+long endT;
+    public WaitCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.driveTrainSub);
-    	speedY = y;
-    	speedX = x;
-    	time = t;
     }
-
+    public WaitCommand(int millis)
+    {
+    	 endT=System.currentTimeMillis()+millis;
+    }
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveTrainSub.arcadeDriveRamp(speedY, speedX);
-    	endTime = System.currentTimeMillis() + time;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if (System.currentTimeMillis()>=endT);
+    	end();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return endTime <= System.currentTimeMillis();
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveTrainSub.arcadeDriveUnramped(0, 0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

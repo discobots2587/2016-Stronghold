@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import java.util.concurrent.TimeUnit;
 
 import org.discobots.stronghold.commands.auton.AutonomousCommand;
+import org.discobots.stronghold.commands.auton.DumbAutonCommand;
 import org.discobots.stronghold.commands.auton.SimpleDriveAutonomousCommand;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
@@ -19,6 +20,7 @@ import org.discobots.stronghold.subsystems.ArmSubsystem;
 import org.discobots.stronghold.subsystems.DriveTrainSubsystem;
 import org.discobots.stronghold.subsystems.ElectricalSubsystem;
 import org.discobots.stronghold.subsystems.IntakeSubsystem;
+
 
 //import org.discobots.stronghold.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -72,7 +74,7 @@ public class Robot extends IterativeRobot {
     	/* Dashboard Choosers */
     	
     	autonChooser = new SendableChooser();
-		autonChooser.addDefault("Auton1", new AutonomousCommand());
+		autonChooser.addDefault("DumbAuton", new DumbAutonCommand());
 		autonChooser.addObject("Auton2", new SimpleDriveAutonomousCommand());
 		SmartDashboard.putData("Choose Auton", autonChooser);
 		
@@ -98,7 +100,7 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
      */
     public void disabledInit(){
-    	for (long stop=System.nanoTime()+TimeUnit.SECONDS.toNanos(1);stop>System.nanoTime();) { //rumbles upon disable for 1 second
+    	for (long stop=System.nanoTime()+TimeUnit.SECONDS.toNanos(2);stop>System.nanoTime();) { //rumbles upon disable for 1 second
 			oi.setRumble(1);
           }
     	}
