@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.discobots.stronghold.commands.auton.AutonomousCommand;
 import org.discobots.stronghold.commands.auton.DumbAutonCommand;
+import org.discobots.stronghold.commands.auton.DumbPositioningAuton;
 import org.discobots.stronghold.commands.auton.SimpleDriveAutonomousCommand;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
@@ -20,6 +21,7 @@ import org.discobots.stronghold.subsystems.ArmSubsystem;
 import org.discobots.stronghold.subsystems.DriveTrainSubsystem;
 import org.discobots.stronghold.subsystems.ElectricalSubsystem;
 import org.discobots.stronghold.subsystems.IntakeSubsystem;
+
 
 
 //import org.discobots.stronghold.subsystems.ExampleSubsystem;
@@ -74,7 +76,8 @@ public class Robot extends IterativeRobot {
     	/* Dashboard Choosers */
     	
     	autonChooser = new SendableChooser();
-		autonChooser.addDefault("DumbAuton", new DumbAutonCommand());
+    	autonChooser.addDefault("DumbPostitioningAuton", new DumbPositioningAuton());
+		autonChooser.addObject("DumbAuton", new DumbAutonCommand());
 		autonChooser.addObject("Auton2", new SimpleDriveAutonomousCommand());
 		SmartDashboard.putData("Choose Auton", autonChooser);
 		
@@ -83,7 +86,7 @@ public class Robot extends IterativeRobot {
 		driveChooser.addObject("Arcade Drive", new ArcadeDriveCommand());
 		driveChooser.addObject("Split Arcade Drive", new SplitArcadeDriveCommand());
 		SmartDashboard.putData("Choose Driving Controls", driveChooser);
-		
+
         //gamepad mapping
     	oi = new OI();
 		

@@ -3,14 +3,14 @@ package org.discobots.stronghold.commands.auton;
 import org.discobots.stronghold.commands.auton.subcommands.AutonomousArcadeDrive;
 import org.discobots.stronghold.commands.auton.subcommands.WaitCommand;
 
-import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class DumbAutonCommand extends CommandGroup {
+public class DumbAutonCommand extends StandardAuton {
     int i =1;
+    private String stage = "none";
     public  DumbAutonCommand() {
         SmartDashboard.putNumber("DumbAuton", i);
 
@@ -50,4 +50,15 @@ public class DumbAutonCommand extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     }
+	@Override
+	public String getStage() {
+		// TODO Auto-generated method stub
+		return stage;
+	}
+	@Override
+	public void setStage(String stage) {
+		// TODO Auto-generated method stub
+		this.stage=stage;
+		update();
+	}
 }

@@ -3,25 +3,23 @@ package org.discobots.stronghold.commands.auton;
 import org.discobots.stronghold.commands.auton.subcommands.AutonomousArcadeDrive;
 import org.discobots.stronghold.commands.auton.subcommands.WaitCommand;
 
-import edu.wpi.first.wpilibj.command.CommandGroup;
-
 /**
  *
  */
-public class DumbPositioningAuton extends CommandGroup {
-    String stage="none";
+public class DumbPositioningAuton extends StandardAuton {
+    private String stage="none";
     public  DumbPositioningAuton() {
-    	stage=("1: forwards");
+    	setStage(("1: forwards"));
     	addSequential(new AutonomousArcadeDrive(.75,0,2000));//forwards 3/4 speed for 2 seconds until hits wall
-    	stage=("wait");
+    	setStage(("wait"));
     	addSequential(new WaitCommand(500));
-    	stage=("2: backing up");
+    	setStage(("2: backing up"));
     	addSequential(new AutonomousArcadeDrive(-.4,-.4,2000));//back up while turning towards goal
-    	stage = ("wait");
+    	setStage(("wait"));
     	addSequential(new WaitCommand(250));
-    	stage = ("3: Towards Goal");
+    	setStage(("3: Towards Goal"));
     	addSequential(new AutonomousArcadeDrive(0,.4,1000));//forwards while turning towards goal
-    	stage = ("complete");
+    	setStage(("complete"));
     	// Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -39,4 +37,15 @@ public class DumbPositioningAuton extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     }
+    @Override
+	public String getStage() {
+		return stage;
+	}
+    @Override
+	public void setStage(String stage) {
+		this.stage = stage;
+		update();
+	}
+	
+
 }

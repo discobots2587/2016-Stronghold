@@ -23,8 +23,9 @@ public class HW {
 	public final static int motorBackRight = 14;//set
 	/* PWM */
 
-	public final static int armMotor = 12;//set
-	public final static int intakeMotor = 1;
+	public final static int armMotor = 2;//set
+	public final static int intakeMotor = 12;
+	public final static int shooter = 13;
 
 	
 	/* Pneumatics */
