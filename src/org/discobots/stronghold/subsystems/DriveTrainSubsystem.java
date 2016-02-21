@@ -43,7 +43,7 @@ public class DriveTrainSubsystem extends Subsystem {
 		backLeft = new CANTalon(HW.motorBackLeft);
 		backRight = new CANTalon(HW.motorBackRight);
 		/* RobotDrive*/
-		robotDrive = new RobotDrive(frontLeft,frontRight,backLeft,backRight);
+		robotDrive = new RobotDrive(frontLeft,backLeft,frontRight,backRight);
 	}
 	
 /*	public DriveTrainSubsystem(DriveCommandChoice c) {
