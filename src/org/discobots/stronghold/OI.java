@@ -81,9 +81,9 @@ public class OI {
 	*/	b2_btnB.whileHeld(new SetShooter(1));
 		b2_btnB.whenReleased(new SetShooter(0));
 
-		b2_bumpR.whileHeld(new SetIntakeCommand(-1));
+		b2_bumpR.whileHeld(new SetIntakeCommand(1));
 		b2_bumpR.whenReleased(new SetIntakeCommand(0));
-		b2_bumpL.whileHeld(new SetIntakeCommand(1));
+		b2_bumpL.whileHeld(new SetIntakeCommand(-1));
 		b2_bumpL.whenReleased(new SetIntakeCommand(0));
 
 
