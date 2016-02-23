@@ -31,10 +31,11 @@ public class ArmSubsystem extends Subsystem {
 		armMotor = new CANTalon(HW.armMotor);
 		discSol = new Solenoid(HW.brakeSolenoid);
 	}
-		public void setSpeed(double speed)
-		{
-			armMotor.set(speed);	
-		}
+	
+	public void setSpeed(double speed)
+	{
+		armMotor.set(speed);	
+	}
 
    public void initDefaultCommand() {
         // Set the default command for a subsystem here.
