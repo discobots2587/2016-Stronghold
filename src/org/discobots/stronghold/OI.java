@@ -1,5 +1,7 @@
 package org.discobots.stronghold;
 
+import org.discobots.stronghold.commands.LinearPunchEndCommand;
+import org.discobots.stronghold.commands.LinearPunchStartCommand;
 import org.discobots.stronghold.commands.arm.BrakeCommand;
 import org.discobots.stronghold.commands.arm.MaintainArmPosCommand;
 import org.discobots.stronghold.commands.arm.MoveArmCommand;
@@ -103,6 +105,18 @@ public class OI {
 		b_btnB.whenReleased(new SetShooter(0));
 		b_btnB.whenReleased(new BrakeCommand(true));
 */
+		
+		b2_btnB.whileHeld(new LinearPunchStartCommand());
+		b_btnB.whileHeld(new LinearPunchStartCommand());
+		b2_btnB.whenReleased(new LinearPunchEndCommand());
+		b_btnB.whenReleased(new LinearPunchEndCommand());
+		
+		
+		// This is for the version with single click loading and firing, no whenReleased
+	//	b_bumpR.whenPressed(new LinearPunchStartCommand());
+	//	b_bumpR.whenReleased(new LinearPunchEndCommand());
+	//	b2_bumpR.whenPressed(new LinearPunchStartCommand());
+	//	b2_bumpR.whenReleased(new LinearPunchEndCommand());
 		
 		
 		
