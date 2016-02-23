@@ -86,8 +86,11 @@ public class OI {
 		b2_bumpR.whenReleased(new SetIntakeCommand(0));
 		b2_bumpL.whileHeld(new SetIntakeCommand(-1));
 		b2_bumpL.whenReleased(new SetIntakeCommand(0));
-
-
+		
+		
+		
+		b2_btnY.whileHeld(new BrakeCommand(true));
+		b2_btnY.whenReleased(new BrakeCommand(false));
 		//JOYSTICK 1******************************************************************
 	/*	b_btnB.whenPressed(new BrakeCommand(false));
 		b_btnB.whileHeld(new SetShooter(1));
