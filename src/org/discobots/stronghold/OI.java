@@ -71,20 +71,9 @@ public class OI {
 		
 	//	b2_bumpR.whenPressed(new MoveArmCommand(ArmSubsystem.armSpeed));
 		//b2_bumpR.whenReleased(new MaintainArmPosCommand());		
-	/*	if(!b2_bumpL.get()&&!b2_bumpR.get()&&!b_bumpL.get()&&!b_bumpR.get())
-		{
-			new MoveArmCommand(0);
-		}
-		else
-		{
-		b2_bumpL.whileHeld(new MoveArmCommand(-1));
-		b_bumpR.whileHeld(new MoveArmCommand(1));
-		b_bumpL.whileHeld(new MoveArmCommand(-1));
-		b2_bumpR.whileHeld(new MoveArmCommand(1));
-	} 
-	*/	
-		b2_btnB.whileHeld(new SetShooter(1));
-		b2_btnB.whenReleased(new SetShooter(0));
+	
+	//	b2_btnB.whileHeld(new SetShooter(1));
+	//	b2_btnB.whenReleased(new SetShooter(0));
 		/*	
 		b2_bumpR.whileHeld(new MoveArmCommand(.75));
 		b2_bumpL.whileHeld(new MoveArmCommand(-.75));
@@ -148,8 +137,7 @@ public class OI {
 		if(gp1.getRawAxis(1)>0.1||gp1.getRawAxis(1)<=-0.1)
 		return gp1.getRawAxis(1);
 		else
-		return (-xbox.getRawAxis(1));// left stick y-axis
-
+		return (xbox.getRawAxis(1));// left stick y-axis
 	}
 
 	public double getRawAnalogStickARX() {
@@ -184,9 +172,9 @@ public class OI {
 
 	public double getRawAnalogStickARY() {
 		if(gp1.getRawAxis(5)>=0.1||gp1.getRawAxis(5)<=-0.1)
-		return gp1.getRawAxis(5);
+		return -gp1.getRawAxis(5);
 		else
-		return (xbox.getRawAxis(5));
+		return (-xbox.getRawAxis(5));
 	}
 
 	public double getRawAnalogStickBLX() {
