@@ -29,6 +29,7 @@ public class HW {
 
 	
 	/* Pneumatics */
+	public final static int brakeSolenoid = 0;
 	
 	/* Analog */
 	public final static int potentiometer = 0;

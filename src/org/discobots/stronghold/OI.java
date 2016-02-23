@@ -1,5 +1,6 @@
 package org.discobots.stronghold;
 
+import org.discobots.stronghold.commands.arm.BrakeCommand;
 import org.discobots.stronghold.commands.arm.MaintainArmPosCommand;
 import org.discobots.stronghold.commands.arm.SetShooter;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
@@ -78,8 +79,10 @@ public class OI {
 		b_bumpL.whileHeld(new MoveArmCommand(-1));
 		b2_bumpR.whileHeld(new MoveArmCommand(1));
 	} 
-	*/	b2_btnB.whileHeld(new SetShooter(1));
+	*/	b2_btnB.whenPressed(new BrakeCommand(false));
+		b2_btnB.whileHeld(new SetShooter(1));
 		b2_btnB.whenReleased(new SetShooter(0));
+		b2_btnB.whenReleased(new BrakeCommand(true));
 
 		b2_bumpR.whileHeld(new SetIntakeCommand(1));
 		b2_bumpR.whenReleased(new SetIntakeCommand(0));
@@ -88,9 +91,10 @@ public class OI {
 
 
 		//JOYSTICK 1******************************************************************
-
+		b_btnB.whenPressed(new BrakeCommand(false));
 		b_btnB.whileHeld(new SetShooter(1));
 		b_btnB.whenReleased(new SetShooter(0));
+		b_btnB.whenReleased(new BrakeCommand(true));
 
 		b_sBack.whenPressed(new CycleDriveCommand());
 		b_bumpR.whileHeld(new SetIntakeCommand(-1));
