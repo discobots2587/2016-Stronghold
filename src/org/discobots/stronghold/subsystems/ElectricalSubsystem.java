@@ -7,20 +7,20 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class ElectricalSubsystem extends Subsystem {
-    
+
 	PowerDistributionPanel pdp;
-	
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+
+	// Put methods for controlling this subsystem
+	// here. Call these from Commands.
 	public ElectricalSubsystem(){
 		pdp = new PowerDistributionPanel();
 	}
-	
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    }
-    public double getPDPVoltage() {
+
+	public void initDefaultCommand() {
+		// Set the default command for a subsystem here.
+		//setDefaultCommand(new MySpecialCommand());
+	}
+	public double getPDPVoltage() {
 		return pdp.getVoltage();
 	}
 
