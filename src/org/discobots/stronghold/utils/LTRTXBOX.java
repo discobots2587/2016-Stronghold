@@ -24,12 +24,6 @@ double Liftspeed;
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	   Liftspeed = Robot.oi.getRT()-Robot.oi.getLT();//constantly updates every 20 miliseconds
-    	   if (-.05<Liftspeed&&Liftspeed<.05)
-    	   {
-    		new BrakeCommand(true);
-    	   }
-    	   else
-    		   new BrakeCommand(false);
     	   Robot.armSub.setSpeed(Liftspeed);
 
     }

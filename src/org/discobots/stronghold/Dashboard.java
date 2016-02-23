@@ -31,6 +31,7 @@ public class Dashboard {
 		//SmartDashboard.putNumber("Test PDP", pdpPTs.get(driveCounter-1));
 		SmartDashboard.putNumber("PDP", Robot.electricalSub.getPDPTotalCurrent());
 		SmartDashboard.putNumber("PDP V", Robot.electricalSub.getPDPVoltage());
+		SmartDashboard.putBoolean("BrakeValue", Robot.armSub.getBrake());
 	
 		}
 		}

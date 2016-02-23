@@ -35,6 +35,14 @@ public class ArmSubsystem extends Subsystem {
 	public void setSpeed(double speed)
 	{
 		armMotor.set(speed);	
+		if (-.1<speed && speed<.1)
+		{
+			setBrake(true);
+		}
+		else
+		{
+			setBrake(false);
+		}
 	}
 
    public void initDefaultCommand() {
