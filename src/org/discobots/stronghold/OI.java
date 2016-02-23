@@ -3,6 +3,8 @@ package org.discobots.stronghold;
 
 import org.discobots.stronghold.commands.LinearPunchEndCommand;
 import org.discobots.stronghold.commands.LinearPunchStartCommand;
+import org.discobots.stronghold.commands.WenchExtendCommand;
+import org.discobots.stronghold.commands.WenchRetractCommand;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.CycleDriveCommand;
 import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
