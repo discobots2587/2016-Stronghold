@@ -10,15 +10,18 @@ public class DumbPositioningAuton extends StandardAuton {
     private String stage="none";
     public  DumbPositioningAuton() {
     	setStage(("1: forwards"));
-    	addSequential(new AutonomousArcadeDrive(.75,0,2000));//forwards 3/4 speed for 2 seconds until hits wall
+    	addSequential(new AutonomousArcadeDrive(.50,0,4000));//forwards 1/2 speed for 4 seconds until hits wall
     	setStage(("wait"));
     	addSequential(new WaitCommand(500));
     	setStage(("2: backing up"));
-    	addSequential(new AutonomousArcadeDrive(-.4,-.4,2000));//back up while turning towards goal
+    	addSequential(new AutonomousArcadeDrive(-.3,-.5,2000));//back up while turning towards goal
     	setStage(("wait"));
     	addSequential(new WaitCommand(250));
-    	setStage(("3: Towards Goal"));
-    	addSequential(new AutonomousArcadeDrive(0,.4,1000));//forwards while turning towards goal
+    	setStage(("3: Point Towards Goal"));
+    	addSequential(new AutonomousArcadeDrive(0,.4,1000));//point turn towards goal
+    	setStage(("4: Drive Towards Goal"));
+    	addSequential(new AutonomousArcadeDrive(.5,0,3000));//forwards towards goal
+
     	setStage(("complete"));
     	// Add Commands here:
         // e.g. addSequential(new Command1());

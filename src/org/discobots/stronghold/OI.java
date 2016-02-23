@@ -117,8 +117,8 @@ public class OI {
 	//	b_triggerL.whileHeld(new SetIntakeCommandCommand(-.5));
 	}
 	public double getRawAnalogStickALX() {
-		if(gp1.getLX()>0.1||gp1.getLX()<=-0.1)
-			return gp1.getLX();
+		if(gp1.getRawAxis(0)>0.1||gp1.getRawAxis(0)<=-0.1)
+			return (gp1.getRawAxis(0));
 		else
 		{
 			return (xbox.getRawAxis(0));// left stick y-axis	}
@@ -128,16 +128,16 @@ public class OI {
 
 	
 	public double getRawAnalogStickALY() {
-		if(gp1.getLY()>0.1||gp1.getLY()<=-0.1)
-		return gp1.getLY();
+		if(gp1.getRawAxis(1)>0.1||gp1.getRawAxis(1)<=-0.1)
+		return gp1.getRawAxis(1);
 		else
 		return (-xbox.getRawAxis(1));// left stick y-axis
 
 	}
 
 	public double getRawAnalogStickARX() {
-		if(gp1.getRX()>=0.1||gp1.getRX()<=-0.1)
-		return gp1.getRX();
+		if(gp1.getRawAxis(4)>=0.1||gp1.getRawAxis(4)<=-0.1)
+		return gp1.getRawAxis(4);
 		else
 			return (xbox.getRawAxis(4));// left stick x-axis
 	}
@@ -166,8 +166,8 @@ public class OI {
 
 
 	public double getRawAnalogStickARY() {
-		if(gp1.getRY()>=0.1||gp1.getRY()<=-0.1)
-		return gp1.getRY();
+		if(gp1.getRawAxis(5)>=0.1||gp1.getRawAxis(5)<=-0.1)
+		return gp1.getRawAxis(5);
 		else
 		return (xbox.getRawAxis(5));
 	}
@@ -191,9 +191,16 @@ public class OI {
 
 	}
 	public double getRT(){
+		if(gp1.getRawAxis(3)<-0.1||gp1.getRawAxis(3)>0.1)
+			return gp1.getRawAxis(3);
+		else
 		return (xbox.getRawAxis(3));
+		
 	}
 	public double getLT(){
+		if(gp1.getRawAxis(2)<-0.1||gp1.getRawAxis(2)>0.1)
+			return gp1.getRawAxis(2);
+		else
 		return (xbox.getRawAxis(2));
 	} 
 }
