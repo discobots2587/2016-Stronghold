@@ -21,9 +21,7 @@ import org.discobots.stronghold.subsystems.ArmSubsystem;
 import org.discobots.stronghold.subsystems.DriveTrainSubsystem;
 import org.discobots.stronghold.subsystems.ElectricalSubsystem;
 import org.discobots.stronghold.subsystems.IntakeSubsystem;
-
-
-
+import org.discobots.stronghold.subsystems.LinearPunchSubsystem;
 import org.discobots.stronghold.subsystems.ShooterSubsystem;
 
 //import org.discobots.stronghold.subsystems.ExampleSubsystem;
@@ -50,6 +48,7 @@ public class Robot extends IterativeRobot {
 	public static ArmSubsystem armSub;
 	public static ElectricalSubsystem electricalSub;
 	public static IntakeSubsystem intakeSub;
+	public static LinearPunchSubsystem linearPunchSub;
 	
     Command autonomousCommand,driveCommand;
     SendableChooser driveChooser, autonChooser;
