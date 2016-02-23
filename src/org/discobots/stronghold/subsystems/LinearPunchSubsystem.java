@@ -35,9 +35,9 @@ public class LinearPunchSubsystem extends Subsystem {
     }
     
     
-    public Boolean isLoaded()
+    public Boolean isReady()
     {
-    	return false;
+    	return getLPSensorData() < 100;
     	
     }
     

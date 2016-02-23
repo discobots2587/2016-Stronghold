@@ -31,13 +31,15 @@ public class LinearPunchStartCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() { 
-    
+    	//Robot.linearPunchSub.pull(1.0, isFinished());
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+    	//this.end();
+    	return true;
+        //return Robot.linearPunchSub.isReady();
     }
 
     // Called once after isFinished returns true
