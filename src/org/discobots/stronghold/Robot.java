@@ -74,6 +74,8 @@ public class Robot extends IterativeRobot {
     	armSub = new ArmSubsystem();
     	shootSub = new ShooterSubsystem();
     	intakeSub = new IntakeSubsystem();
+    	linearPunchSub = new LinearPunchSubsystem();
+
     	
     	
     	/* Dashboard Choosers */
