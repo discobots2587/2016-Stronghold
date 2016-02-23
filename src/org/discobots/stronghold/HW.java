@@ -21,6 +21,7 @@ public class HW {
 	public final static int motorFrontRight = 15;//set
 	public final static int motorBackLeft = 1;//set
 	public final static int motorBackRight = 14;//set
+	public final static int motorPunch = 13;
 	/* PWM */
 
 	public final static int armMotor = 2;//set
@@ -33,4 +34,6 @@ public class HW {
 	
 	/* Analog */
 	public final static int potentiometer = 0;
+	public final static int LPSensor = 2;
+	public final static int LoadedSensor = 3; 
 }
