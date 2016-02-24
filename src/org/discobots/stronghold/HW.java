@@ -31,7 +31,7 @@ public class HW {
 	
 	/* Pneumatics */
 	public final static int brakeSolenoid = 0;
-	public final static int intakeSolenoid = 2;
+	public final static int intakeSolenoid = 3;
 	
 	/* Analog */
 	public final static int potentiometer = 0;

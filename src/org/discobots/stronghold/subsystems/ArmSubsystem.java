@@ -27,7 +27,7 @@ public class ArmSubsystem extends Subsystem {
 
 	public ArmSubsystem()
 	{
-	//	potentiometer = new AnalogInput(HW.potentiometer);
+		potentiometer = new AnalogInput(HW.potentiometer);
 		armMotor = new CANTalon(HW.armMotor);
 		discSol = new Solenoid(HW.brakeSolenoid);
 	}
