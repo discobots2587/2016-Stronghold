@@ -98,11 +98,11 @@ public class OI {
 		//JOYSTICK 1******************************************************************
 
 		
-		b2_btnB.whileHeld(new LinearPunchStartCommand());
+/*		b2_btnB.whileHeld(new LinearPunchStartCommand());
 		b_btnB.whileHeld(new LinearPunchStartCommand());
 		b2_btnB.whenReleased(new LinearPunchEndCommand());
 		b_btnB.whenReleased(new LinearPunchEndCommand());
-		
+	*/	
 		b_sBack.whenPressed(new CycleDriveCommand());
 		b_bumpR.whileHeld(new SetIntakeCommand(-1));
 		b_bumpR.whenReleased(new SetIntakeCommand(0));
@@ -120,8 +120,8 @@ public class OI {
 		b_btnB.whenReleased(new BrakeCommand(true));
 */	
 		// This is for the version with single click loading and firing, no whenReleased
-	//	b_bumpR.whenPressed(new LinearPunchStartCommand());
-	//	b_bumpR.whenReleased(new LinearPunchEndCommand());
+		b_btnB.whenPressed(new LinearPunchStartCommand());
+		//b_btnB.whenReleased(new LinearPunchEndCommand());
 	//	b2_bumpR.whenPressed(new LinearPunchStartCommand());
 	//	b2_bumpR.whenReleased(new LinearPunchEndCommand());
 		
