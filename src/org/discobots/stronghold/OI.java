@@ -6,6 +6,7 @@ import org.discobots.stronghold.commands.ToggleCompressor;
 import org.discobots.stronghold.commands.arm.BrakeCommand;
 import org.discobots.stronghold.commands.arm.MaintainArmPosCommand;
 import org.discobots.stronghold.commands.arm.MoveArmCommand;
+import org.discobots.stronghold.commands.arm.SetArmPosCommand;
 import org.discobots.stronghold.commands.arm.SetShooter;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.CycleDriveCommand;
@@ -84,6 +85,14 @@ public class OI {
 		b2_bumpL.whenPressed(new BrakeCommand(false));
 		b2_bumpR.whenReleased(new BrakeCommand(true));
 		b2_bumpR.whenPressed(new BrakeCommand(false));*/
+		
+		b2_dpadU.whenPressed(new SetArmPosCommand(3.558));
+		b2_dpadL.whenPressed(new SetArmPosCommand(4));
+		b2_dpadD.whenPressed(new SetArmPosCommand(4.814));
+		
+		b_dpadU.whenPressed(new SetArmPosCommand(3.558));
+		b_dpadL.whenPressed(new SetArmPosCommand(4));
+		b_dpadD.whenPressed(new SetArmPosCommand(4.814));
 
 		b2_bumpR.whenPressed(new SetIntakeCommand(1));
 		b2_bumpR.whenReleased(new SetIntakeCommand(0));
