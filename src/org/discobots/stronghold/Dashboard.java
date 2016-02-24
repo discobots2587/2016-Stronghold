@@ -26,7 +26,7 @@ public class Dashboard {
 		} else if (driveCounter % 5 == 1) {
 			//SmartDashboard.putData("DriveTrainCommand", Robot.driveTrainSub.getCurrentCommand());
 		
-	//	SmartDashboard.putNumber("Potentiometer", Robot.armSub.potentiometer.getAverageVoltage());
+		SmartDashboard.putNumber("Potentiometer", Robot.armSub.potentiometer.getAverageVoltage());
 		
 		//SmartDashboard.putNumber("Test PDP", pdpPTs.get(driveCounter-1));
 		SmartDashboard.putNumber("PDP", Robot.electricalSub.getPDPTotalCurrent());
