@@ -39,7 +39,7 @@ import edu.wpi.first.wpilibj.vision.USBCamera;
 public class Robot extends IterativeRobot {
 
 	public static OI oi;
-	private CameraServer Eye1;
+	private CameraServer LogicC615;
 	public static double totalTime;
 	public static long TeleopStartTime;
 	public static long loopExecutionTime = 0;
@@ -60,13 +60,13 @@ public class Robot extends IterativeRobot {
     
     public void robotInit() {
     	//init camera and start simple stream process...
-       // Eye1 = CameraServer.getInstance();//initialize server
-       // Eye1.setQuality(50); //quality setting for camera
-        //camera name taken from roborio
-       // USBCamera Sony = new USBCamera(Sony0);
-       // Sony.openCamera();
-       // Sony.startCapture();
-     //   Eye1.startAutomaticCapture(Sony);//automatically start streaming footage 
+    	LogicC615 = CameraServer.getInstance();//initialize server
+    	LogicC615.setQuality(50); //quality setting for camera
+        //camera name taken from RoboRio
+        USBCamera C615 = new USBCamera("cam0");
+       // LogicC615.openCamera();
+       // LogicC615.startCapture();
+        LogicC615.startAutomaticCapture(C615);//automatically start streaming footage 
         
     	/* Subsystems */
     	electricalSub = new ElectricalSubsystem();
