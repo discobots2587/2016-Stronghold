@@ -2,14 +2,17 @@ package org.discobots.stronghold;
 
 import org.discobots.stronghold.commands.LinearPunchEndCommand;
 import org.discobots.stronghold.commands.LinearPunchStartCommand;
+import org.discobots.stronghold.commands.ToggleCompressor;
 import org.discobots.stronghold.commands.arm.BrakeCommand;
 import org.discobots.stronghold.commands.arm.MaintainArmPosCommand;
 import org.discobots.stronghold.commands.arm.MoveArmCommand;
 import org.discobots.stronghold.commands.arm.SetShooter;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.CycleDriveCommand;
+import org.discobots.stronghold.commands.drive.MoveRobotForward;
 import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
+import org.discobots.stronghold.commands.intake.IntakeClawCommand;
 import org.discobots.stronghold.commands.intake.SetIntakeCommand;
 import org.discobots.stronghold.subsystems.ArmSubsystem;
 import org.discobots.stronghold.utils.GamePad;
@@ -89,36 +92,48 @@ public class OI {
 		
 		
 		
-		b2_btnY.whileHeld(new BrakeCommand(true));
-		b2_btnY.whenReleased(new BrakeCommand(false));
-		b_btnY.whenPressed(new BrakeCommand(true));
-		b_btnY.whenReleased(new BrakeCommand(false));
-		//JOYSTICK 1******************************************************************
-	/*	b_btnB.whenPressed(new BrakeCommand(false));
-		b_btnB.whileHeld(new SetShooter(1));
-		b_btnB.whenReleased(new SetShooter(0));
-		b_btnB.whenReleased(new BrakeCommand(true));
-*/
+		//b2_btnY.whileHeld(new BrakeCommand(true));
+		//b2_btnY.whenReleased(new BrakeCommand(false));
+		//b_btnY.whenPressed(new BrakeCommand(true));
+		//b_btnY.whenReleased(new BrakeCommand(false));
+		b_btnY.whenPressed(new ToggleCompressor());
+		b2_btnY.whenPressed(new ToggleCompressor());
 		
-		b2_btnB.whileHeld(new LinearPunchStartCommand());
+		//JOYSTICK 1******************************************************************
+
+		
+/*		b2_btnB.whileHeld(new LinearPunchStartCommand());
 		b_btnB.whileHeld(new LinearPunchStartCommand());
 		b2_btnB.whenReleased(new LinearPunchEndCommand());
 		b_btnB.whenReleased(new LinearPunchEndCommand());
-		
-		
-		// This is for the version with single click loading and firing, no whenReleased
-	//	b_bumpR.whenPressed(new LinearPunchStartCommand());
-	//	b_bumpR.whenReleased(new LinearPunchEndCommand());
-	//	b2_bumpR.whenPressed(new LinearPunchStartCommand());
-	//	b2_bumpR.whenReleased(new LinearPunchEndCommand());
-		
-		
-		
+	*/	
 		b_sBack.whenPressed(new CycleDriveCommand());
 		b_bumpR.whileHeld(new SetIntakeCommand(-1));
 		b_bumpR.whenReleased(new SetIntakeCommand(0));
 		b_bumpL.whileHeld(new SetIntakeCommand(1));
 		b_bumpL.whenReleased(new SetIntakeCommand(0));
+		
+		b_btnA.whenPressed(new IntakeClawCommand());
+		b2_btnA.whenPressed(new IntakeClawCommand());
+		
+//		b_btnX.whileHeld(new MoveRobotForward());
+//		b2_btnX.whileHeld(new MoveRobotForward());
+		
+		
+		/*	b_btnB.whenPressed(new BrakeCommand(false));
+		b_btnB.whileHeld(new SetShooter(1));
+		b_btnB.whenReleased(new SetShooter(0));
+		b_btnB.whenReleased(new BrakeCommand(true));
+*/	
+		// This is for the version with single click loading and firing, no whenReleased
+		b_btnB.whenPressed(new LinearPunchStartCommand());
+		//b_btnB.whenReleased(new LinearPunchEndCommand());
+	//	b2_bumpR.whenPressed(new LinearPunchStartCommand());
+	//	b2_bumpR.whenReleased(new LinearPunchEndCommand());
+		
+		
+		
+		
 		//b_bumpR.whileHeld(new MoveArmCommand(ArmSubsystem.armSpeed));
 //		b_bumpR.whenReleased(new MoveArmCommand(0));
 		//b_bumpL.whileHeld(new MoveArmCommand(-ArmSubsystem.armSpeed));

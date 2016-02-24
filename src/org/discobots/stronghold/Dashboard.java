@@ -26,12 +26,15 @@ public class Dashboard {
 		} else if (driveCounter % 5 == 1) {
 			//SmartDashboard.putData("DriveTrainCommand", Robot.driveTrainSub.getCurrentCommand());
 		
-	//	SmartDashboard.putNumber("Potentiometer", Robot.armSub.potentiometer.getAverageVoltage());
+		SmartDashboard.putNumber("Potentiometer", Robot.armSub.potentiometer.getAverageVoltage());
 		
 		//SmartDashboard.putNumber("Test PDP", pdpPTs.get(driveCounter-1));
 		SmartDashboard.putNumber("PDP", Robot.electricalSub.getPDPTotalCurrent());
 		SmartDashboard.putNumber("PDP V", Robot.electricalSub.getPDPVoltage());
 		SmartDashboard.putBoolean("BrakeValue", Robot.armSub.getBrake());
+		SmartDashboard.putNumber("LPSensor", Robot.linearPunchSub.getLPSensorData());
+		
+		//SmartDashboard.putNumber("ButtonMoveSpeed", Robot.driveTrainSub.buttonSpeed);
 	
 		}
 		}
