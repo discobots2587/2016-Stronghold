@@ -20,15 +20,15 @@ public class LinearPunchStartCommand extends Command {
         // Use requires() here to declare subsystem dependencies
     	
     	requires(Robot.linearPunchSub);
-    	pastTime = false;
+    //	pastTime = false;
 
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    waitTime = 1000;
-    endTime = (int)System.currentTimeMillis() + waitTime;
+ //   waitTime = 1000;
+//    endTime = (int)System.currentTimeMillis() + waitTime;
     
     	Robot.linearPunchSub.pull(1.0, false);
     	
@@ -40,23 +40,23 @@ public class LinearPunchStartCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() { 
-    	if(endTime <= (int)System.currentTimeMillis())
-    		pastTime = true;
-   	if(!pastTime)
-    	{
-    		Robot.linearPunchSub.pull(1.0, false);
-    	} 
-    	else
-    	{Robot.linearPunchSub.pull(1.0, isFinished());}
+//    	if(endTime <= (int)System.currentTimeMillis())
+//    		pastTime = true;
+//   	if(!pastTime)
+ //   	{
+  //  		Robot.linearPunchSub.pull(1.0, false);
+    //	} 
+   // 	else
+   // 	{Robot.linearPunchSub.pull(1.0, isFinished());}
    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(Robot.linearPunchSub.isReady())
-    		this.end();
-    	
-        return Robot.linearPunchSub.isReady();
+  //  	if(Robot.linearPunchSub.isReady())
+  //  		this.end();
+   return true; 	
+       //return Robot.linearPunchSub.isReady();
     }
 
     // Called once after isFinished returns true

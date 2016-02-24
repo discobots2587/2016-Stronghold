@@ -119,13 +119,13 @@ public class OI {
 		b2_btnX.whenPressed(new MoveRobotForward());
 		
 		
-		/*	b_btnB.whenPressed(new BrakeCommand(false));
+		b_btnB.whenPressed(new BrakeCommand(false));
 		b_btnB.whileHeld(new SetShooter(1));
 		b_btnB.whenReleased(new SetShooter(0));
 		b_btnB.whenReleased(new BrakeCommand(true));
-*/	
+
 		// This is for the version with single click loading and firing, no whenReleased
-		b_btnB.whenPressed(new LinearPunchStartCommand());
+	//	b_btnB.whenPressed(new LinearPunchStartCommand());
 		//b_btnB.whenReleased(new LinearPunchEndCommand());
 	//	b2_bumpR.whenPressed(new LinearPunchStartCommand());
 	//	b2_bumpR.whenReleased(new LinearPunchEndCommand());

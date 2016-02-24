@@ -42,7 +42,9 @@ public class LinearPunchSubsystem extends Subsystem {
     }
     
     public void pull(double speed, Boolean isReady) {
-    	if(!isReady)
+    //	if(!isReady)
+    //	punch.set(speed);
+    	
     	punch.set(speed);
     	
     	//if(isReady)
