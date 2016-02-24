@@ -53,9 +53,10 @@ public class LinearPunchStartCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	//this.end();
-    	return true;
-        //return Robot.linearPunchSub.isReady();
+    	if(Robot.linearPunchSub.isReady())
+    		this.end();
+    	
+        return Robot.linearPunchSub.isReady();
     }
 
     // Called once after isFinished returns true
