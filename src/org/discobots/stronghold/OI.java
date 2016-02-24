@@ -91,11 +91,10 @@ public class OI {
 		b2_bumpL.whenPressed(new SetIntakeCommand(0));
 		
 		
-		
-		//b2_btnY.whileHeld(new BrakeCommand(true));
-		//b2_btnY.whenReleased(new BrakeCommand(false));
-		//b_btnY.whenPressed(new BrakeCommand(true));
-		//b_btnY.whenReleased(new BrakeCommand(false));
+		b2_sStar.whileHeld(new BrakeCommand(true));
+		b2_sStar.whenReleased(new BrakeCommand(false));
+		b_sStar.whenPressed(new BrakeCommand(true));
+		b_sStar.whenReleased(new BrakeCommand(false));
 		b_btnY.whenPressed(new ToggleCompressor());
 		b2_btnY.whenPressed(new ToggleCompressor());
 		
