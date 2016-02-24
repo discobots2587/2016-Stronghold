@@ -27,13 +27,15 @@ public class LTRTXBOX extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	while(System.currentTimeMillis()<=endTime){
-    		Robot.armSub.setSpeed(startLift);
-    	}
+    		
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    		if(System.currentTimeMillis()<=endTime){
+    			Robot.armSub.setSpeed(startLift);
+    		}
+    	
     	   Liftspeed = Robot.oi.getRT()-Robot.oi.getLT();//constantly updates every 20 miliseconds
     	   Robot.armSub.setSpeed(Liftspeed);
 
