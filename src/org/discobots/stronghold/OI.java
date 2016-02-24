@@ -8,6 +8,7 @@ import org.discobots.stronghold.commands.arm.MoveArmCommand;
 import org.discobots.stronghold.commands.arm.SetShooter;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.CycleDriveCommand;
+import org.discobots.stronghold.commands.drive.MoveRobotForward;
 import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
 import org.discobots.stronghold.commands.intake.IntakeClawCommand;
@@ -109,6 +110,10 @@ public class OI {
 		b_bumpL.whenReleased(new SetIntakeCommand(0));
 		
 		b_btnA.whenPressed(new IntakeClawCommand());
+		b2_btnA.whenPressed(new IntakeClawCommand());
+		
+		b_btnX.whileHeld(new MoveRobotForward());
+		b2_btnX.whileHeld(new MoveRobotForward());
 		/*	b_btnB.whenPressed(new BrakeCommand(false));
 		b_btnB.whileHeld(new SetShooter(1));
 		b_btnB.whenReleased(new SetShooter(0));

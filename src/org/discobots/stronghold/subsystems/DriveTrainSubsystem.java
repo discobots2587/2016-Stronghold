@@ -8,6 +8,7 @@ import org.discobots.stronghold.commands.drive.TankDriveCommand;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -32,6 +33,8 @@ public class DriveTrainSubsystem extends Subsystem {
 	public enum DriveCommandChoice { TANK, ARCADE, SPLITARCADE }
 	DriveCommandChoice choice;
 	CANTalon frontLeft,frontRight,backLeft,backRight;
+	
+	public double buttonSpeed = 0.5;
 
 	static double kSpeedScaling = 1.0;
 
@@ -44,6 +47,7 @@ public class DriveTrainSubsystem extends Subsystem {
 		backRight = new CANTalon(HW.motorBackRight);
 		/* RobotDrive*/
 		robotDrive = new RobotDrive(frontLeft,backLeft,frontRight,backRight);
+		buttonSpeed = SmartDashboard.getNumber("ButtonMoveSpeed");
 	}
 	
 /*	public DriveTrainSubsystem(DriveCommandChoice c) {
