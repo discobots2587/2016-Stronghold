@@ -33,7 +33,7 @@ public class Dashboard {
 		SmartDashboard.putNumber("PDP V", Robot.electricalSub.getPDPVoltage());
 		SmartDashboard.putBoolean("BrakeValue", Robot.armSub.getBrake());
 		
-		SmartDashboard.putNumber("ButtonMoveSpeed", Robot.driveTrainSub.buttonSpeed);
+		//SmartDashboard.putNumber("ButtonMoveSpeed", Robot.driveTrainSub.buttonSpeed);
 	
 		}
 		}
