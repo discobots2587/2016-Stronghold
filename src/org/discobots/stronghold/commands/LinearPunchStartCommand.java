@@ -45,7 +45,7 @@ public class LinearPunchStartCommand extends Command {
    	if(!pastTime)
     	{
     		Robot.linearPunchSub.pull(1.0, false);
-    	}
+    	} 
     	else
     	{Robot.linearPunchSub.pull(1.0, isFinished());}
    	

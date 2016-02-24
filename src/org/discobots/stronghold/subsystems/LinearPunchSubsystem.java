@@ -45,8 +45,8 @@ public class LinearPunchSubsystem extends Subsystem {
     	if(!isReady)
     	punch.set(speed);
     	
-    	if(isReady)
-    	punch.set(0.0);
+    	//if(isReady)
+    	//punch.set(0.0);
     }
     
   /*  public void stop(Boolean isFinished)
