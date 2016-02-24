@@ -1,36 +1,37 @@
 package org.discobots.stronghold.commands.auton;
 
 import org.discobots.stronghold.commands.auton.subcommands.AutonomousArcadeDrive;
+import org.discobots.stronghold.commands.auton.subcommands.AutonomousSetIntake;
 import org.discobots.stronghold.commands.auton.subcommands.WaitCommand;
 
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class DumbAutonCommand extends StandardAuton {
-    int i =1;
-    private String stage = "none";
+public class DumbAutonCommand extends CommandGroup{
     public  DumbAutonCommand() {
-        SmartDashboard.putNumber("DumbAuton", i);
 
-        addSequential(new AutonomousArcadeDrive(.75,0,2000));//go under lowbar
+        addSequential(new AutonomousArcadeDrive(.5,0,2000));//go under lowbar
         
-        addSequential(new WaitCommand(500));// wait .5 seconds
+        addSequential(new WaitCommand(1500));// wait .5 seconds
         
-        addSequential(new AutonomousArcadeDrive(0,.7,500));// turn right
+        addSequential(new AutonomousArcadeDrive(0,.4,1000));// turn right
         
-        addSequential(new WaitCommand(500));//wait .5 seconds
+        addSequential(new WaitCommand(1500));//wait .5 seconds
         
         addSequential(new AutonomousArcadeDrive(0.5, 0, 1000));//drive towards goal
         
-        addSequential(new WaitCommand(500));//wait .5 seconds
-        SmartDashboard.putNumber("DumbAuton", i-1);
+        addSequential(new AutonomousSetIntake(-1,2000));
+        
+        addSequential(new WaitCommand(2500));//wait .5 seconds
         //addSequential(new ShootCommand());// shoots at goal
         
         addSequential(new AutonomousArcadeDrive(-0.5, 0, 1000));
-        addSequential(new AutonomousArcadeDrive(0,-.9,500));
-        addSequential(new AutonomousArcadeDrive(-.75,0,2000));
+        addSequential(new AutonomousArcadeDrive(0,-.5,1000));
+        addSequential(new AutonomousArcadeDrive(-.55,0,2000));
         
     	//AutonomousArcadeDrive();
     	// Add Commands here:
@@ -50,15 +51,5 @@ public class DumbAutonCommand extends StandardAuton {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     }
-	@Override
-	public String getStage() {
-		// TODO Auto-generated method stub
-		return stage;
-	}
-	@Override
-	public void setStage(String stage) {
-		// TODO Auto-generated method stub
-		this.stage=stage;
-		update();
-	}
+
 }
