@@ -12,17 +12,13 @@ import edu.wpi.first.wpilibj.command.Command;
 public class LTRTXBOX extends Command {
 	
 	double Liftspeed;
-	public double startLift;
-	public int time;
-	public float endTime;
+	
 
     public LTRTXBOX() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.armSub);
-    	startLift = .7;
-    	time = 500;
-    	endTime = (System.currentTimeMillis()+time);
+    	
     }
 
     // Called just before this Command runs the first time
@@ -32,9 +28,7 @@ public class LTRTXBOX extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		if(System.currentTimeMillis()<=endTime){
-    			Robot.armSub.setSpeed(startLift);
-    		}
+    		
     	
     	   Liftspeed = Robot.oi.getRT()-Robot.oi.getLT();//constantly updates every 20 miliseconds
     	   Robot.armSub.setSpeed(Liftspeed);

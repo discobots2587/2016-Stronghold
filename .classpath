@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="var" path="NetworkTables-Sources" sourcepath="wpilib.sources"/>
+	<classpathentry kind="var" path="NetworkTables-sources" sourcepath="wpilib.sources"/>
 	<classpathentry kind="var" path="NetworkTables" sourcepath="networktables.sources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="var" path="WPILib-sources"/>
-	<classpathentry kind="var" path="WPILib"/>
+	<classpathentry kind="var" path="wpilib.sources"/>
+	<classpathentry kind="var" path="wpilib"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
