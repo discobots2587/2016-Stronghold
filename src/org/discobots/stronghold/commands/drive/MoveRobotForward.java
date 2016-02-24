@@ -17,7 +17,7 @@ public class MoveRobotForward extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveTrainSub.arcadeDriveRamp(Robot.driveTrainSub.buttonSpeed, 0);
+    	Robot.driveTrainSub.arcadeDriveRamp(-Robot.driveTrainSub.buttonSpeed, 0);
     }
 
     // Called repeatedly when this Command is scheduled to run
