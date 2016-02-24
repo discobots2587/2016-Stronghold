@@ -115,8 +115,8 @@ public class OI {
 		b_btnA.whenPressed(new IntakeClawCommand());
 		b2_btnA.whenPressed(new IntakeClawCommand());
 		
-//		b_btnX.whileHeld(new MoveRobotForward());
-//		b2_btnX.whileHeld(new MoveRobotForward());
+		b_btnX.whenPressed(new MoveRobotForward());
+		b2_btnX.whenPressed(new MoveRobotForward());
 		
 		
 		/*	b_btnB.whenPressed(new BrakeCommand(false));

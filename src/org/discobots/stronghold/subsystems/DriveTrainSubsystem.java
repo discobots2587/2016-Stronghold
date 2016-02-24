@@ -35,6 +35,7 @@ public class DriveTrainSubsystem extends Subsystem {
 	CANTalon frontLeft,frontRight,backLeft,backRight;
 	
 	public double buttonSpeed;
+	public int autonTimeTest;
 
 	static double kSpeedScaling = 1.0;
 
@@ -48,6 +49,7 @@ public class DriveTrainSubsystem extends Subsystem {
 		/* RobotDrive*/
 		robotDrive = new RobotDrive(frontLeft,backLeft,frontRight,backRight);
 		buttonSpeed = .5;
+		autonTimeTest = 1000;
 		//SmartDashboard.putNumber("ButtonMoveSpeed",buttonSpeed);
 	}
 	
