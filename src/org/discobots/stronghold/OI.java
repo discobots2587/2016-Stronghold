@@ -2,6 +2,7 @@ package org.discobots.stronghold;
 
 import org.discobots.stronghold.commands.LinearPunchEndCommand;
 import org.discobots.stronghold.commands.LinearPunchStartCommand;
+import org.discobots.stronghold.commands.ToggleCompressor;
 import org.discobots.stronghold.commands.arm.BrakeCommand;
 import org.discobots.stronghold.commands.arm.MaintainArmPosCommand;
 import org.discobots.stronghold.commands.arm.MoveArmCommand;
@@ -91,10 +92,13 @@ public class OI {
 		
 		
 		
-		b2_btnY.whileHeld(new BrakeCommand(true));
-		b2_btnY.whenReleased(new BrakeCommand(false));
-		b_btnY.whenPressed(new BrakeCommand(true));
-		b_btnY.whenReleased(new BrakeCommand(false));
+		//b2_btnY.whileHeld(new BrakeCommand(true));
+		//b2_btnY.whenReleased(new BrakeCommand(false));
+		//b_btnY.whenPressed(new BrakeCommand(true));
+		//b_btnY.whenReleased(new BrakeCommand(false));
+		b_btnY.whenPressed(new ToggleCompressor());
+		b2_btnY.whenPressed(new ToggleCompressor());
+		
 		//JOYSTICK 1******************************************************************
 
 		
