@@ -34,7 +34,7 @@ public class DriveTrainSubsystem extends Subsystem {
 	DriveCommandChoice choice;
 	CANTalon frontLeft,frontRight,backLeft,backRight;
 	
-	public double buttonSpeed = 0.5;
+	public double buttonSpeed;
 
 	static double kSpeedScaling = 1.0;
 
@@ -47,7 +47,7 @@ public class DriveTrainSubsystem extends Subsystem {
 		backRight = new CANTalon(HW.motorBackRight);
 		/* RobotDrive*/
 		robotDrive = new RobotDrive(frontLeft,backLeft,frontRight,backRight);
-		//buttonSpeed = SmartDashboard.getNumber("ButtonMoveSpeed");
+		buttonSpeed = SmartDashboard.getNumber("ButtonMoveSpeed",0.5);
 	}
 	
 /*	public DriveTrainSubsystem(DriveCommandChoice c) {
