@@ -5,11 +5,11 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class GamePad extends Joystick {
-	
+
 	public GamePad(int port) {
 		super(port);
 	}
-	
+
 	/***** MODE D CONFIGURATION *****/ 
 	// Axis
 	public static final int AXIS_LX = 0;
@@ -31,10 +31,10 @@ public class GamePad extends Joystick {
 
 	public static final int BTN_BACK = 9;
 	public static final int BTN_START = 10;
-	
+
 	public static final int AXISBTN_L = 11;
 	public static final int AXISBTN_R = 12;
-	
+
 	public double getLX() {
 		return this.getRawAxis(AXIS_LX);
 	}
@@ -50,7 +50,7 @@ public class GamePad extends Joystick {
 	public double getRY() {
 		return this.getRawAxis(AXIS_RY) * -1;
 	}
-	
+
 	public double getDX() {
 		return this.getRawAxis(DPAD_X);
 	}
@@ -58,7 +58,7 @@ public class GamePad extends Joystick {
 	public double getDY() {
 		return this.getRawAxis(DPAD_Y) * -1;
 	}
-	
+
 	public static class DPadButton extends Button {
 		public static final double kDefaultThreshold = 0.7;
 		private GamePad m_gp;
@@ -97,5 +97,5 @@ public class GamePad extends Joystick {
 		}
 
 	}
-	
+
 }

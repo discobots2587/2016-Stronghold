@@ -57,7 +57,7 @@ public class Lidar {
 								i2c.read(LIDAR_DISTANCE_REGISTER, 2, by);
 								int output = (int) Integer.toUnsignedLong(by[0] << 8)
 										+ Byte.toUnsignedInt(by[1]);
-								
+
 								lidar.setDistanceCm(output);//output in cm
 								lidar.setDigOutState(true);
 								counter++;
@@ -85,7 +85,7 @@ public class Lidar {
 		this.output = new DigitalOutput(port);
 		this.distance = 0;
 		lidarController.registerLidar(this); //when instantiated this class is given a port for the lidar 
-												//which it assigns to a new lidar object and adds it to the arraylist
+		//which it assigns to a new lidar object and adds it to the arraylist
 	}
 
 	private void setDigOutState(boolean a) {

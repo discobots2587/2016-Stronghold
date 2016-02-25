@@ -4,7 +4,7 @@ import org.discobots.stronghold.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class CycleDriveCommand extends Command {
-	
+
 	public CycleDriveCommand() {
 	}
 
@@ -38,6 +38,6 @@ public class CycleDriveCommand extends Command {
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
-	end();
+		end();
 	}
 }

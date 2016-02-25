@@ -8,42 +8,42 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class AutonomousArcadeDrive extends Command {
-	
+
 	private int time;
 	private long endTime;
 	private double speedY, speedX;
-	
-    public AutonomousArcadeDrive(double y, double x, int t) {//t is in milliseconds
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.driveTrainSub);
-    	speedY = y;
-    	speedX = x;
-    	time = t;
-    }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    	Robot.driveTrainSub.arcadeDriveRamp(speedY, speedX);
-    	endTime = System.currentTimeMillis() + time;
-    }
+	public AutonomousArcadeDrive(double y, double x, int t) {//t is in milliseconds
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
+		requires(Robot.driveTrainSub);
+		speedY = y;
+		speedX = x;
+		time = t;
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    }
+	// Called just before this Command runs the first time
+	protected void initialize() {
+		Robot.driveTrainSub.arcadeDriveRamp(speedY, speedX);
+		endTime = System.currentTimeMillis() + time;
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return endTime <= System.currentTimeMillis();
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    	Robot.driveTrainSub.arcadeDriveUnramped(0, 0);
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		return endTime <= System.currentTimeMillis();
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+	// Called once after isFinished returns true
+	protected void end() {
+		Robot.driveTrainSub.arcadeDriveUnramped(0, 0);
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+	}
 }

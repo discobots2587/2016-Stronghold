@@ -48,64 +48,64 @@ public class Robot extends IterativeRobot {
 	public static ArmSubsystem armSub;
 	public static ElectricalSubsystem electricalSub;
 	public static AutoAimSubsystem autoAimSys;
-    Command autonomousCommand,driveCommand;
-    SendableChooser driveChooser, autonChooser;
+	Command autonomousCommand,driveCommand;
+	SendableChooser driveChooser, autonChooser;
 
-    /**
-     * This function is run when the robot is first started up and should be
-     * used for any initialization code.
-     */
-    
-    public void robotInit() {
-    	//init camera and start simple stream process...
-       // Eye1 = CameraServer.getInstance();//initialize server
-       // Eye1.setQuality(50); //quality setting for camera
-        //camera name taken from roborio
-       // USBCamera Sony = new USBCamera(Sony0);
-       // Sony.openCamera();
-       // Sony.startCapture();
-     //   Eye1.startAutomaticCapture(Sony);//automatically start streaming footage 
-        
-    	/* Subsystems */
+	/**
+	 * This function is run when the robot is first started up and should be
+	 * used for any initialization code.
+	 */
+
+	public void robotInit() {
+		//init camera and start simple stream process...
+		// Eye1 = CameraServer.getInstance();//initialize server
+		// Eye1.setQuality(50); //quality setting for camera
+		//camera name taken from roborio
+		// USBCamera Sony = new USBCamera(Sony0);
+		// Sony.openCamera();
+		// Sony.startCapture();
+		//   Eye1.startAutomaticCapture(Sony);//automatically start streaming footage 
+
+		/* Subsystems */
 		driveTrainSub = new DriveTrainSubsystem();
-    	armSub = new ArmSubsystem();
-    	electricalSub = new ElectricalSubsystem();
-    	autoAimSys = new AutoAimSubsystem();
-    	/* Dashboard Choosers */
-    	
-    	autonChooser = new SendableChooser();
+		armSub = new ArmSubsystem();
+		electricalSub = new ElectricalSubsystem();
+		autoAimSys = new AutoAimSubsystem();
+		/* Dashboard Choosers */
+
+		autonChooser = new SendableChooser();
 		autonChooser.addDefault("DumbAuton", new DumbAutonCommand());
 		autonChooser.addObject("SmartAuton", new SmartAuton());
 		autonChooser.addObject("Auton2", new SimpleDriveAutonomousCommand());
 		SmartDashboard.putData("Choose Auton", autonChooser);
-		
+
 		driveChooser = new SendableChooser();
 		driveChooser.addDefault("Tank Drive", new TankDriveCommand());
 		driveChooser.addObject("Arcade Drive", new ArcadeDriveCommand());
 		driveChooser.addObject("Split Arcade Drive", new SplitArcadeDriveCommand());
 		SmartDashboard.putData("Choose Driving Controls", driveChooser);
 
-        //gamepad mapping
-    	oi = new OI();
-		
+		//gamepad mapping
+		oi = new OI();
+
 		// dashboard init
 		Dashboard.init();
 		Dashboard.update();
-		
-		
-    }
-	
+
+
+	}
+
 	/**
-     * This function is called once each time the robot enters Disabled mode.
-     * You can use it to reset any subsystem information you want to clear when
+	 * This function is called once each time the robot enters Disabled mode.
+	 * You can use it to reset any subsystem information you want to clear when
 	 * the robot is disabled.
-     */
-    public void disabledInit(){
-    	for (long stop=System.nanoTime()+TimeUnit.SECONDS.toNanos(1);stop>System.nanoTime();) { //rumbles upon disable for 1 second
+	 */
+	public void disabledInit(){
+		for (long stop=System.nanoTime()+TimeUnit.SECONDS.toNanos(1);stop>System.nanoTime();) { //rumbles upon disable for 1 second
 			oi.setRumble(1);
-          }
-    	}
-	
+		}
+	}
+
 	public void disabledPeriodic() {
 		long start = System.currentTimeMillis();
 		Scheduler.getInstance().run();
@@ -123,59 +123,59 @@ public class Robot extends IterativeRobot {
 	 * You can add additional auto modes by adding additional commands to the chooser code above (like the commented example)
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
-    public void autonomousInit() {
-        autonomousCommand = (Command) autonChooser.getSelected();    	//Starts chosen Auton Command
-    	// schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
-    }
+	public void autonomousInit() {
+		autonomousCommand = (Command) autonChooser.getSelected();    	//Starts chosen Auton Command
+		// schedule the autonomous command (example)
+		if (autonomousCommand != null) autonomousCommand.start();
+	}
 
-    /**
-     * This function is called periodically during autonomous
-     */
-    public void autonomousPeriodic() {
-    	long start = System.currentTimeMillis();
+	/**
+	 * This function is called periodically during autonomous
+	 */
+	public void autonomousPeriodic() {
+		long start = System.currentTimeMillis();
 		Scheduler.getInstance().run();
 		Dashboard.update();
 		long end = System.currentTimeMillis();
 		loopExecutionTime = end - start;       
-    }
+	}
 
-    public void teleopInit() {
+	public void teleopInit() {
 		// This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to 
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
-        if (autonomousCommand != null) autonomousCommand.cancel();
-        driveCommand = (Command) driveChooser.getSelected();
+		// teleop starts running. If you want the autonomous to 
+		// continue until interrupted by another command, remove
+		// this line or comment it out.
+		if (autonomousCommand != null) autonomousCommand.cancel();
+		driveCommand = (Command) driveChooser.getSelected();
 		for (long stop=System.nanoTime()+TimeUnit.SECONDS.toNanos(1);stop>System.nanoTime();) { //rumbles upon disable for 1 second
 			oi.setRumble(1);
 			TeleopStartTime = System.currentTimeMillis();
 		}
 		if(driveCommand != null) //Starts chosen driving Command
 			driveCommand.start();
-    }
+	}
 
-    /**
-     * This function is called periodically during operator control
-     */
-    public void teleopPeriodic() {
-    	long start = System.currentTimeMillis(); //measures loop execution times
+	/**
+	 * This function is called periodically during operator control
+	 */
+	public void teleopPeriodic() {
+		long start = System.currentTimeMillis(); //measures loop execution times
 		Scheduler.getInstance().run();
 		Dashboard.update();
 		long end = System.currentTimeMillis();
 		loopExecutionTime = end - start;
-    }
-    
-    /**
-     * This function is called periodically during test mode
-     */
-    public void testPeriodic() {
+	}
+
+	/**
+	 * This function is called periodically during test mode
+	 */
+	public void testPeriodic() {
 		long start = System.currentTimeMillis();
-    	LiveWindow.run();
+		LiveWindow.run();
 		Scheduler.getInstance().run();
 		Dashboard.update();
 		long end = System.currentTimeMillis();
 		loopExecutionTime = end - start;
 		totalTime = (double) ((System.currentTimeMillis() - TeleopStartTime)/1000);
-    	}
+	}
 }
