@@ -12,10 +12,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 
 public class DriveTrainSubsystem extends Subsystem {
-    
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-	
+
+	// Put methods for controlling this subsystem
+	// here. Call these from Commands.
+
 	/* Motors */
 
 
@@ -31,25 +31,25 @@ public class DriveTrainSubsystem extends Subsystem {
 
 	static double kSpeedScaling = 1.0;
 
-	
+
 	public DriveTrainSubsystem() {
 		//choice = DriveCommandChoice.TANK; //default tank drive if no choice chosen (prevents null pointer exception)
-		
+
 		/* RobotDrive*/
 		robotDrive = new RobotDrive(HW.motorLeft,HW.motorRight);
 	}
-	
+
 	public DriveTrainSubsystem(DriveCommandChoice c) {
 		choice = c;
 		/* Motors */
-		
+
 		/* Sensors */
 
 		/* RobotDrive */
 		robotDrive = new RobotDrive(HW.motorLeft,HW.motorRight);
 
 	} 
-	
+
 
 	public void setRamped(boolean a) {
 		this.allowRamped = a;

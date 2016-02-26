@@ -19,8 +19,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 	private GamePad gp1 = new GamePad(0);
 	private GamePad xbox = new GamePad(1); 
-	
-//set buttons for each joystick
+
+	//set buttons for each joystick
 	// JOYSTICK 2
 	private Button b_dpadU = new DPadButton(xbox, GamePad.DPAD_Y, true);
 	private Button b_dpadD = new DPadButton(xbox, GamePad.DPAD_Y, false);
@@ -55,7 +55,7 @@ public class OI {
 	private Button b2_btnY = new JoystickButton(gp1, GamePad.BTN_Y);
 	private Button b2_clicR = new JoystickButton(gp1, GamePad.AXISBTN_R);
 	private Button b2_clicL = new JoystickButton(gp1, GamePad.AXISBTN_L);
-	
+
 	public OI() {
 		//JOYSTICK 2
 		b2_sBack.whenPressed(new CycleDriveCommand());
@@ -63,7 +63,7 @@ public class OI {
 		b2_bumpR.whenReleased(new MaintainArmPosCommand());
 		b2_bumpL.whileHeld(new MoveArmCommand(-ArmSubsystem.armSpeed));
 		b2_bumpL.whenReleased(new MaintainArmPosCommand());
-		
+
 		//JOYSTICK 1
 		b_sBack.whenPressed(new CycleDriveCommand());
 		b_bumpR.whileHeld(new MoveArmCommand(ArmSubsystem.armSpeed));
@@ -79,52 +79,52 @@ public class OI {
 			return (xbox.getRawAxis(0));// left stick y-axis	}
 		}
 	}
-	
 
-	
+
+
 	public double getRawAnalogStickALY() {
 		if(gp1.getLY()>0.1||gp1.getLY()<=-0.1)
-		return gp1.getLY();
+			return gp1.getLY();
 		else
-		return (-xbox.getRawAxis(1));// left stick y-axis
+			return (-xbox.getRawAxis(1));// left stick y-axis
 
 	}
 
 	public double getRawAnalogStickARX() {
 		if(gp1.getRX()>=0.1||gp1.getRX()<=-0.1)
-		return gp1.getRX();
+			return gp1.getRX();
 		else
-		return (xbox.getRawAxis(4));// left stick x-axis
+			return (xbox.getRawAxis(4));// left stick x-axis
 	}
 
 	public static enum Hand { 
-        LEFT, RIGHT 
-} 
-	
+		LEFT, RIGHT 
+	} 
+
 	public void setRumble(Hand hand, double intensity) { //set for single side of controller
-		  	final float amount = new Float(intensity); 
-		  	        
-			   if (hand == Hand.LEFT) { 
-		  	            xbox.setRumble(RumbleType.kLeftRumble, amount); 
-		 	        } 
-			   if (hand==Hand.RIGHT)
-		 	        { 
-		 	             xbox.setRumble(RumbleType.kRightRumble, amount); 
-		  	        } 
-			     } 
-	     public void setRumble(double intensity) { //set rumble for both hands
-		         final float amount = new Float(intensity); 
-		          
-		         xbox.setRumble(RumbleType.kLeftRumble, amount); 
-		         xbox.setRumble(RumbleType.kRightRumble, amount); 
-		     } 
+		final float amount = new Float(intensity); 
+
+		if (hand == Hand.LEFT) { 
+			xbox.setRumble(RumbleType.kLeftRumble, amount); 
+		} 
+		if (hand==Hand.RIGHT)
+		{ 
+			xbox.setRumble(RumbleType.kRightRumble, amount); 
+		} 
+	} 
+	public void setRumble(double intensity) { //set rumble for both hands
+		final float amount = new Float(intensity); 
+
+		xbox.setRumble(RumbleType.kLeftRumble, amount); 
+		xbox.setRumble(RumbleType.kRightRumble, amount); 
+	} 
 
 
 	public double getRawAnalogStickARY() {
 		if(gp1.getRY()>=0.1||gp1.getRY()<=-0.1)
-		return gp1.getRY();
+			return gp1.getRY();
 		else
-		return (xbox.getRawAxis(5));
+			return (xbox.getRawAxis(5));
 	}
 
 	public double getRawAnalogStickBLX() {
@@ -150,5 +150,5 @@ public class OI {
 	}
 	public double getLT(){
 		return (xbox.getRawAxis(2));
-	} 
+	}
 }

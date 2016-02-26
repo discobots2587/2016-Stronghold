@@ -10,15 +10,15 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class ArmSubsystem extends Subsystem {
-    
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+
+	// Put methods for controlling this subsystem
+	// here. Call these from Commands.
 	public AnalogInput potentiometer;
 	public Talon armMotor;
 	public final double kP = .25; //P constant
 	public static final double armSpeed = .5;
-	
-	
+
+
 	public ArmSubsystem()
 	{
 		potentiometer = new AnalogInput(HW.potentiometer);
@@ -26,9 +26,9 @@ public class ArmSubsystem extends Subsystem {
 	}
 
 
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    }
+	public void initDefaultCommand() {
+		// Set the default command for a subsystem here.
+		//setDefaultCommand(new MySpecialCommand());
+	}
 }
 
