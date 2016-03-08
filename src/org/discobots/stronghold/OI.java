@@ -3,6 +3,7 @@ package org.discobots.stronghold;
 import org.discobots.stronghold.commands.arm.MaintainArmPosCommand;
 import org.discobots.stronghold.commands.arm.MoveArmCommand;
 import org.discobots.stronghold.commands.drive.CycleDriveCommand;
+import org.discobots.stronghold.commands.intake.SetIntakeCommand;
 import org.discobots.stronghold.subsystems.ArmSubsystem;
 import org.discobots.stronghold.utils.GamePad;
 import org.discobots.stronghold.utils.GamePad.DPadButton;
@@ -59,10 +60,13 @@ public class OI {
 	public OI() {
 		//JOYSTICK 2
 		b2_sBack.whenPressed(new CycleDriveCommand());
-		b2_bumpR.whileHeld(new MoveArmCommand(ArmSubsystem.armSpeed));
+		/*b2_bumpR.whileHeld(new MoveArmCommand(ArmSubsystem.armSpeed));
 		b2_bumpR.whenReleased(new MaintainArmPosCommand());
 		b2_bumpL.whileHeld(new MoveArmCommand(-ArmSubsystem.armSpeed));
-		b2_bumpL.whenReleased(new MaintainArmPosCommand());
+		b2_bumpL.whenReleased(new MaintainArmPosCommand());*/
+		b2_bumpR.whileHeld(new SetIntakeCommand(1.0));
+		b2_bumpL.whileHeld(new SetIntakeCommand(-1.0));
+		
 		
 		//JOYSTICK 1
 		b_sBack.whenPressed(new CycleDriveCommand());

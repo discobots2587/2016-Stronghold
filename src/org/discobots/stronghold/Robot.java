@@ -21,9 +21,7 @@ import org.discobots.stronghold.subsystems.AutoAimSubsystem;
 //import org.discobots.stronghold.commands.ExampleCommand;
 import org.discobots.stronghold.subsystems.DriveTrainSubsystem;
 import org.discobots.stronghold.subsystems.ElectricalSubsystem;
-
-
-
+import org.discobots.stronghold.subsystems.IntakeSubsystem;
 
 //import org.discobots.stronghold.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -48,6 +46,7 @@ public class Robot extends IterativeRobot {
 	public static ArmSubsystem armSub;
 	public static ElectricalSubsystem electricalSub;
 	public static AutoAimSubsystem autoAimSys;
+	public static IntakeSubsystem intakeSub;
     Command autonomousCommand,driveCommand;
     SendableChooser driveChooser, autonChooser;
 
@@ -71,6 +70,7 @@ public class Robot extends IterativeRobot {
     	armSub = new ArmSubsystem();
     	electricalSub = new ElectricalSubsystem();
     	autoAimSys = new AutoAimSubsystem();
+    	intakeSub = new IntakeSubsystem();
     	/* Dashboard Choosers */
     	
     	autonChooser = new SendableChooser();
