@@ -37,7 +37,6 @@ import edu.wpi.first.wpilibj.vision.USBCamera;
  */
 public class Robot extends IterativeRobot {
 	public static OI oi;
-	private CameraServer Eye1;
 	public static double totalTime;
 	public static long TeleopStartTime;
 	public static long loopExecutionTime = 0;
@@ -64,7 +63,7 @@ public class Robot extends IterativeRobot {
        // Sony.openCamera();
        // Sony.startCapture();
      //   Eye1.startAutomaticCapture(Sony);//automatically start streaming footage 
-        
+    	
     	/* Subsystems */
 		driveTrainSub = new DriveTrainSubsystem();
     	armSub = new ArmSubsystem();
