@@ -28,7 +28,7 @@ public class MaintainArmPosCommand extends Command {
     protected void execute() {
     	currentPosition = Robot.armSub.potentiometer.getAverageVoltage();
     	motorSpeed = (currentPosition-currentSetpoint)*Robot.armSub.kP;
-    	Robot.armSub.armMotor.set(motorSpeed);
+    	Robot.armSub.setSpeed(motorSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -38,7 +38,7 @@ public class MaintainArmPosCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.armSub.armMotor.set(0);
+    	Robot.armSub.setSpeed(0);
     }
 
     // Called when another command which requires one or more of the same

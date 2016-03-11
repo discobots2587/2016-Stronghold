@@ -1,6 +1,7 @@
 package org.discobots.stronghold.subsystems;
 
 import org.discobots.stronghold.HW;
+import org.discobots.stronghold.utils.LTRTXBOX;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Talon;
@@ -14,7 +15,7 @@ public class ArmSubsystem extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public AnalogInput potentiometer;
-	public Talon armMotor;
+	private Talon armMotor;
 	public final double kP = .25; //P constant
 	public static final double armSpeed = .5;
 	
@@ -24,11 +25,15 @@ public class ArmSubsystem extends Subsystem {
 		potentiometer = new AnalogInput(HW.potentiometer);
 		armMotor = new Talon(HW.armMotor);
 	}
+	public void setSpeed(double speed)
+	{
+		armMotor.set(speed);
+	}
 
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new LTRTXBOX());
     }
 }
 
