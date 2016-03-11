@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	private GamePad gp1 = new GamePad(0);
+	private GamePad logic0 = new GamePad(0);
 	private GamePad xbox = new GamePad(1); 
 	
 //set buttons for each joystick
@@ -40,22 +40,22 @@ public class OI {
 	private Button b_clicR = new JoystickButton(xbox, 10);
 	private Button b_clicL = new JoystickButton(xbox, 9);
 	// JOYSTICK 1
-	private Button b2_dpadU = new DPadButton(gp1, GamePad.DPAD_Y, true);
-	private Button b2_dpadD = new DPadButton(gp1, GamePad.DPAD_Y, false);
-	private Button b2_dpadR = new DPadButton(gp1, GamePad.DPAD_X, true);
-	private Button b2_dpadL = new DPadButton(gp1, GamePad.DPAD_X, false);
-	private Button b2_bumpR = new JoystickButton(gp1, GamePad.BTN_RB);
-	private Button b2_bumpL = new JoystickButton(gp1, GamePad.BTN_LB);
-	private Button b2_trigR = new JoystickButton(gp1, GamePad.BTN_RT);
-	private Button b2_trigL = new JoystickButton(gp1, GamePad.BTN_LT);
-	private Button b2_sBack = new JoystickButton(gp1, GamePad.BTN_BACK);
-	private Button b2_sStar = new JoystickButton(gp1, GamePad.BTN_START);
-	private Button b2_btnA = new JoystickButton(gp1, GamePad.BTN_A);
-	private Button b2_btnX = new JoystickButton(gp1, GamePad.BTN_X);
-	private Button b2_btnB = new JoystickButton(gp1, GamePad.BTN_B);
-	private Button b2_btnY = new JoystickButton(gp1, GamePad.BTN_Y);
-	private Button b2_clicR = new JoystickButton(gp1, GamePad.AXISBTN_R);
-	private Button b2_clicL = new JoystickButton(gp1, GamePad.AXISBTN_L);
+	private Button b2_dpadU = new DPadButton(logic0, GamePad.DPAD_Y, true);
+	private Button b2_dpadD = new DPadButton(logic0, GamePad.DPAD_Y, false);
+	private Button b2_dpadR = new DPadButton(logic0, GamePad.DPAD_X, true);
+	private Button b2_dpadL = new DPadButton(logic0, GamePad.DPAD_X, false);
+	private Button b2_bumpR = new JoystickButton(logic0, GamePad.BTN_RB);
+	private Button b2_bumpL = new JoystickButton(logic0, GamePad.BTN_LB);
+	private Button b2_trigR = new JoystickButton(logic0, GamePad.BTN_RT);
+	private Button b2_trigL = new JoystickButton(logic0, GamePad.BTN_LT);
+	private Button b2_sBack = new JoystickButton(logic0, GamePad.BTN_BACK);
+	private Button b2_sStar = new JoystickButton(logic0, GamePad.BTN_START);
+	private Button b2_btnA = new JoystickButton(logic0, GamePad.BTN_A);
+	private Button b2_btnX = new JoystickButton(logic0, GamePad.BTN_X);
+	private Button b2_btnB = new JoystickButton(logic0, GamePad.BTN_B);
+	private Button b2_btnY = new JoystickButton(logic0, GamePad.BTN_Y);
+	private Button b2_clicR = new JoystickButton(logic0, GamePad.AXISBTN_R);
+	private Button b2_clicL = new JoystickButton(logic0, GamePad.AXISBTN_L);
 	
 	public OI() {
 		//JOYSTICK 2
@@ -69,6 +69,11 @@ public class OI {
 		
 		
 		//JOYSTICK 1
+		b_bumpR.whileHeld(new SetIntakeCommand(1));
+		b_bumpL.whileHeld(new SetIntakeCommand(-1));
+			b_bumpR.whenReleased(new SetIntakeCommand(0));
+			b_bumpL.whenReleased(new SetIntakeCommand(0));
+		
 		b_sBack.whenPressed(new CycleDriveCommand());
 		b_bumpR.whileHeld(new MoveArmCommand(ArmSubsystem.armSpeed));
 		b_bumpR.whenReleased(new MaintainArmPosCommand());
@@ -76,8 +81,8 @@ public class OI {
 		b_bumpL.whenReleased(new MaintainArmPosCommand());
 	}
 	public double getRawAnalogStickALX() {
-		if(gp1.getLX()>0.1||gp1.getLX()<=-0.1)
-			return gp1.getLX();
+		if(logic0.getRawAxis(0)>0.1||logic0.getRawAxis(0)<=-0.1)
+			return logic0.getRawAxis(0);
 		else
 		{
 			return (xbox.getRawAxis(0));// left stick y-axis	}
@@ -87,16 +92,16 @@ public class OI {
 
 	
 	public double getRawAnalogStickALY() {
-		if(gp1.getLY()>0.1||gp1.getLY()<=-0.1)
-		return gp1.getLY();
+		if(logic0.getRawAxis(1)>0.1||logic0.getRawAxis(1)<=-0.1)
+		return -logic0.getRawAxis(1);
 		else
 		return (-xbox.getRawAxis(1));// left stick y-axis
 
 	}
 
 	public double getRawAnalogStickARX() {
-		if(gp1.getRX()>=0.1||gp1.getRX()<=-0.1)
-		return gp1.getRX();
+		if(logic0.getRawAxis(4)>=0.1||logic0.getRawAxis(4)<=-0.1)
+		return logic0.getRawAxis(4);
 		else
 		return (xbox.getRawAxis(4));// left stick x-axis
 	}
@@ -125,8 +130,8 @@ public class OI {
 
 
 	public double getRawAnalogStickARY() {
-		if(gp1.getRY()>=0.1||gp1.getRY()<=-0.1)
-		return gp1.getRY();
+		if(logic0.getRawAxis(5)>=0.1||logic0.getRawAxis(5)<=-0.1)
+		return logic0.getRawAxis(5);
 		else
 		return (xbox.getRawAxis(5));
 	}
@@ -147,8 +152,19 @@ public class OI {
 
 	public double getRawAnalogStickBRY() {
 		return (xbox.getRawAxis(5));// left stick x-axis
-
 	}
+		
+	
+	public double getLogicLT()
+	{
+		return(logic0.getRawAxis(2));
+	}
+	
+	public double getLogicRT()
+		{
+			return(logic0.getRawAxis(3));
+		}
+		
 	public double getRT(){
 		return (xbox.getRawAxis(3));
 	}
