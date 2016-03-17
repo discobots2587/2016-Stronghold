@@ -48,7 +48,13 @@ public class ArmSubsystem extends Subsystem {
 			setBrake(false);
 			armMotor.set(speed);	
 		}
-		if(!frontLimit.get()&&speed>0)
+		if(potentiometer.getVoltage()>=425&&speed>0)//upper potentiometer limit
+		{
+			speed=0;
+			armMotor.set(speed);
+		}
+			
+		if(!frontLimit.get()&&speed>0)//limit switch bottom limit
 		{
 			speed=0;
 			armMotor.set(speed);
