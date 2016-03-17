@@ -18,27 +18,27 @@ public class HW {
 	
 	/* CAN */// Check roboRio web interface for these values
 	public final static int motorFrontLeft = 20;//set
-	public final static int motorFrontRight = 15;//set
-	public final static int motorBackLeft = 1;//set
-	public final static int motorBackRight = 14;//set
-	public final static int motorPunch = 13;
+	public final static int motorFrontRight = 150;//set
+	public final static int motorBackLeft = 100;//set
+	public final static int motorBackRight = 140;//set
+	public final static int motorPunch = 130;
 	/* PWM */
 
-	public final static int armMotor = 2;//set
-	public final static int intakeMotor = 12;//set
-	public final static int shooter = 13;//set
-	public final static int servo = 0;
+	public final static int armMotor = 20;//set
+	public final static int intakeMotor = 120;//set
+	public final static int shooter = 130;//set
+	public final static int servo = 20;
 
 	
 	/* Pneumatics */
-	public final static int brakeSolenoid = 0;
-	public final static int intakeSolenoid = 3;
+	public final static int brakeSolenoid = 20;
+	public final static int intakeSolenoid = 30;
 	
 	/* Analog */
-	public final static int potentiometer = 0;
-	public final static int LPSensor = 2;
-	public final static int LoadedSensor = 3; 
-	public final static int limitSwitchFront = 0;
-	public final static int limitSwitchBack = 1;
+	public final static int potentiometer = 4;
+	public final static int LPSensor = 20;
+	public final static int LoadedSensor = 30; 
+	public final static int limitSwitchFront = 20;
+	public final static int limitSwitchBack = 201;
 
 }
