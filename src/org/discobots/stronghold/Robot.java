@@ -95,6 +95,7 @@ public class Robot extends IterativeRobot {
     	shootSub = new ShooterSubsystem();
     	intakeSub = new IntakeSubsystem();
     	linearPunchSub = new LinearPunchSubsystem();
+    	servoSub = new ServoSubsystem();
 
     	
     	
