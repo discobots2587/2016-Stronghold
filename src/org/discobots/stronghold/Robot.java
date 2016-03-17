@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import java.util.concurrent.TimeUnit;
 
 import org.discobots.stronghold.commands.auton.AutonomousCommand;
+import org.discobots.stronghold.commands.auton.DoNothing;
 import org.discobots.stronghold.commands.auton.DumbAutonCommand;
 import org.discobots.stronghold.commands.auton.DumbPositioningAuton;
 import org.discobots.stronghold.commands.auton.Forwards50;
@@ -27,6 +28,7 @@ import org.discobots.stronghold.subsystems.ElectricalSubsystem;
 import org.discobots.stronghold.subsystems.IntakeSubsystem;
 import org.discobots.stronghold.subsystems.LinearPunchSubsystem;
 import org.discobots.stronghold.subsystems.ShooterSubsystem;
+
 
 
 
@@ -101,6 +103,7 @@ public class Robot extends IterativeRobot {
 		autonChooser.addObject("Forwards 75% and BACK", new Forwards75Back());
 		autonChooser.addObject("Forwards 50%", new Forwards50());
 		autonChooser.addObject("Forwards 50% and BACK", new Forwards50Back());
+		autonChooser.addObject("Do Nothing",new DoNothing());
 		SmartDashboard.putData("Choose Auton", autonChooser);
 		
 		driveChooser = new SendableChooser();
@@ -161,7 +164,7 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		Dashboard.update();
 		long end = System.currentTimeMillis();
-		loopExecutionTime = end - start;       
+		loopExecutionTime = end - start;
     }
 
     public void teleopInit() {

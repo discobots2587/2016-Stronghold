@@ -29,12 +29,11 @@ public class ArmSubsystem extends Subsystem {
 
 	public ArmSubsystem()
 	{
-		frontLimit=new DigitalInput(0);
-		backLimit = new DigitalInput(1);
+//		frontLimit=new DigitalInput(0);
+//		backLimit = new DigitalInput(1);
 		potentiometer = new AnalogInput(HW.potentiometer);
 		armMotor = new CANTalon(HW.armMotor);
 		discSol = new Solenoid(HW.brakeSolenoid);
-		
 	}
 	
 	public void setSpeed(double speed)
@@ -49,7 +48,7 @@ public class ArmSubsystem extends Subsystem {
 			setBrake(false);
 			armMotor.set(speed);	
 		}
-		if(frontLimit.get()&&speed>0)
+/*		if(frontLimit.get()&&speed>0)
 		{
 			speed=0;
 			armMotor.set(speed);
@@ -59,7 +58,7 @@ public class ArmSubsystem extends Subsystem {
 			speed=0;
 			armMotor.set(speed);
 		}
-	}
+*/	}
 
    public void initDefaultCommand() {
         // Set the default command for a subsystem here.
