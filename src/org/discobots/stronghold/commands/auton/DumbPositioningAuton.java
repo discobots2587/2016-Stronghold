@@ -1,8 +1,15 @@
 package org.discobots.stronghold.commands.auton;
 
+import java.util.concurrent.TimeUnit;
+
+import org.discobots.stronghold.HW;
+import org.discobots.stronghold.Robot;
+import org.discobots.stronghold.commands.arm.MoveArmCommand;
+import org.discobots.stronghold.commands.arm.SetArmPosCommand;
 import org.discobots.stronghold.commands.auton.subcommands.AutonomousArcadeDrive;
 import org.discobots.stronghold.commands.auton.subcommands.WaitCommand;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -10,7 +17,16 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  */
 public class DumbPositioningAuton extends CommandGroup {
-    public  DumbPositioningAuton() {
+     DigitalInput failsafe;//limit switch
+	public  DumbPositioningAuton() {
+		failsafe = new DigitalInput(HW.LPSensor);
+		
+		
+    	long stop=System.nanoTime()+TimeUnit.SECONDS.toNanos(2);
+    			while (stop>System.nanoTime()&&failsafe.get()==true) { //two second maximum
+			addSequential(new SetArmPosCommand(-.5));
+		}
+    			addSequential(new MoveArmCommand(0));
     	addSequential(new AutonomousArcadeDrive(.50,0,4000));//forwards 1/2 speed for 4 seconds until hits wall
     	addSequential(new WaitCommand(500));
     	addSequential(new AutonomousArcadeDrive(-.3,-.5,2000));//back up while turning towards goal
