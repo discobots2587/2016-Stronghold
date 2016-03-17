@@ -19,11 +19,12 @@ public class AutonomousDriveDebug extends Command {
     	this.y=y;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.driveTrainSub);
+
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -34,6 +35,15 @@ public class AutonomousDriveDebug extends Command {
     	Robot.driveTrainSub.arcadeDriveUnramped(y, x);
     	}
     	Robot.driveTrainSub.arcadeDriveUnramped(0, 0);
+		for(long x=System.currentTimeMillis()+2000;x>=System.currentTimeMillis();)
+		{
+			Robot.driveTrainSub.arcadeDriveUnramped(0.75, 0.75);
+		}
+    	Robot.driveTrainSub.arcadeDriveUnramped(0, 0);
+		for(long x =System.currentTimeMillis()+2000;x>=System.currentTimeMillis();)
+		{
+			Robot.driveTrainSub.tankDriveUnramped(0.75, 0.75);
+		}
     	fin=true;
     }
 

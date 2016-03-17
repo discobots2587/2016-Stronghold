@@ -11,19 +11,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  */
 public class Forwards75DebugWithTankDrive extends CommandGroup {
-    
     public  Forwards75DebugWithTankDrive() {
+    	requires(Robot.driveTrainSub);
     		addSequential(new AutonomousArcadeDrive(0.75,0.75,1000));
-    		addSequential(new WaitCommand(2000));
-    		for(long x =System.currentTimeMillis()+2000;x<System.currentTimeMillis();)
-    		{
-    			Robot.driveTrainSub.arcadeDriveUnramped(0.75, 0.75);
-    		}
-    		addSequential(new WaitCommand(2000));
-    		for(long x =System.currentTimeMillis()+2000;x<System.currentTimeMillis();)
-    		{
-    			Robot.driveTrainSub.tankDriveUnramped(0.75, 0.75);
-    		}
     		addSequential(new WaitCommand(2000));
     		addSequential(new AutonomousDriveDebug(1,1,4000));
     		
