@@ -29,7 +29,7 @@ public class AutonomousArcadeDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrainSub.arcadeDriveUnramped(speedY, speedX);
+    	Robot.driveTrainSub.robotDrive.arcadeDrive(speedY, speedX);
     }
 
     // Make this return true when this Command no longer needs to run execute()

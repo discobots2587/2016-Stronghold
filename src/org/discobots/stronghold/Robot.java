@@ -83,7 +83,6 @@ public class Robot extends IterativeRobot {
 	    System.err.println("VisionException: " + e.getMessage());
    }
 
-	 System.out.println("no camera attached");  
  
     	/* Subsystems */
     	electricalSub = new ElectricalSubsystem();

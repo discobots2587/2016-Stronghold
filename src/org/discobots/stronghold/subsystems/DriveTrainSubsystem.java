@@ -23,13 +23,13 @@ public class DriveTrainSubsystem extends Subsystem {
 	/* Motors */
 
 
-	RobotDrive robotDrive;
+	public RobotDrive robotDrive;
 
 	static final double CONSTANT_RAMP_LIMIT = 0.1; // ramping
 	// 0.05 = 4/10 seconds to full, 0.1 = 2/10 seconds to full
 	boolean allowRamped = false;
 	private double prevLeft = 0, prevRight = 0;
-	private double prevY = 0, prevX = 0, prevR;
+	private double prevY = 0, prevX = 0;
 	public enum DriveCommandChoice { TANK, ARCADE, SPLITARCADE }
 	DriveCommandChoice choice;
 	CANTalon frontLeft,frontRight,backLeft,backRight;
@@ -131,7 +131,6 @@ public class DriveTrainSubsystem extends Subsystem {
 		prevRight = 0;
 		prevX = 0;
 		prevY = 0;
-		prevR = 0;
 		robotDrive.tankDrive(leftStick * kSpeedScaling, -rightStick
 				* kSpeedScaling);
 	}
@@ -141,7 +140,6 @@ public class DriveTrainSubsystem extends Subsystem {
 		prevRight = 0;
 		prevX = 0;
 		prevY = 0;
-		prevR = 0;
 		robotDrive.arcadeDrive(x * kSpeedScaling, -y * kSpeedScaling);
 		// robotdrive is dumb arcadeDrive so params are switched
 	}
