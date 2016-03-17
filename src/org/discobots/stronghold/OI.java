@@ -135,6 +135,7 @@ public class OI {
 		b_btnB.whenReleased(new BrakeCommand(true));
 
 		b_btnY.whileHeld(new ServoCommand());
+		b2_btnY.whileHeld(new ServoCommand());
 		// This is for the version with single click loading and firing, no whenReleased
 	//	b_btnB.whenPressed(new LinearPunchStartCommand());
 		//b_btnB.whenReleased(new LinearPunchEndCommand());
