@@ -11,15 +11,15 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class ShooterSubsystem extends Subsystem {
 	
-	public CANTalon shooterMotor;
-
+	public Solenoid shooter1;
+	public Solenoid shooter2;
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public ShooterSubsystem()
 	{
-		shooterMotor = new CANTalon(HW.shooter);
-		
+		shooter1 = new Solenoid(HW.shooter1);
+		shooter2 = new Solenoid(HW.shooter2);
 		
 	}
 	
@@ -29,8 +29,16 @@ public class ShooterSubsystem extends Subsystem {
     }
 
 
-	public void SetShooter(double speed) {
-		shooterMotor.set(speed);
+	public void shoot() {
+		
+		long wait=System.currentTimeMillis()+1000;
+		for(long x=System.currentTimeMillis();x<=wait;)
+		{
+			shooter1.set(true);
+			shooter2.set(true);
+		}
+		shooter1.set(false);
+		shooter2.set(false);
 	}
 
 }

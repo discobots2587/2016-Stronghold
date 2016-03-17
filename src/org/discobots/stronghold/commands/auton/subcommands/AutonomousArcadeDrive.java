@@ -3,6 +3,7 @@ package org.discobots.stronghold.commands.auton.subcommands;
 import org.discobots.stronghold.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -13,6 +14,7 @@ public class AutonomousArcadeDrive extends Command {
 	private long endTime;
 	private double speedY, speedX;
 	private boolean fin=false;
+	public boolean end=false;
 	
     public AutonomousArcadeDrive(double y, double x, int t) {//t is in milliseconds
         // Use requires() here to declare subsystem dependencies
@@ -21,11 +23,13 @@ public class AutonomousArcadeDrive extends Command {
     	speedY = y;
     	speedX = x;
     	time = t;
+    	endTime = System.currentTimeMillis() + time;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	endTime = System.currentTimeMillis() + time;
+		SmartDashboard.putBoolean("AutonomousArcadeEndTimeReached: ", end);
+
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -34,23 +38,19 @@ public class AutonomousArcadeDrive extends Command {
     	{
     	Robot.driveTrainSub.robotDrive.arcadeDrive(speedY, speedX);
     	}
-    	Robot.driveTrainSub.arcadeDriveUnramped(0, 0);
-    	Robot.driveTrainSub.robotDrive.arcadeDrive(0, 0);
+    	end =true;
     	fin=true;
     }
+    
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (fin==true)
-    	{
-        	Robot.driveTrainSub.robotDrive.arcadeDrive(0, 0);
-    	}
     	return fin;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveTrainSub.tankDriveUnramped(0, 0);
+    	Robot.driveTrainSub.robotDrive.arcadeDrive(0, 0);
     }
 
     // Called when another command which requires one or more of the same

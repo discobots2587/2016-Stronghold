@@ -26,12 +26,15 @@ public class HW {
 
 	public final static int armMotor = 2;//set
 	public final static int intakeMotor = 12;//set
-	public final static int shooter = 13;//set
 
 	
 	/* Pneumatics */
 	public final static int brakeSolenoid = 0;
 	public final static int intakeSolenoid = 3;
+	public final static int shooter1 = 6;//set
+	public final static int shooter2 = 7;//set
+
+	
 	
 	/* Analog */
 	public final static int potentiometer = 0;

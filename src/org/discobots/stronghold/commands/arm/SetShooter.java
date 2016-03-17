@@ -10,18 +10,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class SetShooter extends Command {
 
-	private double speed;
-	
-    public SetShooter(double speed) {
+	public SetShooter(double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.shootSub);
-    	this.speed = speed;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.shootSub.SetShooter(speed);
+    	Robot.shootSub.shoot();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -35,7 +32,7 @@ public class SetShooter extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    //	Robot.armSub.armMotor.set(0);
+    	//Robot.shootSub.SetShooter(0);
     }
 
     // Called when another command which requires one or more of the same
