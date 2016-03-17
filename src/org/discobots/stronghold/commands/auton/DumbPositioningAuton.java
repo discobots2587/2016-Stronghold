@@ -27,12 +27,12 @@ public class DumbPositioningAuton extends CommandGroup {
 			addSequential(new SetArmPosCommand(-.5));
 		}
     			addSequential(new MoveArmCommand(0));
-    	addSequential(new AutonomousArcadeDrive(.50,0,4000));//forwards 1/2 speed for 4 seconds until hits wall
+    	addSequential(new AutonomousArcadeDrive(.50,0,1500));//forwards 1/2 speed for 1.5 seconds
     	addSequential(new WaitCommand(500));
-    	addSequential(new AutonomousArcadeDrive(-.3,-.5,2000));//back up while turning towards goal
+    	addSequential(new AutonomousArcadeDrive(-.3,-.5,1000));//back up while turning towards goal
     	addSequential(new WaitCommand(250));
     	addSequential(new AutonomousArcadeDrive(0,.4,1000));//point turn towards goal
-    	addSequential(new AutonomousArcadeDrive(.5,0,3000));//forwards towards goal
+    	addSequential(new AutonomousArcadeDrive(.5,0,2000));//forwards towards goal
 
     	// Add Commands here:
         // e.g. addSequential(new Command1());
