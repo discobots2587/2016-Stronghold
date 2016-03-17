@@ -12,6 +12,10 @@ import java.util.concurrent.TimeUnit;
 import org.discobots.stronghold.commands.auton.AutonomousCommand;
 import org.discobots.stronghold.commands.auton.DumbAutonCommand;
 import org.discobots.stronghold.commands.auton.DumbPositioningAuton;
+import org.discobots.stronghold.commands.auton.Forwards50;
+import org.discobots.stronghold.commands.auton.Forwards50Back;
+import org.discobots.stronghold.commands.auton.Forwards75;
+import org.discobots.stronghold.commands.auton.Forwards75Back;
 import org.discobots.stronghold.commands.auton.SimpleDriveAutonomousCommand;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
@@ -23,6 +27,10 @@ import org.discobots.stronghold.subsystems.ElectricalSubsystem;
 import org.discobots.stronghold.subsystems.IntakeSubsystem;
 import org.discobots.stronghold.subsystems.LinearPunchSubsystem;
 import org.discobots.stronghold.subsystems.ShooterSubsystem;
+
+
+
+
 
 //import org.discobots.stronghold.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -86,9 +94,13 @@ public class Robot extends IterativeRobot {
     	/* Dashboard Choosers */
     	
     	autonChooser = new SendableChooser();
-    	autonChooser.addDefault("DumbPostitioningAuton", new DumbPositioningAuton());
+    	autonChooser.addObject("DumbPostitioningAuton", new DumbPositioningAuton());
 		autonChooser.addObject("DumbAuton", new DumbAutonCommand());
 		autonChooser.addObject("Auton2", new SimpleDriveAutonomousCommand());
+		autonChooser.addDefault("Forwards 75%", new Forwards75());
+		autonChooser.addObject("Forwards 75% and BACK", new Forwards75Back());
+		autonChooser.addObject("Forwards 50%", new Forwards50());
+		autonChooser.addObject("Forwards 50% and BACK", new Forwards50Back());
 		SmartDashboard.putData("Choose Auton", autonChooser);
 		
 		driveChooser = new SendableChooser();
