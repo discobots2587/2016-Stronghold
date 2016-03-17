@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Forwards50Back extends CommandGroup {
     
     public  Forwards50Back() {
-    		addSequential(new AutonomousArcadeDrive(0.50,0.50,2000));
+    		addSequential(new AutonomousArcadeDrive(0.50,0,2000));
     		addSequential(new WaitCommand(1000));
-    		addSequential(new AutonomousArcadeDrive(-0.50,-0.50,2100));
+    		addSequential(new AutonomousArcadeDrive(-0.50,0,2100));
     	// Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
