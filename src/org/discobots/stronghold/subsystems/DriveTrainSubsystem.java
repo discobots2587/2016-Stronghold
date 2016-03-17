@@ -59,8 +59,8 @@ public class DriveTrainSubsystem extends Subsystem {
 		robotDrive = new RobotDrive(HW.motorLeft,HW.motorRight);
 
 	} */
-	
 
+	
 	public void setRamped(boolean a) {
 		this.allowRamped = a;
 	}
