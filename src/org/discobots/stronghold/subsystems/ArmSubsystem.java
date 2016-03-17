@@ -29,7 +29,7 @@ public class ArmSubsystem extends Subsystem {
 
 	public ArmSubsystem()
 	{
-//		frontLimit=new DigitalInput(0);
+		frontLimit=new DigitalInput(0);
 //		backLimit = new DigitalInput(1);
 		potentiometer = new AnalogInput(HW.potentiometer);
 		armMotor = new CANTalon(HW.armMotor);
@@ -48,12 +48,12 @@ public class ArmSubsystem extends Subsystem {
 			setBrake(false);
 			armMotor.set(speed);	
 		}
-/*		if(frontLimit.get()&&speed>0)
+		if(!frontLimit.get()&&speed>0)
 		{
 			speed=0;
 			armMotor.set(speed);
 		}
-		if(backLimit.get()&&speed<0)
+		/*		if(backLimit.get()&&speed<0)
 		{
 			speed=0;
 			armMotor.set(speed);
