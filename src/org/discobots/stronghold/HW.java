@@ -37,4 +37,7 @@ public class HW {
 	public final static int potentiometer = 0;
 	public final static int LPSensor = 2;
 	public final static int LoadedSensor = 3; 
+	public final static int limitSwitchFront = 0;
+	public final static int limitSwitchBack = 1;
+
 }

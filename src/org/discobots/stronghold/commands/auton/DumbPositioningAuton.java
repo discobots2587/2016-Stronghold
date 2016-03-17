@@ -17,13 +17,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  */
 public class DumbPositioningAuton extends CommandGroup {
-     DigitalInput failsafe;//limit switch
 	public  DumbPositioningAuton() {
-		failsafe = new DigitalInput(HW.LPSensor);
 		
 		
     	long stop=System.nanoTime()+TimeUnit.SECONDS.toNanos(2);
-    			while (stop>System.nanoTime()&&failsafe.get()==true) { //two second maximum
+    			while (stop>System.nanoTime()) { //two second maximum
 			addSequential(new SetArmPosCommand(-.5));
 		}
     			addSequential(new MoveArmCommand(0));

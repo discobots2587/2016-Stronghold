@@ -6,6 +6,7 @@ import org.discobots.stronghold.utils.LTRTXBOX;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -22,14 +23,18 @@ public class ArmSubsystem extends Subsystem {
 	public Solenoid discSol;
 	public final double kP = .5; //P constant
 	public static final double armSpeed = .5;
+	public DigitalInput frontLimit;
+    public DigitalInput backLimit;//limit switch
 
-	
 
 	public ArmSubsystem()
 	{
+		frontLimit=new DigitalInput(0);
+		backLimit = new DigitalInput(1);
 		potentiometer = new AnalogInput(HW.potentiometer);
 		armMotor = new CANTalon(HW.armMotor);
 		discSol = new Solenoid(HW.brakeSolenoid);
+		
 	}
 	
 	public void setSpeed(double speed)
@@ -43,6 +48,16 @@ public class ArmSubsystem extends Subsystem {
 		{
 			setBrake(false);
 			armMotor.set(speed);	
+		}
+		if(frontLimit.get()&&speed>0)
+		{
+			speed=0;
+			armMotor.set(speed);
+		}
+		if(backLimit.get()&&speed<0)
+		{
+			speed=0;
+			armMotor.set(speed);
 		}
 	}
 
