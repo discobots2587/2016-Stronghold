@@ -2,6 +2,7 @@
 package org.discobots.stronghold;
 
 import edu.wpi.first.wpilibj.CameraServer;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -29,6 +30,7 @@ import org.discobots.stronghold.subsystems.ElectricalSubsystem;
 import org.discobots.stronghold.subsystems.IntakeSubsystem;
 import org.discobots.stronghold.subsystems.LinearPunchSubsystem;
 import org.discobots.stronghold.subsystems.ShooterSubsystem;
+import org.discobots.stronghold.subsystems.ServoSubsystem;
 
 
 
@@ -61,6 +63,7 @@ public class Robot extends IterativeRobot {
 	public static ElectricalSubsystem electricalSub;
 	public static IntakeSubsystem intakeSub;
 	public static LinearPunchSubsystem linearPunchSub;
+	public static ServoSubsystem servoSub;
 	
     Command autonomousCommand,driveCommand;
     SendableChooser driveChooser, autonChooser;

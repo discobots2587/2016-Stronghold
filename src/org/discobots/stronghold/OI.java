@@ -1,6 +1,7 @@
 package org.discobots.stronghold;
 
 import org.discobots.stronghold.commands.LinearPunchEndCommand;
+import org.discobots.stronghold.commands.ServoCommand;
 import org.discobots.stronghold.commands.LinearPunchStartCommand;
 import org.discobots.stronghold.commands.ToggleCompressor;
 import org.discobots.stronghold.commands.arm.BrakeCommand;
@@ -133,6 +134,7 @@ public class OI {
 		b_btnB.whenReleased(new SetShooter(0));
 		b_btnB.whenReleased(new BrakeCommand(true));
 
+		b_btnY.whileHeld(new ServoCommand());
 		// This is for the version with single click loading and firing, no whenReleased
 	//	b_btnB.whenPressed(new LinearPunchStartCommand());
 		//b_btnB.whenReleased(new LinearPunchEndCommand());
