@@ -1,17 +1,16 @@
 package org.discobots.stronghold.commands.auton;
 
 import org.discobots.stronghold.commands.auton.subcommands.AutonomousArcadeDrive;
-import org.discobots.stronghold.commands.auton.subcommands.AutonomousTankDrive;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class Forwards75 extends CommandGroup {
+public class Forwards75DebugWithTankDrive extends CommandGroup {
     
-    public  Forwards75() {
-    		addSequential(new AutonomousTankDrive(0.75,0.75,1000));
+    public  Forwards75DebugWithTankDrive() {
+    		addSequential(new AutonomousArcadeDrive(0.75,0.75,1000));
     	// Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

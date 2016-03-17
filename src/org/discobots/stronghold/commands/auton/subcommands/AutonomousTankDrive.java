@@ -12,13 +12,13 @@ public class AutonomousTankDrive extends Command {
 	private double speedLeft, speedRight;
 	
 	
-    public AutonomousTankDrive(double y, double x, int t) //Speed Left; Speed Right; time in ms
+    public AutonomousTankDrive(double left, double right, int t) //Speed Left; Speed Right; time in ms
     {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.driveTrainSub);
-    	speedLeft = y;
-    	speedRight = x;
+    	speedLeft = left;
+    	speedRight = right;
     	time = t; //in ms
     }
 

@@ -1,5 +1,6 @@
 package org.discobots.stronghold.commands.auton;
 
+import org.discobots.stronghold.Robot;
 import org.discobots.stronghold.commands.auton.subcommands.AutonomousArcadeDrive;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
