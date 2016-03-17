@@ -24,13 +24,13 @@ public class AutonomousArcadeDrive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.driveTrainSub.arcadeDriveUnramped(speedY, speedX);
     	endTime = System.currentTimeMillis() + time;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrainSub.arcadeDriveRamp(speedY, speedX);
-    	    }
+    }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
