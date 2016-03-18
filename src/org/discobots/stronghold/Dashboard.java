@@ -32,9 +32,12 @@ public class Dashboard {
 		//SmartDashboard.putNumber("PDP V", Robot.electricalSub.getPDPVoltage());
 		SmartDashboard.putBoolean("BrakeValue", Robot.armSub.getBrake());
 		SmartDashboard.putNumber("LPSensor", Robot.linearPunchSub.getLPSensorData());
-		SmartDashboard.putNumber("PRESSURE", Robot.electricalSub.getPressure());
-		SmartDashboard.putBoolean("Pressure Switch State", Robot.electricalSub.getPressureSwitchState());
 		//SmartDashboard.putNumber("ButtonMoveSpeed", Robot.driveTrainSub.buttonSpeed);
+		}
+		if (driveCounter%10==1)
+		{
+			SmartDashboard.putNumber("PRESSURE", Robot.electricalSub.getPressure());
+			SmartDashboard.putBoolean("Pressure Switch State", Robot.electricalSub.getPressureSwitchState());
 		}
 		 if(driveCounter%100==1)//for very unimportant notifications
 		{

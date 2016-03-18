@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class SetShooter extends Command {
 boolean fin=false;
-long endTime;
+long endTime1,endTime2;
 	public SetShooter() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -21,23 +21,22 @@ long endTime;
 
     // Called just before this Command runs the first time
     protected void initialize() {
- endTime = System.currentTimeMillis()+(700*3);
+    endTime1 = System.currentTimeMillis()+1000;
+    endTime2 = System.currentTimeMillis()+(700*3);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    while(System.currentTimeMillis()<=endTime1)
+    {
 		Robot.intakeSub.setIntake(true);
-	new WaitCommand(700);
+    }
+		while(System.currentTimeMillis()<=endTime2)
+	{
 		Robot.shootSub.shooter1.set(true);
 		Robot.shootSub.shooter2.set(true);
-	
-	new WaitCommand(700);
-		Robot.shootSub.shooter1.set(false);
-		Robot.shootSub.shooter2.set(false);
-		Robot.intakeSub.setIntake(false);
-	new WaitCommand(700);
-	while(System.currentTimeMillis()<=endTime)
-	{}
+	}
+	if(endTime2+100<System.currentTimeMillis())
 	fin=true;
     }
     
@@ -48,12 +47,13 @@ long endTime;
 
     // Called once after isFinished returns true
     protected void end() {
-    	//Robot.shootSub.SetShooter(0);
-    }
+		Robot.shootSub.shooter1.set(false);
+		Robot.shootSub.shooter2.set(false);
+		Robot.intakeSub.setIntake(false);
+		}
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }
