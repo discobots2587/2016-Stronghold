@@ -38,8 +38,11 @@ public class HW {
 	
 	/* Analog */
 	public final static int potentiometer = 0;
+	public final static int pressureSensor=1;
 	public final static int LPSensor = 2;
 	public final static int LoadedSensor = 3; 
+	
+	/* Digital */
 	public final static int limitSwitchFront = 0;
 	public final static int limitSwitchBack = 1;
 

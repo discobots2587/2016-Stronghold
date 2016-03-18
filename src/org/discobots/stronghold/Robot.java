@@ -78,7 +78,7 @@ public class Robot extends IterativeRobot {
        // LogicC615.startCapture();
        LogicC615.startAutomaticCapture(C615);//automatically start streaming footage 
    }catch(com.ni.vision.VisionException e){
-	    System.err.println("VisionException: " + e.getMessage());
+	    System.err.println("Mason Is Awesome \n BUT there is a VisionException: " + e.getMessage());
    }
 
  

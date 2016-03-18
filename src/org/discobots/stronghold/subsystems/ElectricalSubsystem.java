@@ -1,5 +1,8 @@
 package org.discobots.stronghold.subsystems;
 
+import org.discobots.stronghold.HW;
+import org.discobots.stronghold.utils.PressureSensor;
+
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -11,12 +14,14 @@ public class ElectricalSubsystem extends Subsystem {
     
 	PowerDistributionPanel pdp;
 	Compressor cmp;
+	PressureSensor ps;
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public ElectricalSubsystem(){
 		pdp = new PowerDistributionPanel();
 		cmp = new Compressor();
+		ps = new PressureSensor(HW.pressureSensor);
 	}
 	
     public void initDefaultCommand() {
@@ -39,7 +44,7 @@ public class ElectricalSubsystem extends Subsystem {
 		return totalCurrent;
 	}
 	public void setCompressor (boolean var){
-		if (var){
+		if (var){// could also add (&& getPressure() < MAX PRESSURE VALUE)
 				cmp.start();
 		}else{
 				cmp.stop();
@@ -50,6 +55,9 @@ public class ElectricalSubsystem extends Subsystem {
 	}
 	public boolean getPressureSwitchState(){
 		return cmp.getPressureSwitchValue();
+	}
+	public double getPressure() {
+		return ps.getPSI();
 	}
 	public double getCompressorControlLoopState(){
 		return cmp.getCompressorCurrent();

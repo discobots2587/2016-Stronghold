@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class SetShooter extends Command {
 boolean fin=false;
+long endTime;
 	public SetShooter() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -20,21 +21,23 @@ boolean fin=false;
 
     // Called just before this Command runs the first time
     protected void initialize() {
-
+ endTime = System.currentTimeMillis()+(700*3);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 		Robot.intakeSub.setIntake(true);
-	new WaitCommand(500);
+	new WaitCommand(700);
 		Robot.shootSub.shooter1.set(true);
 		Robot.shootSub.shooter2.set(true);
 	
-	new WaitCommand(300);
+	new WaitCommand(700);
 		Robot.shootSub.shooter1.set(false);
 		Robot.shootSub.shooter2.set(false);
 		Robot.intakeSub.setIntake(false);
-	new WaitCommand(500);
+	new WaitCommand(700);
+	while(System.currentTimeMillis()<=endTime)
+	{}
 	fin=true;
     }
     
