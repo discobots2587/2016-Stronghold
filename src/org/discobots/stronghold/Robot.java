@@ -60,7 +60,6 @@ public class Robot extends IterativeRobot {
 	public static ElectricalSubsystem electricalSub;
 	public static IntakeSubsystem intakeSub;
 	public static LinearPunchSubsystem linearPunchSub;
-	
     Command autonomousCommand,driveCommand;
     SendableChooser driveChooser, autonChooser;
 

@@ -28,29 +28,4 @@ public class ShooterSubsystem extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-
-
-	public void shoot() {
-		long wait=System.currentTimeMillis()+500;
-		for(long x=System.currentTimeMillis();x<=wait;)
-		{
-			Robot.intakeSub.setIntake(true);
-		}
-		 wait=System.currentTimeMillis()+100;
-		for(long x=System.currentTimeMillis();x<=wait;)
-		{
-			shooter1.set(true);
-			shooter2.set(true);
-		}
-		wait=System.currentTimeMillis()+500;
-		for(long x=System.currentTimeMillis();x<=wait;)
-		{
-			shooter1.set(false);
-			shooter2.set(false);
-		}
-		Robot.intakeSub.setIntake(false);
-
-		
-	}
-
 }

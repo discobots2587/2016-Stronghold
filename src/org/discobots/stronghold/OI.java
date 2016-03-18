@@ -2,6 +2,7 @@ package org.discobots.stronghold;
 
 import org.discobots.stronghold.commands.LinearPunchEndCommand;
 import org.discobots.stronghold.commands.LinearPunchStartCommand;
+import org.discobots.stronghold.commands.SensorToggle;
 import org.discobots.stronghold.commands.ToggleCompressor;
 import org.discobots.stronghold.commands.arm.BrakeCommand;
 import org.discobots.stronghold.commands.arm.MaintainArmPosCommand;
@@ -90,21 +91,18 @@ public class OI {
 		b2_dpadL.whenPressed(new SetArmPosCommand(4));
 		b2_dpadD.whenPressed(new SetArmPosCommand(4.814));
 		
-		b_dpadU.whenPressed(new SetArmPosCommand(3.558));
-		b_dpadL.whenPressed(new SetArmPosCommand(4));
-		b_dpadD.whenPressed(new SetArmPosCommand(4.814));
+
 
 		b2_bumpR.whenPressed(new SetIntakeCommand(1));
 		b2_bumpR.whenReleased(new SetIntakeCommand(0));
 		b2_bumpL.whileHeld(new SetIntakeCommand(-1));
 		b2_bumpL.whenPressed(new SetIntakeCommand(0));
 		
+		b2_btnX.whenPressed(new MoveRobotForward());
+		b2_btnA.whenPressed(new IntakeClawCommand());
+
 		
-		b2_sStar.whileHeld(new BrakeCommand(true));
-		b2_sStar.whenReleased(new BrakeCommand(false));
-		b_sStar.whenPressed(new BrakeCommand(true));
-		b_sStar.whenReleased(new BrakeCommand(false));
-		b_btnY.whenPressed(new ToggleCompressor());
+		b2_sStar.whenPressed(new SensorToggle());
 		b2_btnY.whenPressed(new ToggleCompressor());
 		
 		//JOYSTICK 1******************************************************************
@@ -115,6 +113,11 @@ public class OI {
 		b2_btnB.whenReleased(new LinearPunchEndCommand());
 		b_btnB.whenReleased(new LinearPunchEndCommand());
 	*/	
+
+		b_dpadU.whenPressed(new SetArmPosCommand(3.558));
+		b_dpadL.whenPressed(new SetArmPosCommand(4));
+		b_dpadD.whenPressed(new SetArmPosCommand(4.814));
+		
 		b_sBack.whenPressed(new CycleDriveCommand());
 		b_bumpR.whileHeld(new SetIntakeCommand(-1));
 		b_bumpR.whenReleased(new SetIntakeCommand(0));
@@ -122,16 +125,15 @@ public class OI {
 		b_bumpL.whenReleased(new SetIntakeCommand(0));
 		
 		b_btnA.whenPressed(new IntakeClawCommand());
-		b2_btnA.whenPressed(new IntakeClawCommand());
-		
 		b_btnX.whenPressed(new MoveRobotForward());
-		b2_btnX.whenPressed(new MoveRobotForward());
+
 		
 		
-		b_btnB.whenPressed(new BrakeCommand(false));
-		b_btnB.whileHeld(new SetShooter(1));
-		b_btnB.whenReleased(new SetShooter(0));
-		b_btnB.whenReleased(new BrakeCommand(true));
+		b_sStar.whenPressed(new SensorToggle());
+		b_btnY.whenPressed(new ToggleCompressor());
+		
+	//	b_btnB.whenPressed(new SetShooter());
+	//	b2_btnB.whenPressed(new SetShooter());
 
 		// This is for the version with single click loading and firing, no whenReleased
 	//	b_btnB.whenPressed(new LinearPunchStartCommand());

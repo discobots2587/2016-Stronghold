@@ -20,18 +20,20 @@ public class DumbPositioningAuton extends CommandGroup {
 	public  DumbPositioningAuton() {
 		
 		
-    	long stop=System.nanoTime()+TimeUnit.SECONDS.toNanos(2);
+    	long stop=System.nanoTime()+1500;
     			while (stop>System.nanoTime()) { //two second maximum
 			addSequential(new MoveArmCommand(0.5));
 		}
-    			addSequential(new MoveArmCommand(0));
+    		addSequential(new MoveArmCommand(0));
+
+   /* 			addSequential(new MoveArmCommand(0));
     	addSequential(new AutonomousArcadeDrive(.50,0,1500));//forwards 1/2 speed for 1.5 seconds
     	addSequential(new WaitCommand(500));
     	addSequential(new AutonomousArcadeDrive(-.3,-.5,1000));//back up while turning towards goal
     	addSequential(new WaitCommand(250));
     	addSequential(new AutonomousArcadeDrive(0,.4,1000));//point turn towards goal
     	addSequential(new AutonomousArcadeDrive(.5,0,2000));//forwards towards goal
-
+*/
     	// Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

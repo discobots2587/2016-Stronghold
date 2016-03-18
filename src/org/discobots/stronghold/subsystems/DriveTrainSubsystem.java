@@ -22,6 +22,7 @@ public class DriveTrainSubsystem extends Subsystem {
 	
 	/* Motors */
 
+	public int sensorToggle=1;
 
 	public RobotDrive robotDrive;
 

@@ -44,29 +44,31 @@ public class ArmSubsystem extends Subsystem {
 			armMotor.set(0);
 			setBrake(true);
 		}
+		else if(potentiometer.getVoltage()<=3.8&&speed<0)//upper potentiometer limit
+		{
+			speed=0;
+			armMotor.set(speed);
+			setBrake(true);
+		}
+
+		else if(!frontLimit.get()&&speed>0)//limit switch bottom limit
+		{
+			speed=0;
+			armMotor.set(speed);
+			setBrake(true);
+		}
+		
+		//SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------
+		else if(3.8<potentiometer.getVoltage()&&potentiometer.getVoltage()<4.5&&speed<0)//upper speed limit 1
+		{
+			setBrake(false);
+			speed*=-(3.8-potentiometer.getVoltage());
+			armMotor.set(speed);
+		}
 		else
 		{
 			setBrake(false);
 			armMotor.set(speed);	
-		}
-		if(potentiometer.getVoltage()<=3.8&&speed<0)//upper potentiometer limit
-		{
-			speed=0;
-			armMotor.set(speed);
-			new BrakeCommand(true);
-		}
-
-		if(!frontLimit.get()&&speed>0)//limit switch bottom limit
-		{
-			speed=0;
-			armMotor.set(speed);
-		}
-		
-		//SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------
-		if(3.8<potentiometer.getVoltage()&&potentiometer.getVoltage()<4.5&&speed<0)//upper speed limit 1
-		{
-			speed*=-(3.8-potentiometer.getVoltage());
-			armMotor.set(speed);
 		}
 
 		/*		if(backLimit.get()&&speed<0)
