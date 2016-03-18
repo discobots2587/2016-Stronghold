@@ -16,17 +16,21 @@ public class IntakeSubsystem extends Subsystem {
     // here. Call these from Commands.
 	private CANTalon intakeMotor;
 	private Solenoid intakeSol;
-	
+	private CANTalon tailMotor;
 	public IntakeSubsystem(){
 		intakeMotor = new CANTalon(HW.intakeMotor);
 		intakeSol = new Solenoid(HW.intakeSolenoid);
+		tailMotor = new CANTalon(HW.motorTail);
 	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    
+    public void setTail(double speed)
+    {
+    	tailMotor.set(speed);
+    }
     public void setIntakeSpeed(double speed){
     	intakeMotor.set(speed);
     }

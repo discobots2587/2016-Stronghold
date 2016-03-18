@@ -22,6 +22,7 @@ public class HW {
 	public final static int motorBackLeft = 1;//set
 	public final static int motorBackRight = 14;//set
 	public final static int motorPunch = 13;
+	public final static int motorTail =11;
 	/* PWM */
 
 	public final static int armMotor = 2;//set
