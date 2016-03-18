@@ -22,7 +22,7 @@ public class DumbPositioningAuton extends CommandGroup {
 		
     	long stop=System.nanoTime()+TimeUnit.SECONDS.toNanos(2);
     			while (stop>System.nanoTime()) { //two second maximum
-			addSequential(new SetArmPosCommand(-.5));
+			addSequential(new MoveArmCommand(0.5));
 		}
     			addSequential(new MoveArmCommand(0));
     	addSequential(new AutonomousArcadeDrive(.50,0,1500));//forwards 1/2 speed for 1.5 seconds
