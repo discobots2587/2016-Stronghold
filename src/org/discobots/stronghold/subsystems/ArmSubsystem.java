@@ -1,6 +1,7 @@
 package org.discobots.stronghold.subsystems;
 
 import org.discobots.stronghold.HW;
+import org.discobots.stronghold.Robot;
 import org.discobots.stronghold.commands.arm.BrakeCommand;
 import org.discobots.stronghold.commands.arm.MaintainArmPosCommand;
 import org.discobots.stronghold.utils.LTRTXBOX;
@@ -26,6 +27,8 @@ public class ArmSubsystem extends Subsystem {
 	public static final double armSpeed = .5;
 	public DigitalInput frontLimit;
     public DigitalInput backLimit;//limit switch
+	public String[] SensorToggleS={"ALL SENSORS OFF","BOTTOM SWITCH OFF","ALL SENSORS ON"};
+	public int sensorToggle=2;
 
 
 	public ArmSubsystem()
@@ -46,24 +49,48 @@ public class ArmSubsystem extends Subsystem {
 		}
 		else if(potentiometer.getVoltage()<=3.8&&speed<0)//upper potentiometer limit
 		{
+			if(sensorToggle==2||sensorToggle==1)
+			{
 			speed=0;
 			armMotor.set(speed);
 			setBrake(true);
+			}
+			else
+			{
+				setBrake(false);
+				armMotor.set(speed);
+			}
 		}
 
 		else if(!frontLimit.get()&&speed>0)//limit switch bottom limit
 		{
+			if(sensorToggle==1)
+			{
 			speed=0;
 			armMotor.set(speed);
 			setBrake(true);
+			}
+		else
+			{
+			setBrake(false);
+			armMotor.set(speed);
+			}
 		}
 		
 		//SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------
 		else if(3.8<potentiometer.getVoltage()&&potentiometer.getVoltage()<4.5&&speed<0)//upper speed limit 1
 		{
+			if(sensorToggle==2||sensorToggle==1)
+			{
 			setBrake(false);
 			speed*=-(3.8-potentiometer.getVoltage());
 			armMotor.set(speed);
+			}
+			else
+			{
+				setBrake(false);
+				armMotor.set(speed);
+			}
 		}
 		else
 		{

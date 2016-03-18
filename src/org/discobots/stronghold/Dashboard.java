@@ -32,6 +32,7 @@ public class Dashboard {
 		//SmartDashboard.putNumber("PDP V", Robot.electricalSub.getPDPVoltage());
 		//SmartDashboard.putBoolean("BrakeValue", Robot.armSub.getBrake());
 		SmartDashboard.putNumber("LPSensor", Robot.linearPunchSub.getLPSensorData());
+		SmartDashboard.putString("Sensor Toggle: ", Robot.armSub.SensorToggleS[Robot.armSub.sensorToggle]);
 		//SmartDashboard.putNumber("ButtonMoveSpeed", Robot.driveTrainSub.buttonSpeed);
 	
 		}
