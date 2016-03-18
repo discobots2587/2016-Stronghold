@@ -28,7 +28,6 @@ public class AutonomousArcadeDrive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-		SmartDashboard.putBoolean("AutonomousArcadeEndTimeReached: ", end);
 
     }
 

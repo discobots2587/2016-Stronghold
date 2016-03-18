@@ -1,6 +1,7 @@
 package org.discobots.stronghold.subsystems;
 
 import org.discobots.stronghold.HW;
+import org.discobots.stronghold.Robot;
 
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -30,15 +31,26 @@ public class ShooterSubsystem extends Subsystem {
 
 
 	public void shoot() {
-		
-		long wait=System.currentTimeMillis()+1000;
+		long wait=System.currentTimeMillis()+500;
+		for(long x=System.currentTimeMillis();x<=wait;)
+		{
+			Robot.intakeSub.setIntake(true);
+		}
+		 wait=System.currentTimeMillis()+100;
 		for(long x=System.currentTimeMillis();x<=wait;)
 		{
 			shooter1.set(true);
 			shooter2.set(true);
 		}
-		shooter1.set(false);
-		shooter2.set(false);
+		wait=System.currentTimeMillis()+500;
+		for(long x=System.currentTimeMillis();x<=wait;)
+		{
+			shooter1.set(false);
+			shooter2.set(false);
+		}
+		Robot.intakeSub.setIntake(false);
+
+		
 	}
 
 }

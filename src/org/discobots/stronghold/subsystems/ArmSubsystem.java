@@ -1,6 +1,7 @@
 package org.discobots.stronghold.subsystems;
 
 import org.discobots.stronghold.HW;
+import org.discobots.stronghold.commands.arm.BrakeCommand;
 import org.discobots.stronghold.commands.arm.MaintainArmPosCommand;
 import org.discobots.stronghold.utils.LTRTXBOX;
 
@@ -48,17 +49,26 @@ public class ArmSubsystem extends Subsystem {
 			setBrake(false);
 			armMotor.set(speed);	
 		}
-		if(potentiometer.getVoltage()>=425&&speed>0)//upper potentiometer limit
+		if(potentiometer.getVoltage()<=3.8&&speed<0)//upper potentiometer limit
 		{
 			speed=0;
 			armMotor.set(speed);
+			new BrakeCommand(true);
 		}
-			
+
 		if(!frontLimit.get()&&speed>0)//limit switch bottom limit
 		{
 			speed=0;
 			armMotor.set(speed);
 		}
+		
+		//SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------
+		if(3.8<potentiometer.getVoltage()&&potentiometer.getVoltage()<4.5&&speed<0)//upper speed limit 1
+		{
+			speed*=-(3.8-potentiometer.getVoltage());
+			armMotor.set(speed);
+		}
+
 		/*		if(backLimit.get()&&speed<0)
 		{
 			speed=0;
