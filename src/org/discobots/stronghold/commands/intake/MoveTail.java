@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class MoveTail extends Command {
-	int time=1000;
+	int time=2700;
 	double speed;
 	long endTime;
 	boolean fin=false;
@@ -48,6 +48,7 @@ public class MoveTail extends Command {
     		Robot.intakeSub.setTail(speed);
     	}
     }
+    	Robot.intakeSub.tailPos*=-1;
     	fin=true;
     }
 

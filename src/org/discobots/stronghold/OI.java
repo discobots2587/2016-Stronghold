@@ -97,7 +97,7 @@ public class OI {
 		b2_bumpL.whileHeld(new SetIntakeCommand(-1));
 		b2_bumpL.whenPressed(new SetIntakeCommand(0));
 		
-		b2_btnX.whenPressed(new MoveRobotForward());
+		b2_btnX.whenPressed(new MoveTail(0.2));
 		b2_btnA.whenPressed(new IntakeClawCommand());
 
 		
@@ -124,7 +124,7 @@ public class OI {
 		b_bumpL.whenReleased(new SetIntakeCommand(0));
 		
 		b_btnA.whenPressed(new IntakeClawCommand());
-		b_btnX.whenPressed(new MoveTail(0.1));
+		b_btnX.whenPressed(new MoveTail(0.2));
 		
 		
 		b_sStar.whenPressed(new SensorToggle());
