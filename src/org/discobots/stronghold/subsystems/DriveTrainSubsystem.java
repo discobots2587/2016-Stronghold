@@ -145,7 +145,7 @@ public class DriveTrainSubsystem extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		setDefaultCommand(new TankDriveCommand());
+		setDefaultCommand(new SplitArcadeDriveCommand());
 	}
 
 	public double getSpeedScaling() {

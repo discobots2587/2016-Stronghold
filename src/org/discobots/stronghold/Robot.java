@@ -106,9 +106,9 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Choose Auton", autonChooser);
 		
 		driveChooser = new SendableChooser();
-		driveChooser.addDefault("Tank Drive", new TankDriveCommand());
+		driveChooser.addObject("Tank Drive", new TankDriveCommand());
 		driveChooser.addObject("Arcade Drive", new ArcadeDriveCommand());
-		driveChooser.addObject("Split Arcade Drive", new SplitArcadeDriveCommand());
+		driveChooser.addDefault("Split Arcade Drive", new SplitArcadeDriveCommand());
 		SmartDashboard.putData("Choose Driving Controls", driveChooser);
 
         //gamepad mapping

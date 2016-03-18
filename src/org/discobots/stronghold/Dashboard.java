@@ -30,11 +30,13 @@ public class Dashboard {
 		//SmartDashboard.putNumber("Test PDP", pdpPTs.get(driveCounter-1));
 		//SmartDashboard.putNumber("PDP", Robot.electricalSub.getPDPTotalCurrent());
 		//SmartDashboard.putNumber("PDP V", Robot.electricalSub.getPDPVoltage());
-		//SmartDashboard.putBoolean("BrakeValue", Robot.armSub.getBrake());
+		SmartDashboard.putBoolean("BrakeValue", Robot.armSub.getBrake());
 		SmartDashboard.putNumber("LPSensor", Robot.linearPunchSub.getLPSensorData());
-		SmartDashboard.putString("Sensor Toggle: ", Robot.armSub.SensorToggleS[Robot.armSub.sensorToggle]);
 		//SmartDashboard.putNumber("ButtonMoveSpeed", Robot.driveTrainSub.buttonSpeed);
-	
+		}
+		else if(driveCounter%1000==1)//for very unimportant notifications
+		{
+			SmartDashboard.putString("Sensor Toggle: ", Robot.armSub.SensorToggleS[Robot.armSub.sensorToggle]);
 		}
 		}
 }
