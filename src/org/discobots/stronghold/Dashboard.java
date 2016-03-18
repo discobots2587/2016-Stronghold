@@ -34,7 +34,7 @@ public class Dashboard {
 		SmartDashboard.putNumber("LPSensor", Robot.linearPunchSub.getLPSensorData());
 		//SmartDashboard.putNumber("ButtonMoveSpeed", Robot.driveTrainSub.buttonSpeed);
 		}
-		else if(driveCounter%1000==1)//for very unimportant notifications
+		 if(driveCounter%100==1)//for very unimportant notifications
 		{
 			SmartDashboard.putString("Sensor Toggle: ", Robot.armSub.SensorToggleS[Robot.armSub.sensorToggle]);
 		}
