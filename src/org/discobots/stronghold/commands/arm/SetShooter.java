@@ -1,6 +1,7 @@
 package org.discobots.stronghold.commands.arm;
 
 import org.discobots.stronghold.Robot;
+import org.discobots.stronghold.commands.auton.subcommands.WaitCommand;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -9,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class SetShooter extends Command {
-
+boolean fin=false;
 	public SetShooter() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -19,33 +20,27 @@ public class SetShooter extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-		long waitT=System.currentTimeMillis()+500;
-		for(long x=System.currentTimeMillis();x<=waitT;)
-		{
-			Robot.intakeSub.setIntake(true);
-		}
-		 waitT=System.currentTimeMillis()+500;
-		for(long x=System.currentTimeMillis();x<=waitT;)
-		{
-			Robot.shootSub.shooter1.set(true);
-			Robot.shootSub.shooter2.set(true);
-		}
-		waitT=System.currentTimeMillis()+500;
-		for(long x=System.currentTimeMillis();x<=waitT;)
-		{
-			Robot.shootSub.shooter1.set(false);
-			Robot.shootSub.shooter2.set(false);
-		}
-		Robot.intakeSub.setIntake(false);
+
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+		Robot.intakeSub.setIntake(true);
+	new WaitCommand(500);
+		Robot.shootSub.shooter1.set(true);
+		Robot.shootSub.shooter2.set(true);
+	
+	new WaitCommand(300);
+		Robot.shootSub.shooter1.set(false);
+		Robot.shootSub.shooter2.set(false);
+		Robot.intakeSub.setIntake(false);
+	new WaitCommand(500);
+	fin=true;
     }
     
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return fin;
     }
 
     // Called once after isFinished returns true

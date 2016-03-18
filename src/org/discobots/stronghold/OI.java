@@ -132,8 +132,8 @@ public class OI {
 		b_sStar.whenPressed(new SensorToggle());
 		b_btnY.whenPressed(new ToggleCompressor());
 		
-	//	b_btnB.whenPressed(new SetShooter());
-	//	b2_btnB.whenPressed(new SetShooter());
+//		b_btnB.whenPressed(new SetShooter());
+//		b2_btnB.whenPressed(new SetShooter());
 
 		// This is for the version with single click loading and firing, no whenReleased
 	//	b_btnB.whenPressed(new LinearPunchStartCommand());
