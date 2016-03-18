@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class IntakeSubsystem extends Subsystem {
- 
+	int tailPos=1;//1 is up & -1 is down
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	private CANTalon intakeMotor;
@@ -30,6 +30,12 @@ public class IntakeSubsystem extends Subsystem {
     public void setTail(double speed)
     {
     	tailMotor.set(speed);
+    	tailPos*=-1;
+    }
+    public void toggleTail(double speed)
+    {
+    	tailMotor.set(speed*-tailPos);
+    	tailPos*=-1;
     }
     public void setIntakeSpeed(double speed){
     	intakeMotor.set(speed);

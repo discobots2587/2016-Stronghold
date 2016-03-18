@@ -12,6 +12,7 @@ public class MoveTail extends Command {
 	double speed;
 	long endTime;
 	boolean fin=false;
+	boolean toggle =false;
     public MoveTail(double speed,int time) {
         this.time=time;
         this.speed=speed;
@@ -21,6 +22,7 @@ public class MoveTail extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	this.speed=speed;
+    	toggle=true;
     	
     }
 
@@ -31,10 +33,21 @@ public class MoveTail extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
+    if(toggle==true)
+    {
+    	while(System.currentTimeMillis()<=endTime)
+    	{
+    		Robot.intakeSub.toggleTail(speed);
+    	}
+    }
+    else
+    {
     	while(System.currentTimeMillis()<=endTime)
     	{
     		Robot.intakeSub.setTail(speed);
     	}
+    }
     	fin=true;
     }
 

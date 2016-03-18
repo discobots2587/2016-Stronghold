@@ -13,6 +13,7 @@ import org.discobots.stronghold.commands.drive.MoveRobotForward;
 import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
 import org.discobots.stronghold.commands.intake.IntakeClawCommand;
+import org.discobots.stronghold.commands.intake.MoveTail;
 import org.discobots.stronghold.commands.intake.SetIntakeCommand;
 import org.discobots.stronghold.subsystems.ArmSubsystem;
 import org.discobots.stronghold.utils.GamePad;
@@ -123,8 +124,7 @@ public class OI {
 		b_bumpL.whenReleased(new SetIntakeCommand(0));
 		
 		b_btnA.whenPressed(new IntakeClawCommand());
-		b_btnX.whenPressed(new MoveRobotForward());
-
+		b_btnX.whenPressed(new MoveTail(0.1));
 		
 		
 		b_sStar.whenPressed(new SensorToggle());
