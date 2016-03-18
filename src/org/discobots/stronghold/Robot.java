@@ -23,6 +23,7 @@ import org.discobots.stronghold.commands.auton.SimpleDriveAutonomousCommand;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
+import org.discobots.stronghold.commands.auton.AutonServo;
 import org.discobots.stronghold.subsystems.ArmSubsystem;
 //import org.discobots.stronghold.commands.ExampleCommand;
 import org.discobots.stronghold.subsystems.DriveTrainSubsystem;
@@ -111,6 +112,7 @@ public class Robot extends IterativeRobot {
 		autonChooser.addObject("Forwards 50% and BACK", new Forwards50Back());
 		autonChooser.addObject("Do Nothing",new DoNothing());
 		autonChooser.addObject("Debug75% With TankDriveAuton", new Forwards75DebugWithTankDrive());
+		autonChooser.addObject("ServoAuton", new AutonServo());
 		SmartDashboard.putData("Choose Auton", autonChooser);
 		
 		driveChooser = new SendableChooser();
