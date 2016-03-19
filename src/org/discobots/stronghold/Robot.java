@@ -76,7 +76,7 @@ public class Robot extends IterativeRobot {
     	LogicC615.setQuality(80); //quality setting for camera
         //camera name taken from RoboRio
         USBCamera C615 = new USBCamera("cam0");
-       // LogicC615.openCamera();
+       // LogicC615.openCamera(); 
        // LogicC615.startCapture();
        LogicC615.startAutomaticCapture(C615);//automatically start streaming footage 
    }catch(com.ni.vision.VisionException e){
