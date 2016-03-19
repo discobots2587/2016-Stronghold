@@ -3,6 +3,7 @@ package org.discobots.stronghold.subsystems;
 import org.discobots.stronghold.HW;
 
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -17,10 +18,13 @@ public class IntakeSubsystem extends Subsystem {
 	private CANTalon intakeMotor;
 	private Solenoid intakeSol;
 	private CANTalon tailMotor;
+	private DigitalInput limitTail;
 	public IntakeSubsystem(){
 		intakeMotor = new CANTalon(HW.intakeMotor);
 		intakeSol = new Solenoid(HW.intakeSolenoid);
 		tailMotor = new CANTalon(HW.motorTail);
+		limitTail = new DigitalInput(HW.limitSwitchBack);
+		
 	}
 	
     public void initDefaultCommand() {
@@ -29,11 +33,30 @@ public class IntakeSubsystem extends Subsystem {
     }
     public void setTail(double speed)
     {
+    	if(0>speed)
+    	{
+    		while(limitTail.get()==false)
+    		{
     	tailMotor.set(speed);
-    }
+    		}
+    	tailMotor.set(0);
+    	}
+    	else
+    	tailMotor.set(speed);
+	}
     public void toggleTail(double speed)
     {
-    	tailMotor.set(speed*-tailPos);
+    		speed*=-tailPos;
+    	if(0>speed)
+    	{
+    		while(limitTail.get()==false)
+    		{
+    	tailMotor.set(speed);
+    		}
+    	tailMotor.set(0);
+    	}
+    	else
+    	tailMotor.set(speed);
     }
     public void setIntakeSpeed(double speed){
     	intakeMotor.set(speed);
