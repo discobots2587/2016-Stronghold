@@ -35,11 +35,12 @@ public class IntakeSubsystem extends Subsystem {
     {
     	if(0>speed)
     	{
-    		while(limitTail.get()==false)
+    		while(limitTail.get()==true)
     		{
     	tailMotor.set(speed);
     		}
     	tailMotor.set(0);
+    	tailPos=-1;
     	}
     	else
     	tailMotor.set(speed);
@@ -49,11 +50,12 @@ public class IntakeSubsystem extends Subsystem {
     		speed*=-tailPos;
     	if(0>speed)
     	{
-    		while(limitTail.get()==false)
+    		while(limitTail.get()==true)
     		{
     	tailMotor.set(speed);
     		}
     	tailMotor.set(0);
+    	tailPos=1;//to be made -1 by the command
     	}
     	else
     	tailMotor.set(speed);

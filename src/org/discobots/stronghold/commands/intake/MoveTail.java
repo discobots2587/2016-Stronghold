@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class MoveTail extends Command {
-	int time=2700;
+	int time=3500;
 	double speed;
 	long endTime;
 	boolean fin=false;
