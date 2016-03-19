@@ -7,6 +7,7 @@ import org.discobots.stronghold.commands.drive.TankDriveCommand;
 
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -33,7 +34,7 @@ public class DriveTrainSubsystem extends Subsystem {
 	public enum DriveCommandChoice { TANK, ARCADE, SPLITARCADE }
 	DriveCommandChoice choice;
 	CANTalon frontLeft,frontRight,backLeft,backRight;
-	
+	Solenoid shifter;
 	public double buttonSpeed;
 	public int autonTimeTest;
 
@@ -41,6 +42,8 @@ public class DriveTrainSubsystem extends Subsystem {
 
 	
 	public DriveTrainSubsystem() {
+		shifter = new Solenoid(HW.shifter);
+		shifter.set(false);
 		//choice = DriveCommandChoice.TANK; //default tank drive if no choice chosen (prevents null pointer exception)
 		frontLeft = new CANTalon(HW.motorFrontLeft);
 		frontRight = new CANTalon(HW.motorFrontRight);
@@ -50,7 +53,6 @@ public class DriveTrainSubsystem extends Subsystem {
 		robotDrive = new RobotDrive(frontLeft,backLeft,frontRight,backRight);
 		buttonSpeed = .5;
 		autonTimeTest = 1000;
-		//SmartDashboard.putNumber("ButtonMoveSpeed",buttonSpeed);
 	}
 	
 /*	public DriveTrainSubsystem(DriveCommandChoice c) {
@@ -59,6 +61,10 @@ public class DriveTrainSubsystem extends Subsystem {
 		robotDrive = new RobotDrive(HW.motorLeft,HW.motorRight);
 
 	} */
+	public void setShifter(boolean shift)
+	{
+		shifter.set(shift);
+	}
 	public double getFrontRight()
 	{
 		return frontRight.get();
