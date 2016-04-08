@@ -2,6 +2,7 @@ package org.discobots.stronghold.commands.drive;
 
 import org.discobots.stronghold.Robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -16,8 +17,12 @@ public class ShiftCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
-    	Robot.driveTrainSub.setShifter(!Robot.driveTrainSub.getShifter());
+    	if(Robot.driveTrainSub.getShifter().equals(DoubleSolenoid.Value.kForward))
+    		Robot.driveTrainSub.setShifter(DoubleSolenoid.Value.kReverse);
+    	else if(Robot.driveTrainSub.getShifter().equals(DoubleSolenoid.Value.kReverse))
+    		Robot.driveTrainSub.setShifter(DoubleSolenoid.Value.kForward);
+    	else
+    		Robot.driveTrainSub.setShifter(DoubleSolenoid.Value.kOff);
     	
     } 
 

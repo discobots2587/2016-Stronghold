@@ -36,7 +36,8 @@ public class HW {
 	public final static int intakeSolenoid = 3;
 	public final static int shooter1 = 6;//set
 	public final static int shooter2 = 7;//set
-	public final static int shifter=2;
+	public final static int shifter1=1;
+	public final static int shifter2 = 2;
 
 	
 	

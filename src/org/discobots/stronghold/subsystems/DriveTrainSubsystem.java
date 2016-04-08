@@ -7,6 +7,8 @@ import org.discobots.stronghold.commands.drive.SplitArcadeDriveCommand;
 import org.discobots.stronghold.commands.drive.TankDriveCommand;
 
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -35,17 +37,16 @@ public class DriveTrainSubsystem extends Subsystem {
 	public enum DriveCommandChoice { TANK, ARCADE, SPLITARCADE }
 	DriveCommandChoice choice;
 	CANTalon frontLeft,frontRight,backLeft,backRight;
-	Solenoid shifter;
+	DoubleSolenoid shifter;
 	public double buttonSpeed;
 	public int autonTimeTest;
-	int shiftMode;
 
 	static double kSpeedScaling = 1.0;
 
 	
 	public DriveTrainSubsystem() {
-		shifter = new Solenoid(HW.shifter);
-		shifter.set(false);
+		shifter = new DoubleSolenoid(HW.shifter1,HW.shifter2);
+		shifter.set(DoubleSolenoid.Value.kReverse);
 		//choice = DriveCommandChoice.TANK; //default tank drive if no choice chosen (prevents null pointer exception)
 		frontLeft = new CANTalon(HW.motorFrontLeft);
 		frontRight = new CANTalon(HW.motorFrontRight);
@@ -55,7 +56,7 @@ public class DriveTrainSubsystem extends Subsystem {
 		robotDrive = new RobotDrive(frontLeft,backLeft,frontRight,backRight);
 		buttonSpeed = .5;
 		autonTimeTest = 1000;
-		shiftMode=0;
+		
 	}
 	
 /*	public DriveTrainSubsystem(DriveCommandChoice c) {
@@ -65,11 +66,11 @@ public class DriveTrainSubsystem extends Subsystem {
 
 	} */
 
-	public void setShifter(boolean shift)
+	public void setShifter(Value val)
 	{
-		shifter.set(shift);
+		shifter.set(val);
 	}
-	public boolean getShifter(){
+	public Value getShifter(){
 		return shifter.get();
 	}
 	public double getFrontRight()
