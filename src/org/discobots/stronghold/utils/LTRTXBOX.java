@@ -28,10 +28,15 @@ public class LTRTXBOX extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		
-    	
-    	   Liftspeed = Robot.oi.getLT()-Robot.oi.getRT();//constantly updates every 20 miliseconds
-    	   Robot.armSub.setSpeed(Liftspeed);
+    		double rightT = Robot.oi.getRT();
+    		double leftT = Robot.oi.getLT();
+    	   Liftspeed = leftT-rightT;//constantly updates every 20 miliseconds
+    	   if(Liftspeed<0)
+    	   {
+    		   if(Robot.armSub.potentiometer.getAverageVoltage()> Robot.armSub.upperArmLim)
+    			   Robot.armSub.setSpeed(Liftspeed);
+    	   } else
+    		   Robot.armSub.setSpeed(Liftspeed);
 
     }
 

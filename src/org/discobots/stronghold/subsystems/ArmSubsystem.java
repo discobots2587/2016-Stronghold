@@ -29,6 +29,7 @@ public class ArmSubsystem extends Subsystem {
     public DigitalInput backLimit;//limit switch
 	public String[] SensorToggleS={"ALL SENSORS OFF","BOTTOM SWITCH OFF","ALL SENSORS ON"};
 	public int sensorToggle=1;
+	public double upperArmLim = 4.268;
 
 
 	public ArmSubsystem()
