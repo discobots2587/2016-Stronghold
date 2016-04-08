@@ -120,9 +120,9 @@ public class OI {
 		b_dpadR.whenPressed(new ShiftCommand());
 		
 		b_sBack.whenPressed(new CycleDriveCommand());
-		b_bumpR.whileHeld(new SetIntakeCommand(-1));
+		b_bumpR.whileHeld(new SetIntakeCommand(-1)); //pulls ball in
 		b_bumpR.whenReleased(new SetIntakeCommand(0));
-		b_bumpL.whileHeld(new SetIntakeCommand(1));
+		b_bumpL.whileHeld(new SetIntakeCommand(1)); //pushes ball out
 		b_bumpL.whenReleased(new SetIntakeCommand(0));
 		
 		b_btnA.whenPressed(new IntakeClawCommand());

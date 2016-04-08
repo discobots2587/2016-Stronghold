@@ -37,6 +37,7 @@ public class Dashboard {
 		if (driveCounter%10==1)
 		{
 			SmartDashboard.putNumber("PRESSURE", Robot.electricalSub.getPressure());
+			
 			SmartDashboard.putBoolean("Pressure Switch State", Robot.electricalSub.getPressureSwitchState());
 		}
 		 if(driveCounter%100==1)//for very unimportant notifications

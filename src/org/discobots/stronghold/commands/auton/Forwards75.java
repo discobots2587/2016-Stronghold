@@ -1,7 +1,10 @@
 package org.discobots.stronghold.commands.auton;
 
 import org.discobots.stronghold.commands.auton.subcommands.AutonomousArcadeDrive;
+import org.discobots.stronghold.commands.auton.subcommands.AutonomousConstantIntake;
+import org.discobots.stronghold.commands.auton.subcommands.AutonomousSetIntake;
 import org.discobots.stronghold.commands.auton.subcommands.AutonomousTankDrive;
+import org.discobots.stronghold.commands.auton.subcommands.WaitCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -11,7 +14,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Forwards75 extends CommandGroup {
     
     public  Forwards75() {
+    		addParallel(new AutonomousConstantIntake(-1,10));
     		addSequential(new AutonomousArcadeDrive(0.75,0,5000));
+    		//addSequential(new WaitCommand(500));
+    		//addSequential(new AutonomousSetIntake(-1,500));
+    		
+    		
     	// Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
