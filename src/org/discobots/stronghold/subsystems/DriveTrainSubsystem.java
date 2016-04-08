@@ -37,6 +37,7 @@ public class DriveTrainSubsystem extends Subsystem {
 	Solenoid shifter;
 	public double buttonSpeed;
 	public int autonTimeTest;
+	int shiftMode;
 
 	static double kSpeedScaling = 1.0;
 
@@ -53,6 +54,7 @@ public class DriveTrainSubsystem extends Subsystem {
 		robotDrive = new RobotDrive(frontLeft,backLeft,frontRight,backRight);
 		buttonSpeed = .5;
 		autonTimeTest = 1000;
+		shiftMode=0;
 	}
 	
 /*	public DriveTrainSubsystem(DriveCommandChoice c) {
@@ -61,6 +63,13 @@ public class DriveTrainSubsystem extends Subsystem {
 		robotDrive = new RobotDrive(HW.motorLeft,HW.motorRight);
 
 	} */
+	public int getShiftMode(){
+		return shiftMode;
+	}
+	public void setShiftMode(int shift)
+	{
+		shiftMode=shift;
+	}
 	public void setShifter(boolean shift)
 	{
 		shifter.set(shift);
