@@ -117,6 +117,7 @@ public class OI {
 		b_dpadU.whenPressed(new SetArmPosCommand(3.558));
 		b_dpadL.whenPressed(new SetArmPosCommand(4));
 		b_dpadD.whenPressed(new SetArmPosCommand(4.334));
+		b_dpadR.whenPressed(new ShiftCommand());
 		
 		b_sBack.whenPressed(new CycleDriveCommand());
 		b_bumpR.whileHeld(new SetIntakeCommand(-1));
