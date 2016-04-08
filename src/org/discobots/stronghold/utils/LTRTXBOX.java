@@ -33,7 +33,7 @@ public class LTRTXBOX extends Command {
     	   Liftspeed = leftT-rightT;//constantly updates every 20 miliseconds
     	   if(Liftspeed<0)
     	   {
-    		   if(Robot.armSub.potentiometer.getAverageVoltage()> Robot.armSub.upperArmLim)
+    		   if(Robot.armSub.potentiometer.getAverageVoltage()> Robot.armSub.upperArmLim || Robot.armSub.potentiometer.getAverageVoltage()<0.5)
     			   Robot.armSub.setSpeed(Liftspeed);
     	   } else
     		   Robot.armSub.setSpeed(Liftspeed);

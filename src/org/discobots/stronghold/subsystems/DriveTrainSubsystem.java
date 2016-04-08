@@ -1,3 +1,4 @@
+
 package org.discobots.stronghold.subsystems;
 
 import org.discobots.stronghold.HW;
@@ -63,16 +64,13 @@ public class DriveTrainSubsystem extends Subsystem {
 		robotDrive = new RobotDrive(HW.motorLeft,HW.motorRight);
 
 	} */
-	public int getShiftMode(){
-		return shiftMode;
-	}
-	public void setShiftMode(int shift)
-	{
-		shiftMode=shift;
-	}
+
 	public void setShifter(boolean shift)
 	{
 		shifter.set(shift);
+	}
+	public boolean getShifter(){
+		return shifter.get();
 	}
 	public double getFrontRight()
 	{
