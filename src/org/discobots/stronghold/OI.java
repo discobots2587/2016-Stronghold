@@ -89,7 +89,7 @@ public class OI {
 		
 		b2_dpadU.whenPressed(new SetArmPosCommand(3.558));
 		b2_dpadL.whenPressed(new SetArmPosCommand(4));
-		b2_dpadD.whenPressed(new SetArmPosCommand(4.334));
+		b2_dpadD.whenPressed(new SetArmPosCommand(4.431)); //Preferred shooting position
 		b2_dpadR.whenPressed(new ShiftCommand());
 
 

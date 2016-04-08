@@ -12,14 +12,15 @@ public class SensorToggle extends Command {
     public SensorToggle() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.armSub);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	if (Robot.armSub.sensorToggle==2)
-    			{
-    				Robot.armSub.sensorToggle=1;
-    			}
+		{
+			Robot.armSub.sensorToggle=1;
+		}
     	else if (Robot.armSub.sensorToggle==1)
     	{
     		Robot.armSub.sensorToggle=0;
