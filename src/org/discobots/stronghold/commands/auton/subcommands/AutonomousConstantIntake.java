@@ -26,5 +26,11 @@ public class AutonomousConstantIntake extends CommandGroup {
         // arm.
     	addSequential(new AutonomousSetIntake(speed,delay));
     	addSequential(new WaitCommand(delay));
+    	addSequential(new AutonomousSetIntake(speed,delay));
+    	addSequential(new WaitCommand(delay));
+    	addSequential(new AutonomousSetIntake(speed,delay));
+    	addSequential(new WaitCommand(delay));
+    	addSequential(new AutonomousSetIntake(speed,delay));
+    	addSequential(new WaitCommand(delay));
     }
 }
