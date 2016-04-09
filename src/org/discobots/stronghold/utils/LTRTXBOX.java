@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class LTRTXBOX extends Command {
 	
-	double Liftspeed;
+	double liftSpeed;
 	
 
     public LTRTXBOX() {
@@ -30,14 +30,19 @@ public class LTRTXBOX extends Command {
     protected void execute() {
     		double rightT = Robot.oi.getRT();
     		double leftT = Robot.oi.getLT();
-    	   Liftspeed = leftT-rightT;//constantly updates every 20 miliseconds
-    	   if(Liftspeed<0)
+    	   liftSpeed = leftT-rightT;//constantly updates every 20 miliseconds
+    	  // if(Math.abs(liftSpeed)<.15)
+    		//   liftSpeed=0;
+    	   Robot.armSub.setSpeed(liftSpeed);
+    	   
+    	   /*if(Liftspeed<0)
     	   {
-    		   if(Robot.armSub.potentiometer.getAverageVoltage()> Robot.armSub.upperArmLim || Robot.armSub.potentiometer.getAverageVoltage()<3.5)
+    		   if(Robot.armSub.potentiometer.getAverageVoltage()< Robot.armSub.upperArmLim)
     			   Robot.armSub.setSpeed(Liftspeed);
-    	   } else
-    		   Robot.armSub.setSpeed(Liftspeed);
-
+    	   } else{
+    		   if(Robot.armSub.potentiometer.getAverageVoltage()> Robot.armSub.lowerArmLim)
+    			   Robot.armSub.setSpeed(Liftspeed);
+    	   }*/
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -47,12 +52,12 @@ public class LTRTXBOX extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Liftspeed=0;//always set speeds to zero in end
+    	liftSpeed=0;//always set speeds to zero in end
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Liftspeed=0;
+    	end();
     }
 }

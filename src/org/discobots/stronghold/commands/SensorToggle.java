@@ -17,18 +17,13 @@ public class SensorToggle extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	if (Robot.armSub.sensorToggle==2)
-		{
-			Robot.armSub.sensorToggle=1;
-		}
-    	else if (Robot.armSub.sensorToggle==1)
-    	{
+    	//Robot.armSub.sensorToggle = !Robot.armSub.sensorToggle;
+    	if(Robot.armSub.sensorToggle==1)
     		Robot.armSub.sensorToggle=0;
-    	}
-    	else
-    	{
+    	else if(Robot.armSub.sensorToggle==0)
     		Robot.armSub.sensorToggle=2;
-    	}
+    	else
+    		Robot.armSub.sensorToggle=1;
     }
 
     // Called repeatedly when this Command is scheduled to run

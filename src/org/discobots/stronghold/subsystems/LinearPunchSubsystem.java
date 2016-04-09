@@ -18,7 +18,7 @@ public class LinearPunchSubsystem extends Subsystem {
     
     public LinearPunchSubsystem(){
     punch = new CANTalon(HW.motorPunch);
-    LPSensor = new AnalogInput(HW.LPSensor);	
+   // LPSensor = new AnalogInput(HW.LPSensor);	
     }
    //double degrees = pot.get()
     // Put methods for controlling this subsystem
