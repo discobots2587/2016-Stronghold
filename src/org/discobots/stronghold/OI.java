@@ -114,9 +114,9 @@ public class OI {
 		b_btnB.whenReleased(new LinearPunchEndCommand());
 	*/	
 
-		b_dpadU.whenPressed(new SetArmPosCommand(3.558));
-		b_dpadL.whenPressed(new SetArmPosCommand(4));
-		b_dpadD.whenPressed(new SetArmPosCommand(4.334));
+		//b_dpadU.whenPressed(new SetArmPosCommand(3.558));
+		//b_dpadL.whenPressed(new SetArmPosCommand(4));
+		b_dpadD.whenPressed(new SetArmPosCommand(2.163));
 		b_dpadR.whenPressed(new ShiftCommand());
 		
 		b_sBack.whenPressed(new CycleDriveCommand());

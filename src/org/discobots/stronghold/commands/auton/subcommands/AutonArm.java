@@ -1,4 +1,4 @@
-package org.discobots.stronghold.commands;
+package org.discobots.stronghold.commands.auton.subcommands;
 
 import org.discobots.stronghold.Robot;
 
@@ -7,36 +7,40 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class SensorToggle extends Command {
 
-    public SensorToggle() {
+
+
+public class AutonArm extends Command {
+	int time;
+	public long endTime;
+	double s;
+
+    public AutonArm(int t, double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.armSub);
+    	s = speed;
+    	time = t;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	//Robot.armSub.sensorToggle = !Robot.armSub.sensorToggle;
-    	if(Robot.armSub.sensorToggle==1)
-    		Robot.armSub.sensorToggle=0;
-    	else if(Robot.armSub.sensorToggle==0)
-    		Robot.armSub.sensorToggle=2;
-    	else
-    		Robot.armSub.sensorToggle=1;
+    	endTime = System.currentTimeMillis()+time;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.armSub.armMotor.set(s);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return System.currentTimeMillis()>=endTime;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.armSub.armMotor.set(0);
     }
 
     // Called when another command which requires one or more of the same

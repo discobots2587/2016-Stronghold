@@ -17,6 +17,7 @@ import org.discobots.stronghold.commands.auton.Forwards50;
 import org.discobots.stronghold.commands.auton.Forwards50Back;
 import org.discobots.stronghold.commands.auton.Forwards75;
 import org.discobots.stronghold.commands.auton.Forwards75Back;
+import org.discobots.stronghold.commands.auton.LowBar;
 import org.discobots.stronghold.commands.auton.Ramparts75;
 import org.discobots.stronghold.commands.auton.SimpleDriveAutonomousCommand;
 import org.discobots.stronghold.commands.drive.ArcadeDriveCommand;
@@ -61,7 +62,7 @@ public class Robot extends IterativeRobot {
 	public static ArmSubsystem armSub;
 	public static ElectricalSubsystem electricalSub;
 	public static IntakeSubsystem intakeSub;
-	public static LinearPunchSubsystem linearPunchSub;
+	//public static LinearPunchSubsystem linearPunchSub;
     Command autonomousCommand,driveCommand;
     SendableChooser driveChooser, autonChooser;
 
@@ -90,7 +91,7 @@ public class Robot extends IterativeRobot {
     	armSub = new ArmSubsystem();
     	shootSub = new ShooterSubsystem();
     	intakeSub = new IntakeSubsystem();
-    	linearPunchSub = new LinearPunchSubsystem();
+    //	linearPunchSub = new LinearPunchSubsystem();
 
     	
     	
@@ -106,6 +107,7 @@ public class Robot extends IterativeRobot {
 		autonChooser.addObject("Forwards 50% and BACK", new Forwards50Back());
 		autonChooser.addObject("Ramparts at 80% plus turning left", new Ramparts75());
 		autonChooser.addObject("Do Nothing",new DoNothing());
+		autonChooser.addObject("Low Bar", new LowBar());
 		SmartDashboard.putData("Choose Auton", autonChooser);
 		
 		driveChooser = new SendableChooser();
