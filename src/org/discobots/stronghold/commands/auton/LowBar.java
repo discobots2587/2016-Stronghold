@@ -1,6 +1,7 @@
 package org.discobots.stronghold.commands.auton;
 
 import org.discobots.stronghold.commands.arm.SetArmPosCommand;
+import org.discobots.stronghold.commands.auton.subcommands.AutonArm;
 import org.discobots.stronghold.commands.auton.subcommands.AutonomousArcadeDrive;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -11,8 +12,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LowBar extends CommandGroup {
     
     public  LowBar() {
-    	addSequential(new SetArmPosCommand(.7));
-    	addSequential(new AutonomousArcadeDrive(.75,0,5000));
+    	addSequential(new AutonArm(1500,.75));
+    	addSequential(new AutonomousArcadeDrive(.6,0,5000));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
