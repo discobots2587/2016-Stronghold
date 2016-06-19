@@ -77,13 +77,14 @@ public class ArmSubsystem extends Subsystem {
 			armMotor.set(0);
 			setBrake(true);
 		}
-		else if(potentiometer.getAverageVoltage()<=upperArmLim&&speed<0)//upper potentiometer limit
+		else if(potentiometer.getAverageVoltage()<=upperArmLim&&speed>0)//upper potentiometer limit
 		{
 			if(sensorToggle==2||sensorToggle==1)
 			{
-				speed=0;
+				//speed=0;
+				setBrake(false);
 				armMotor.set(speed*kSpeed);
-				setBrake(true);
+				//setBrake(true);
 			}
 			else
 			{
@@ -92,7 +93,7 @@ public class ArmSubsystem extends Subsystem {
 			}
 		}
 
-		else if(!frontLimit.get()&&speed>0)//limit switch bottom limit
+		else if(!frontLimit.get()&&speed<0)//limit switch bottom limit
 		{
 			if(sensorToggle==1)
 			{
@@ -108,12 +109,12 @@ public class ArmSubsystem extends Subsystem {
 		}
 		
 		//SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------SPEEED STEPS----------
-		else if(3.8<potentiometer.getAverageVoltage()&&potentiometer.getAverageVoltage()<4.5&&speed<0)//upper speed limit 1
+		else if(2<potentiometer.getAverageVoltage()&&potentiometer.getAverageVoltage()<2.5&&speed>0)//upper speed limit 1
 		{
 			if(sensorToggle==2||sensorToggle==1)
 			{
 			setBrake(false);
-			speed*=-(3.8-potentiometer.getAverageVoltage());
+			speed*=-(2-potentiometer.getAverageVoltage());
 			armMotor.set(speed*kSpeed);
 			}
 			else
@@ -122,11 +123,18 @@ public class ArmSubsystem extends Subsystem {
 				armMotor.set(speed*kSpeed);
 			}
 		}
+		else if(sensorToggle==2||sensorToggle==1&&upperArmLim<potentiometer.getAverageVoltage()&&speed>0)//TRUE UPPER LIMIT CUTOFF
+		{
+			speed=0;
+			armMotor.set(speed);
+			setBrake(true);
+		}
 		else
 		{
 			setBrake(false);
 			armMotor.set(speed*kSpeed);	
 		}
+		
 
 		/*		if(backLimit.get()&&speed<0)
 		{
