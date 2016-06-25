@@ -30,7 +30,7 @@ public class LTRTXBOX extends Command {
     protected void execute() {
     		double rightT = Robot.oi.getRT();
     		double leftT = Robot.oi.getLT();
-    	   liftSpeed = leftT-rightT;//constantly updates every 20 miliseconds
+    	   liftSpeed = rightT-leftT;//constantly updates every 20 miliseconds
     	  // if(Math.abs(liftSpeed)<.15)
     		//   liftSpeed=0;
     	   Robot.armSub.setSpeed(liftSpeed);

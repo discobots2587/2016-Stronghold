@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LowBar extends CommandGroup {
     
     public  LowBar() {
-    	addSequential(new AutonArm(1500,.75));
+    	addSequential(new AutonArm(1500,-.75));
     	addSequential(new AutonomousArcadeDrive(.6,0,5000));
         // Add Commands here:
         // e.g. addSequential(new Command1());

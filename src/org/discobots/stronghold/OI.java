@@ -87,9 +87,8 @@ public class OI {
 		b2_bumpR.whenReleased(new BrakeCommand(true));
 		b2_bumpR.whenPressed(new BrakeCommand(false));*/
 		
-		b2_dpadU.whenPressed(new SetArmPosCommand(3.558));
-		b2_dpadL.whenPressed(new SetArmPosCommand(4));
-		b2_dpadD.whenPressed(new SetArmPosCommand(4.431)); //Preferred shooting position
+		b2_dpadU.whenPressed(new SetArmPosCommand(2.7));
+		b2_dpadD.whenPressed(new SetArmPosCommand(0.9)); //Preferred shooting position
 		b2_dpadR.whenPressed(new ShiftCommand());
 
 
@@ -116,7 +115,9 @@ public class OI {
 
 		//b_dpadU.whenPressed(new SetArmPosCommand(3.558));
 		//b_dpadL.whenPressed(new SetArmPosCommand(4));
-		b_dpadD.whenPressed(new SetArmPosCommand(2.163));
+		b_dpadD.whenPressed(new SetArmPosCommand(0.9));
+		b_dpadU.whenPressed(new SetArmPosCommand(2.7));
+
 		b_dpadR.whenPressed(new ShiftCommand());
 		
 		b_sBack.whenPressed(new CycleDriveCommand());

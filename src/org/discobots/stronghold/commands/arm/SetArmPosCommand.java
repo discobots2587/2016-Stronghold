@@ -28,8 +28,8 @@ public class SetArmPosCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	currentPosition = Robot.armSub.potentiometer.getAverageVoltage();
-    	motorSpeed = currentPosition-currentSetpoint;
-    	if(motorSpeed>.1)
+    	motorSpeed = -1*(currentPosition-currentSetpoint);
+    	if(motorSpeed<.1)
     		motorSpeed*=Robot.armSub.kP;   		
     	Robot.armSub.armMotor.set(motorSpeed);
     }
