@@ -1,6 +1,7 @@
 package org.discobots.stronghold.commands.arm;
 
 import org.discobots.stronghold.Robot;
+import org.discobots.stronghold.utils.LTRTXBOX;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -42,7 +43,9 @@ public class SetArmPosCommand extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	new BrakeCommand(true);
-    	//new MaintainArmPosCommand();
+    	motorSpeed=0;
+    	Robot.armSub.armMotor.set(motorSpeed);
+    	new LTRTXBOX();
     }
 
     // Called when another command which requires one or more of the same
