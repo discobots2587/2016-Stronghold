@@ -17,7 +17,6 @@ public class SetArmPosCommand extends Command {
     public SetArmPosCommand(double setpoint) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.armSub);
     	currentSetpoint = setpoint;
     }
 
@@ -30,22 +29,18 @@ public class SetArmPosCommand extends Command {
     protected void execute() {
     	currentPosition = Robot.armSub.potentiometer.getAverageVoltage();
     	motorSpeed = -1*(currentPosition-currentSetpoint);
-    	if(motorSpeed<.1)
+    	if(motorSpeed>.1||motorSpeed*-1>.1)
     		motorSpeed*=Robot.armSub.kP;   		
     	Robot.armSub.armMotor.set(motorSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return currentPosition <= currentSetpoint +.07 && currentPosition >= currentSetpoint - .07;
+        return currentPosition <= currentSetpoint +.7 && currentPosition >= currentSetpoint - 0.7;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	new BrakeCommand(true);
-    	motorSpeed=0;
-    	Robot.armSub.armMotor.set(motorSpeed);
-    	new LTRTXBOX();
     }
 
     // Called when another command which requires one or more of the same
