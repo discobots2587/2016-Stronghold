@@ -22,7 +22,7 @@ long endTime1,endTime2;
     // Called just before this Command runs the first time
     protected void initialize() {
     endTime1 = System.currentTimeMillis()+1000;
-    endTime2 = System.currentTimeMillis()+(700*3);
+    endTime2 = System.currentTimeMillis()+(800*3);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -36,7 +36,7 @@ long endTime1,endTime2;
 		Robot.shootSub.shooter1.set(true);
 		Robot.shootSub.shooter2.set(true);
 	}
-	if(endTime2+100<System.currentTimeMillis())
+	if(endTime2+1500<System.currentTimeMillis())
 	fin=true;
     }
     
