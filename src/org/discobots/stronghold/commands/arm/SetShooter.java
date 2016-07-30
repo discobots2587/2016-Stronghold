@@ -21,8 +21,8 @@ long endTime1,endTime2;
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    endTime1 = System.currentTimeMillis()+1000;
-    endTime2 = System.currentTimeMillis()+(800*3);
+    endTime1 = System.currentTimeMillis()+700;
+    endTime2 = System.currentTimeMillis()+(700*2);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -36,7 +36,11 @@ long endTime1,endTime2;
 		Robot.shootSub.shooter1.set(true);
 		Robot.shootSub.shooter2.set(true);
 	}
-	if(endTime2+1500<System.currentTimeMillis())
+    if(endTime2<System.currentTimeMillis())
+    {
+		Robot.shootSub.shooter1.set(false);
+		Robot.shootSub.shooter2.set(false);    }
+	if(endTime2+2000<System.currentTimeMillis())
 	fin=true;
     }
     
@@ -55,5 +59,6 @@ long endTime1,endTime2;
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }
