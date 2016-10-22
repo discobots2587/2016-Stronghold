@@ -33,7 +33,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class OI {
 	private GamePad gp1 = new GamePad(0);
 	private GamePad xbox = new GamePad(1); 
-	
 //set buttons for each joystick
 	// JOYSTICK 2
 	private Button b_dpadU = new DPadButton(xbox, GamePad.DPAD_Y, true);

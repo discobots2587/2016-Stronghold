@@ -1,5 +1,6 @@
 package org.discobots.stronghold.commands.arm;
 
+import org.discobots.stronghold.OI;
 import org.discobots.stronghold.Robot;
 import org.discobots.stronghold.commands.auton.subcommands.WaitCommand;
 
@@ -30,6 +31,7 @@ long endTime1,endTime2;
     while(System.currentTimeMillis()<=endTime1)
     {
 		Robot.intakeSub.setIntake(true);
+		Robot.oi.setRumble(0.4);
     }
 		while(System.currentTimeMillis()<=endTime2)
 	{

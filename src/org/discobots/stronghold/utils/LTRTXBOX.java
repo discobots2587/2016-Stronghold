@@ -2,6 +2,7 @@ package org.discobots.stronghold.utils;
 
 
 import org.discobots.stronghold.Robot;
+import org.discobots.stronghold.OI.Hand;
 import org.discobots.stronghold.commands.arm.BrakeCommand;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -12,8 +13,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class LTRTXBOX extends Command {
 	
 	double liftSpeed;
-	
-
+	Hand left = Hand.LEFT;
+	Hand right = Hand.RIGHT;
     public LTRTXBOX() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -34,7 +35,10 @@ public class LTRTXBOX extends Command {
     	  // if(Math.abs(liftSpeed)<.15)
     		//   liftSpeed=0;
     	   Robot.armSub.setSpeed(liftSpeed);
-    	   
+    	   if (liftSpeed>.2)
+    		   Robot.oi.setRumble(right, liftSpeed/2);
+    	   if(liftSpeed<.2)
+    		   Robot.oi.setRumble(left,liftSpeed/2);;
     	   /*if(Liftspeed<0)
     	   {
     		   if(Robot.armSub.potentiometer.getAverageVoltage()< Robot.armSub.upperArmLim)
