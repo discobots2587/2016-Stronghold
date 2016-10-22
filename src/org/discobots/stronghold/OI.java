@@ -127,7 +127,7 @@ public class OI {
 		b_bumpL.whenReleased(new SetIntakeCommand(0));
 		
 		b_btnA.whenPressed(new IntakeClawCommand());
-		b_btnX.whenPressed(new MoveTail(0.2));
+	//	b_btnX.whenPressed(new MoveTail(0.2));  //TAIL WAS REMOVED
 		
 		
 		b_sStar.whenPressed(new SensorToggle());
