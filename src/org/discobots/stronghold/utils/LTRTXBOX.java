@@ -37,7 +37,7 @@ public class LTRTXBOX extends Command {
     	   Robot.armSub.setSpeed(liftSpeed);
     	   if (liftSpeed>.2)
     		   Robot.oi.setRumble(right, liftSpeed/2);
-    	   if(liftSpeed<.2)
+    	   if(liftSpeed<-.2)
     		   Robot.oi.setRumble(left,liftSpeed/2);;
     	   /*if(Liftspeed<0)
     	   {
@@ -57,6 +57,7 @@ public class LTRTXBOX extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	liftSpeed=0;//always set speeds to zero in end
+    	Robot.oi.setRumble(0);
     }
 
     // Called when another command which requires one or more of the same
