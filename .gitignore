@@ -1,10 +1,17 @@
-/bin/
-.classpath
-*.classpath
-*.classpath
+*.class
 
-*.classpath
-*.classpath
-*.classpath
-*.classpath
-*.classpath
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+.xml
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Eclipse
+.classpath
+.project
+.settings
+.metadata
+/bin/

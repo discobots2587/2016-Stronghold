@@ -1,10 +1,8 @@
-# 2016-Stronghold
+# 2016-Stronghold With 2017 Libraries
 ================
-DiscoBots 2587's Code for the 2016 First Robotics Game - Stronghold
+DiscoBots 2587's 2017 Code for the 2016 Competition Robot
  http://2016.discobots.org
 
-
-This is the DiscoBots 2587's 2016 code. The main project contains robot code and is using the WPILIB Java libraries and follows a command based structure. The projects in /sfxplugins/ are plugins for the new Java SFX dashboard or special applications for utility purposes.  
-Students, please add your name to the contributors list when you commit code.
+This is the DiscoBots 2587's 2017 Update for the 2016 Competition Robot. The project contains robot code and is using the 2017 WPILIB Java libraries and follows a command based structure.   
   
-Contributors: Mason Cole, Thomas McDonald, Sashank Gogula, Connor Selna
+Contributors: Mason Cole
